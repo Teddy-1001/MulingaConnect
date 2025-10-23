@@ -11,41 +11,43 @@ body {
 nav{
     display: flex;
     justify-content: space-between;
-    background-color: #fff;
+    box-shadow: 3px 3px 4px rgba(20, 194, 110, 0.3);
+    background-color: #EAF8E7;
 }
 .left-nav{
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.right-nav{}
+
 .right-nav h5{
     background-color: #EEAD2B;
     border-radius: 15px;
-     padding: 15px;
+     padding: 10px;
      margin-right: 10px;
      font-size: 20px;
 }
 .upload{
     width: fit-content;
     border-radius: 15px;
-    background-color: #EEAD2B;
+    background-color: #4EA771;
     text-align: center;
-    padding: 5px 10px;
+    padding: 5px;
     margin-bottom: 10px;
 }
 .nav-head h3{
-    font-size: 50px;
+    font-size: 40px;
 }
 .nav-head p{
     margin-top: 2px;
 }
 main{
     display: flex;
+    background-color: #C1E6BA;
 }
 .left-bar{
-    background-color: #fff;
-   border: 1px solid #795b5b;
+    background-color: #EAF8E7;
+   /* border: 0.3px solid #795b5b; */
    padding: 20px;
     display: flex;
     flex-direction: column;
@@ -101,13 +103,14 @@ padding: 15px;
 }
 
 .stat-card {
-  background-color: #fff;
-  border: 1px solid #795b5b;
+  background-color: #EAF8E7;
+  /* border: 1px solid #795b5b; */
   border-radius: 20px;
-  padding: 30px;
-  box-shadow: 2px 3px 4px rgba(121, 91, 91, 0.3);
-  text-align: left;
+  padding: 15px;
+  box-shadow: 3px 3px 4px rgba(20, 194, 110, 0.3);
+  text-align: center;
   width: 60%;
+  font-family: 'poppins', sans-serif;
 }
 
 .stat-icon {
@@ -131,11 +134,12 @@ padding: 15px;
 
 /* Recent Activity */
 .recent-activity {
-  background-color: #fff;
-  border: 1px solid #795b5b;
+  background-color: #EAF8E7;
+  /* border: 1px solid #795b5b; */
   border-radius: 20px;
-  padding: 40px;
+  padding: 15px;
   width: 60%;
+  box-shadow: 3px 3px 4px rgba(20, 194, 110, 0.3);
 }
 
 .bottom-section{
@@ -159,9 +163,10 @@ padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(121, 91, 91, 0.3);
+  /* border: 1px solid rgba(121, 91, 91, 0.3); */
   border-radius: 10px;
   padding: 15px 20px;
+  background-color: #C1E6BA;
 }
 
 .activity-info {
