@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pages/farmer/farmer.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+    <nav class="top-nav">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+      <i data-lucide="menu"></i>
+    </button>
+    <div class="left-nav">
+        <div class="logo-container">
+            <svg class="logo-small" width="48" height="56" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347" fill="#EEAD2B"/>
+            </svg>
+        </div>
+        <div class="nav-head">
+          <h3>Mulinga connect</h3>
+          <p>Kiambu County · Farmer Dashboard</p>
+        </div>
+    </div>
+    <div class="right-nav">
+      <button class="messages-btn" aria-label="View Messages">
+        <i data-lucide="message-circle"></i>
+        <span class="badge">3</span>
+      </button>
+      <button class="notifications-btn" aria-label="View Notifications">
+        <i data-lucide="bell"></i>
+      </button>
+    </div>
+  </nav>
+
+
+  <main>
+    <aside class="sidebar">
+    <button class="close-menu" id="close-menu" aria-label="Close navigation menu">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="profile-section">
+      <div class="profile-image">
+        <img src="https://via.placeholder.com/50" alt="Farmer profile" class="avatar">
+      </div>
+      <div class="profile-info">
+        <h4 id="farmer-name-sidebar">John Doe</h4>
+        <p class="farmer-status">Active Farmer</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="active"><a href="/pages/farmer/dashboard.html" aria-current="page">
+          <i data-lucide="home"></i>
+          <span>Dashboard</span>
+        </a></li>
+        <li><a href="/pages/farmer/profile.html">
+          <i data-lucide="user"></i>
+          <span>Profile</span>
+        </a></li>
+        <li><a href="/pages/farmer/produce.html">
+          <i data-lucide="package"></i>
+          <span>Uploads</span>
+        </a></li>
+        <li><a href="/pages/farmer/payments.html">
+          <i data-lucide="dollar-sign"></i>
+          <span>Payments</span>
+        </a></li>
+        <li><a href="/pages/farmer/shipments.html">
+          <i data-lucide="truck"></i>
+          <span>Shipments</span>
+        </a></li>
+        <li><a href="reviews.html">
+          <i data-lucide="star"></i>
+          <span>Reviews</span>
+        </a></li>
+        <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Notifications</span>
+        </a></li>
+         <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Investment</span>
+        </a></li>
+        <li><a href="analytics.html">
+          <i data-lucide="bar-chart-2"></i>
+          <span>Analytics</span>
+        </a></li>
+        <li><a href="settings.html">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="help-button">
+        <i data-lucide="help-circle"></i>
+        <span>Help & Support</span>
+      </button>
+      <button class="logout-button" onclick="window.location.href='/pages/signpage/signinpage.html'">
+        <i data-lucide="log-out"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+
+
+  <main class="profile-main">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <!-- <div class="uper-card"> -->
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Total Revenue</h3>
+              <p class="text-3xl font-bold">$12,450</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>12% from last month</span>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Batches Sold</h3>
+              <p class="text-3xl font-bold">24</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>5% from last month</span>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Avg. Price/kg</h3>
+              <p class="text-3xl font-bold">$7.80</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>3% from last month</span>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Sustainability Score</h3>
+              <p class="text-3xl font-bold">85/100</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>7% from last month</span>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+  
+
+
+    <div class="card">
+                <div class="flex justify-between items-center mb-6">
+                  <h2 class="text-xl font-semibold">Coffee Listings</h2>
+                  <button class="btn-primary upload-btn" id="add-batch-btn">Add New Batch</button>
+                </div>
+                <div class="overflow-x-auto">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Batch ID</th>
+                        <th>Coffee Type</th>
+                        <th>Quantity (kg)</th>
+                        <th>Price/kg</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>CF-2025-042</td>
+                        <td>Arabica</td>
+                        <td>750 kg</td>
+                        <td>$8.25</td>
+                        <td><span class="badge badge-success">Available</span></td>
+                        <td>
+                          <div class="flex gap-2">
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                              </svg>
+                            </button>
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CF-2025-041</td>
+                        <td>Robusta</td>
+                        <td>500 kg</td>
+                        <td>$7.50</td>
+                        <td><span class="badge badge-warning">Processing</span></td>
+                        <td>
+                          <div class="flex gap-2">
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                              </svg>
+                            </button>
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CF-2025-040</td>
+                        <td>Arabica</td>
+                        <td>1,000 kg</td>
+                        <td>$8.00</td>
+                        <td><span class="badge badge-success">Available</span></td>
+                        <td>
+                          <div class="flex gap-2">
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                              </svg>
+                            </button>
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CF-2025-039</td>
+                        <td>Liberica</td>
+                        <td>300 kg</td>
+                        <td>$9.25</td>
+                        <td><span class="badge badge-danger">Sold Out</span></td>
+                        <td>
+                          <div class="flex gap-2">
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                              </svg>
+                            </button>
+                            <button class="p-1 hover:bg-gray-100 rounded">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                  <p class="text-sm text-gray-500">Showing 4 of 24 entries</p>
+                  <div class="flex gap-2">
+                    <button class="px-3 py-1 border rounded-md hover:bg-gray-50 disabled:opacity-50" disabled>Previous</button>
+                    <button class="px-3 py-1 border rounded-md hover:bg-gray-50">Next</button>
+                  </div>
+                </div>
+              </div>
+              </main>
+
+ <div class="new-uploading">
+    <div class="upload-container">
+      <button class="modal-close-btn" style="right: 0%; top:0%; position:absolute;">
+          <i class="fa-solid fa-xmark"></i>
+      </button>
+        <form action="submit" id="upload-form">
+            <div class="upper-group">
+            <div class="left-group">
+           <label for="coffeeType">Coffee Type</label>
+        <div class="input-group">
+        <select name="coffeeTypes" id="coffeeType">
+            <option value="">Arabica</option>
+            <option value="">Robusta</option>
+            <option value="">Excelsa</option>
+            <option value="">Liberica</option>
+            <option value="">Mocha</option>
+            <option value="">Arabica B</option>
+        </select>
+      </div> 
+
+      <label for="qualityGrade">Quality Grade</label>
+        <div class="input-group">
+        <select name="qualityGrade" id="qualityGrade">
+            <option value="">AA</option>
+            <option value="">AB</option>
+            <option value="">BB</option>
+        </select>
+      </div> 
+      </div>
+      <div class="left-group">
+
+      <label for="qualityGrade">Quantity(kg)</label>
+        <div class="input-group">
+            <input type="text" placeholder="Enter quantity">
+      </div> 
+
+        <label for="harvestDate">Harvest Date</label>
+        <div class="input-group">
+            <input type="date" placeholder="mm/dd/yyyy">
+      </div>
+        </div>
+        </div>
+
+        <div class="bottom-group">
+            <label for="location">Farm Location</label>
+            <div class="input-group">
+            <input type="location" placeholder="Enter farm location">
+        </div>  
+        
+        <label for="text">Description</label>
+        <div class="input-group">
+            <input type="text" style="height: 120px;" placeholder="Add details about your produce">
+        </div> 
+
+        <label for="photos">Upload Photos</label>
+        <div class="upload-box" id="uploadBox">
+            <p>Drag & Drop your image here or <span id="browseBtn">browse</span></p>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <img id="previewImage" alt="Image Preview">
+        </div>
+
+        </div> 
+        <button type="submit" style="width: 100%;margin-top: 10px;font-size:medium">Submit</button>
+        </div>
+
+
+        </form>
+    </div>
+
+
+              </main>
+
+</body>
+
+              <script>
+                //upload new coffee
+const uploadBtn=document.querySelector(".upload-btn");
+const closeBtn=document.querySelector(".modal-close-btn");
+const uploadContainer=document.querySelector(".upload-container")
+const newUploading=document.querySelector(".new-uploading")
+
+uploadBtn.addEventListener("click", ()=>{
+  formDisplay();
+  document.body.style.overflowY="hidden";
+});
+function formDisplay(){
+  newUploading.classList.add("showForm")
+}
+//removing the box
+closeBtn.addEventListener("click", ()=>{
+  removeForm();
+});
+function removeForm(){
+  newUploading.classList.remove("showForm")
+}
+
+</script>
+</body>
+</html>

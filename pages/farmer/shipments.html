@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pages/farmer/farmer.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="top-nav">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+      <i data-lucide="menu"></i>
+    </button>
+    <div class="left-nav">
+        <div class="logo-container">
+            <svg class="logo-small" width="48" height="56" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347" fill="#EEAD2B"/>
+            </svg>
+        </div>
+        <div class="nav-head">
+          <h3>Mulinga connect</h3>
+          <p>Kiambu County · Farmer Dashboard</p>
+        </div>
+    </div>
+    <div class="right-nav">
+      <button class="messages-btn" aria-label="View Messages">
+        <i data-lucide="message-circle"></i>
+        <span class="badge">3</span>
+      </button>
+      <button class="notifications-btn" aria-label="View Notifications">
+        <i data-lucide="bell"></i>
+      </button>
+    </div>
+  </nav>
+
+
+  <main>
+    <aside class="sidebar">
+    <button class="close-menu" id="close-menu" aria-label="Close navigation menu">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="profile-section">
+      <div class="profile-image">
+        <img src="https://via.placeholder.com/50" alt="Farmer profile" class="avatar">
+      </div>
+      <div class="profile-info">
+        <h4 id="farmer-name-sidebar">John Doe</h4>
+        <p class="farmer-status">Active Farmer</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li ><a href="/pages/farmer/dashboard.html" aria-current="page">
+          <i data-lucide="home"></i>
+          <span>Dashboard</span>
+        </a></li>
+        <li><a href="/pages/farmer/profile.html">
+          <i data-lucide="user"></i>
+          <span>Profile</span>
+        </a></li>
+        <li><a href="/pages/farmer/produce.html">
+          <i data-lucide="package"></i>
+          <span>Uploads</span>
+        </a></li>
+        <li><a href="/pages/farmer/payments.html">
+          <i data-lucide="dollar-sign"></i>
+          <span>Payments</span>
+        </a></li>
+        <li class="active"><a href="/pages/farmer/shipments.html">
+          <i data-lucide="truck"></i>
+          <span>Shipments</span>
+        </a></li>
+        <li><a href="reviews.html">
+          <i data-lucide="star"></i>
+          <span>Reviews</span>
+        </a></li>
+        <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Notifications</span>
+        </a></li>
+         <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Investment</span>
+        </a></li>
+        <li><a href="analytics.html">
+          <i data-lucide="bar-chart-2"></i>
+          <span>Analytics</span>
+        </a></li>
+        <li><a href="settings.html">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="help-button">
+        <i data-lucide="help-circle"></i>
+        <span>Help & Support</span>
+      </button>
+      <button class="logout-button" onclick="window.location.href='/pages/signpage/signinpage.html'">
+        <i data-lucide="log-out"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+
+
+  <main class="profile-main">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <!-- <div class="uper-card"> -->
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Total Revenue</h3>
+              <p class="text-3xl font-bold">$12,450</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>12% from last month</span>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Batches Sold</h3>
+              <p class="text-3xl font-bold">24</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>5% from last month</span>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Avg. Price/kg</h3>
+              <p class="text-3xl font-bold">$7.80</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>3% from last month</span>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="text-lg font-semibold mb-1">Sustainability Score</h3>
+              <p class="text-3xl font-bold">85/100</p>
+              <div class="flex items-center text-sm text-green-600 mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 15l-6-6l-6 6"></path>
+                </svg>
+                <span>7% from last month</span>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+
+
+
+
+           <div class="lg:col-span-1">
+              <div class="card">
+                <h2 class="text-xl font-semibold mb-4">Active Shipments</h2>
+                <div class="space-y-4">
+                  <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                      <div>
+                        <h3 class="font-medium">ORD-2025-155</h3>
+                        <p class="text-sm text-gray-500">750kg Arabica to Brew Haven Ltd.</p>
+                      </div>
+                      <span class="badge badge-warning">In Transit</span>
+                    </div>
+                    <div class="mt-4">
+                      <div class="flex justify-between text-xs text-gray-500 mb-1">
+                        <span>Nairobi</span>
+                        <span>Amsterdam</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 65%"></div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-600">
+                        Estimated delivery: Apr 22, 2025
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                      <div>
+                        <h3 class="font-medium">ORD-2025-153</h3>
+                        <p class="text-sm text-gray-500">500kg Robusta to Seattle Roasters</p>
+                      </div>
+                      <span class="badge badge-warning">Processing</span>
+                    </div>
+                    <div class="mt-4">
+                      <div class="flex justify-between text-xs text-gray-500 mb-1">
+                        <span>Nairobi</span>
+                        <span>Seattle</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 25%"></div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-600">
+                        Estimated delivery: May 5, 2025
+                      </div>
+                    </div>
+                  </div>
+
+                   <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                      <div>
+                        <h3 class="font-medium">ORD-2025-153</h3>
+                        <p class="text-sm text-gray-500">500kg Robusta to Seattle Roasters</p>
+                      </div>
+                      <span class="badge badge-warning">Processing</span>
+                    </div>
+                    <div class="mt-4">
+                      <div class="flex justify-between text-xs text-gray-500 mb-1">
+                        <span>Nairobi</span>
+                        <span>Seattle</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 25%"></div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-600">
+                        Estimated delivery: May 5, 2025
+                      </div>
+                    </div>
+                  </div>
+
+                   <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                      <div>
+                        <h3 class="font-medium">ORD-2025-153</h3>
+                        <p class="text-sm text-gray-500">500kg Robusta to Seattle Roasters</p>
+                      </div>
+                      <span class="badge badge-warning">Processing</span>
+                    </div>
+                    <div class="mt-4">
+                      <div class="flex justify-between text-xs text-gray-500 mb-1">
+                        <span>Nairobi</span>
+                        <span>Seattle</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 25%"></div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-600">
+                        Estimated delivery: May 5, 2025
+                      </div>
+                    </div>
+                  </div>
+
+                   <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                      <div>
+                        <h3 class="font-medium">ORD-2025-153</h3>
+                        <p class="text-sm text-gray-500">500kg Robusta to Seattle Roasters</p>
+                      </div>
+                      <span class="badge badge-warning">Processing</span>
+                    </div>
+                    <div class="mt-4">
+                      <div class="flex justify-between text-xs text-gray-500 mb-1">
+                        <span>Nairobi</span>
+                        <span>Seattle</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 10%"></div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-600">
+                        Estimated delivery: May 5, 2025
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              
+              <div class="card mt-6">
+                <div class="flex justify-between items-center mb-4">
+                  <h2 class="text-xl font-semibold">Latest Reviews</h2>
+                  <button class="text-sm text-[#4EA771] hover:underline">View All</button>
+                </div>
+                <div class="space-y-4">
+                  <div class="border rounded-lg p-4">
+                    <div class="flex gap-3 items-start">
+                      <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">BH</div>
+                      <div>
+                        <h3 class="font-medium">Brew Haven Ltd.</h3>
+                        <div class="flex text-yellow-400 my-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                        </div>
+                        <p class="text-sm text-gray-600">Excellent quality beans! The Arabica had a perfect balance of acidity and sweetness. Will definitely order again.</p>
+                        <p class="text-xs text-gray-400 mt-2">Apr 10, 2025</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="border rounded-lg p-4">
+                    <div class="flex gap-3 items-start">
+                      <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold">BB</div>
+                      <div>
+                        <h3 class="font-medium">Bean Brothers Co.</h3>
+                        <div class="flex text-yellow-400 my-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                        </div>
+                        <p class="text-sm text-gray-600">Great coffee, smooth transaction. The shipping was faster than expected. Looking forward to our next order.</p>
+                        <p class="text-xs text-gray-400 mt-2">Mar 28, 2025</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+
+ 
+              </main>
+              </main>
+</body>
+</html>

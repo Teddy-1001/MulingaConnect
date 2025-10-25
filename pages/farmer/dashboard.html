@@ -12,80 +12,116 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-  <nav>
+  <nav class="top-nav">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+      <i data-lucide="menu"></i>
+    </button>
     <div class="left-nav">
-    <div><svg width="98" height="112" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347C62.2104 92.3449 60.2308 92.4063 58.2423 92.5727C59.8322 92.8223 61.4177 93.164 63.0163 93.3041C66.5201 93.6151 69.9933 94.0005 73.484 94.0312C80.5924 94.0925 87.4073 92.7172 93.6704 89.1652C93.802 89.0866 93.9571 89.0571 94.1084 89.082C94.0036 89.2545 93.8896 89.4212 93.7667 89.5813C90.8453 93.03 87.0871 95.6707 82.8523 97.2503C77.9426 99.1686 72.827 99.9351 67.5888 100.058C60.9403 100.215 54.4275 99.2125 47.9761 97.754C42.405 96.4926 36.8603 95.1261 31.2848 93.8866C26.4232 92.8136 21.5223 91.942 16.5293 91.7931C10.9057 91.6223 5.48349 92.4369 0.51244 95.2969C0.388638 95.3595 0.261427 95.415 0.131401 95.4634L0 95.3013C0.652587 94.6575 1.2789 93.9874 1.96215 93.3786C5.46597 90.2777 9.62238 88.5608 14.1686 87.7068C18.5155 86.8719 22.9607 86.6727 27.3649 87.1155C31.8542 87.5535 36.3172 88.3068 40.7802 89.0032C42.8562 89.3273 44.9059 89.8485 46.9688 90.2777C47.1664 90.3039 47.3652 90.32 47.5644 90.3259C46.5439 89.5025 45.6811 88.8148 44.8271 88.136C39.8035 84.0146 35.3886 79.3458 31.9987 73.7747C28.356 67.9101 26.3143 61.1931 26.0772 54.2934C25.7969 46.3441 27.654 38.8591 31.0395 31.7463C37.2632 18.677 46.8067 8.51156 58.7767 0.535983C59.4643 0.0980049 60.1782 -0.226108 60.9665 0.198731C61.7549 0.62357 61.9345 1.3988 61.9652 2.26162C62.1526 6.68786 63.1178 11.0465 64.8164 15.1382C67.0063 20.4946 69.3714 25.7723 71.6839 31.0718C73.5365 35.3071 75.3498 39.5642 76.3484 44.0973C76.8345 46.3178 77.0666 48.5997 77.3776 50.8597C77.4186 51.1664 77.3471 51.4776 77.1761 51.7356C75.1001 54.4905 73.0022 57.2235 70.8342 59.9258C71.4842 57.5304 71.743 55.0457 71.6007 52.5678C71.4781 49.4113 70.8113 46.2998 69.6298 43.3702C67.7596 38.6795 65.688 34.0676 63.6952 29.4338C61.8338 25.1109 60.0731 20.7618 59.4468 16.0535C59.3329 15.2214 59.2628 14.3849 59.2278 13.5527C59.1971 12.8519 59.0614 12.2388 58.4044 11.8665C57.7474 11.4942 57.143 11.7263 56.5649 12.0942C52.9422 14.4416 49.5671 17.1505 46.4914 20.1793C42.0429 24.4759 38.2767 29.4266 35.3229 34.8603C32.9206 39.1776 31.2665 43.8704 30.4307 48.7399C28.7839 59.0718 31.5213 68.1905 38.1786 76.1879C40.5086 78.9954 43.2109 81.413 45.9746 83.7781C47.214 84.838 48.1644 86.2439 49.2506 87.4746C50.1266 88.4776 51.0551 89.4718 51.9924 90.4354C52.2407 90.6326 52.5317 90.769 52.8421 90.8339C56.7006 92.0734 60.257 91.2719 63.7346 89.3842C67.6764 87.2337 70.6152 84.0759 73.3263 80.6247C75.9542 77.2478 78.547 73.7966 81.4508 70.6519C83.3735 68.5627 85.8306 66.9554 88.0205 65.1334L88.857 64.4239L88.6818 64.1742Z" fill="#EEAD2B"/>
-<path d="M51.791 85.4731C50.0391 83.8131 49.1631 81.7284 48.5193 79.5166C47.271 75.0886 47.328 70.5906 47.836 66.0706C48.5061 60.1098 50.1836 54.3941 52.045 48.7179C53.3107 44.8506 54.305 40.9132 54.5765 36.8356C54.8966 32.3864 54.1815 27.9235 52.4873 23.797C51.9136 22.3867 51.2654 21.0115 50.5471 19.3822C51.4231 19.9297 52.1501 20.3282 52.8114 20.8275C55.6802 23.0174 57.419 25.9913 58.5796 29.333C59.7587 32.8292 60.3506 36.4965 60.3315 40.1861C60.3594 45.0728 59.4403 49.9185 57.6248 54.4555C55.8058 59.028 54.0816 63.6355 52.4523 68.278C51.2928 71.5948 50.7005 75.0832 50.7004 78.5968C50.6945 80.7333 51.006 82.8588 51.6245 84.9037C51.6946 85.092 51.7428 85.2804 51.791 85.4731Z" fill="#EEAD2B"/>
-<path d="M92.3828 97.1671C67.3304 116.705 32.9973 117.139 9.21069 97.2941C9.40993 97.3283 9.60618 97.3781 9.7976 97.443C15.8766 100.328 22.1976 102.673 28.6876 104.451C34.7929 106.103 41.068 107.048 47.3892 107.267C55.3935 107.476 63.3875 106.559 71.1364 104.543C76.2949 103.209 81.3625 101.545 86.308 99.5628C88.1256 98.8446 89.9344 98.1088 91.7477 97.373C91.9535 97.2854 92.1857 97.2153 92.3828 97.1671Z" fill="#EEAD2B"/>
-</svg></div>
-<div class="nav-head">
-  <span><h3>Mulinga connect</h3></span>
-  <span><p>Kiambu County · Farmer Dashboard</p></span>
-</div>
-</div>
-<div class="right-nav">
-  <h5>Messages</h5>
-</div>
-
-
+        <div class="logo-container">
+            <svg class="logo-small" width="48" height="56" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347" fill="#EEAD2B"/>
+            </svg>
+        </div>
+        <div class="nav-head">
+          <h3>Mulinga connect</h3>
+          <p>Kiambu County · Farmer Dashboard</p>
+        </div>
+    </div>
+    <div class="right-nav">
+      <button class="messages-btn" aria-label="View Messages">
+        <i data-lucide="message-circle"></i>
+        <span class="badge">3</span>
+      </button>
+      <button class="notifications-btn" aria-label="View Notifications">
+        <i data-lucide="bell"></i>
+      </button>
+    </div>
   </nav>
-  <main>
-  <div class="left-bar">
-    <div class="items">
-      <span><svg width="30" height="20" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.762 11.4129L19.8 6.81173V25.9965C19.8 26.5271 20.0318 27.0359 20.4444 27.4111C20.8569 27.7862 21.4165 27.997 22 27.997C22.5835 27.997 23.1431 27.7862 23.5556 27.4111C23.9682 27.0359 24.2 26.5271 24.2 25.9965V6.81173L29.238 11.4129C29.4425 11.6004 29.6858 11.7492 29.9539 11.8508C30.222 11.9523 30.5096 12.0046 30.8 12.0046C31.0904 12.0046 31.378 11.9523 31.6461 11.8508C31.9142 11.7492 32.1575 11.6004 32.362 11.4129C32.5682 11.2269 32.7319 11.0056 32.8436 10.7619C32.9553 10.5181 33.0128 10.2566 33.0128 9.99252C33.0128 9.72843 32.9553 9.46695 32.8436 9.22317C32.7319 8.97939 32.5682 8.75814 32.362 8.57216L23.562 0.570169C23.3528 0.388043 23.1061 0.245277 22.836 0.150064C22.3004 -0.0500215 21.6996 -0.0500215 21.164 0.150064C20.8939 0.245277 20.6472 0.388043 20.438 0.570169L11.638 8.57216C11.4329 8.75869 11.2702 8.98012 11.1591 9.22383C11.0481 9.46753 10.991 9.72873 10.991 9.99252C10.991 10.2563 11.0481 10.5175 11.1591 10.7612C11.2702 11.0049 11.4329 11.2263 11.638 11.4129C11.8431 11.5994 12.0866 11.7474 12.3547 11.8483C12.6227 11.9492 12.9099 12.0012 13.2 12.0012C13.4901 12.0012 13.7773 11.9492 14.0454 11.8483C14.3134 11.7474 14.5569 11.5994 14.762 11.4129ZM41.8 19.995C41.2165 19.995 40.6569 20.2058 40.2444 20.5809C39.8318 20.9561 39.6 21.4649 39.6 21.9955V33.9985C39.6 34.5291 39.3682 35.0379 38.9556 35.4131C38.5431 35.7882 37.9835 35.999 37.4 35.999H6.6C6.01652 35.999 5.45695 35.7882 5.04437 35.4131C4.63179 35.0379 4.4 34.5291 4.4 33.9985V21.9955C4.4 21.4649 4.16822 20.9561 3.75564 20.5809C3.34306 20.2058 2.78348 19.995 2.2 19.995C1.61652 19.995 1.05695 20.2058 0.644365 20.5809C0.231785 20.9561 0 21.4649 0 21.9955V33.9985C0 35.5902 0.695355 37.1167 1.9331 38.2422C3.17084 39.3677 4.84957 40 6.6 40H37.4C39.1504 40 40.8292 39.3677 42.0669 38.2422C43.3046 37.1167 44 35.5902 44 33.9985V21.9955C44 21.4649 43.7682 20.9561 43.3556 20.5809C42.9431 20.2058 42.3835 19.995 41.8 19.995Z" fill="#795B5B"/>
-</svg></span>
-<span class="item-id">Dashboard</span>
+  
+<main>
+  <aside class="sidebar">
+    <button class="close-menu" id="close-menu" aria-label="Close navigation menu">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="profile-section">
+      <div class="profile-image">
+        <img src="https://via.placeholder.com/50" alt="Farmer profile" class="avatar">
+      </div>
+      <div class="profile-info">
+        <h4 id="farmer-name-sidebar">John Doe</h4>
+        <p class="farmer-status">Active Farmer</p>
+      </div>
     </div>
-    <div class="items">
-      <span><svg width="30" height="20" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.762 11.4129L19.8 6.81173V25.9965C19.8 26.5271 20.0318 27.0359 20.4444 27.4111C20.8569 27.7862 21.4165 27.997 22 27.997C22.5835 27.997 23.1431 27.7862 23.5556 27.4111C23.9682 27.0359 24.2 26.5271 24.2 25.9965V6.81173L29.238 11.4129C29.4425 11.6004 29.6858 11.7492 29.9539 11.8508C30.222 11.9523 30.5096 12.0046 30.8 12.0046C31.0904 12.0046 31.378 11.9523 31.6461 11.8508C31.9142 11.7492 32.1575 11.6004 32.362 11.4129C32.5682 11.2269 32.7319 11.0056 32.8436 10.7619C32.9553 10.5181 33.0128 10.2566 33.0128 9.99252C33.0128 9.72843 32.9553 9.46695 32.8436 9.22317C32.7319 8.97939 32.5682 8.75814 32.362 8.57216L23.562 0.570169C23.3528 0.388043 23.1061 0.245277 22.836 0.150064C22.3004 -0.0500215 21.6996 -0.0500215 21.164 0.150064C20.8939 0.245277 20.6472 0.388043 20.438 0.570169L11.638 8.57216C11.4329 8.75869 11.2702 8.98012 11.1591 9.22383C11.0481 9.46753 10.991 9.72873 10.991 9.99252C10.991 10.2563 11.0481 10.5175 11.1591 10.7612C11.2702 11.0049 11.4329 11.2263 11.638 11.4129C11.8431 11.5994 12.0866 11.7474 12.3547 11.8483C12.6227 11.9492 12.9099 12.0012 13.2 12.0012C13.4901 12.0012 13.7773 11.9492 14.0454 11.8483C14.3134 11.7474 14.5569 11.5994 14.762 11.4129ZM41.8 19.995C41.2165 19.995 40.6569 20.2058 40.2444 20.5809C39.8318 20.9561 39.6 21.4649 39.6 21.9955V33.9985C39.6 34.5291 39.3682 35.0379 38.9556 35.4131C38.5431 35.7882 37.9835 35.999 37.4 35.999H6.6C6.01652 35.999 5.45695 35.7882 5.04437 35.4131C4.63179 35.0379 4.4 34.5291 4.4 33.9985V21.9955C4.4 21.4649 4.16822 20.9561 3.75564 20.5809C3.34306 20.2058 2.78348 19.995 2.2 19.995C1.61652 19.995 1.05695 20.2058 0.644365 20.5809C0.231785 20.9561 0 21.4649 0 21.9955V33.9985C0 35.5902 0.695355 37.1167 1.9331 38.2422C3.17084 39.3677 4.84957 40 6.6 40H37.4C39.1504 40 40.8292 39.3677 42.0669 38.2422C43.3046 37.1167 44 35.5902 44 33.9985V21.9955C44 21.4649 43.7682 20.9561 43.3556 20.5809C42.9431 20.2058 42.3835 19.995 41.8 19.995Z" fill="#795B5B"/>
-</svg></span>
-<span class="item-id">My Produce</span>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="active"><a href="/pages/farmer/dashboard.html" aria-current="page">
+          <i data-lucide="home"></i>
+          <span>Dashboard</span>
+        </a></li>
+        <li><a href="/pages/farmer/profile.html">
+          <i data-lucide="user"></i>
+          <span>Profile</span>
+        </a></li>
+        <li><a href="/pages/farmer/produce.html">
+          <i data-lucide="package"></i>
+          <span>Uploads</span>
+        </a></li>
+        <li><a href="/pages/farmer/payments.html">
+          <i data-lucide="dollar-sign"></i>
+          <span>Payments</span>
+        </a></li>
+        <li><a href="/pages/farmer/shipments.html">
+          <i data-lucide="truck"></i>
+          <span>Shipments</span>
+        </a></li>
+        <li><a href="reviews.html">
+          <i data-lucide="star"></i>
+          <span>Reviews</span>
+        </a></li>
+        <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Notifications</span>
+        </a></li>
+         <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Investment</span>
+        </a></li>
+        <li><a href="analytics.html">
+          <i data-lucide="bar-chart-2"></i>
+          <span>Analytics</span>
+        </a></li>
+        <li><a href="settings.html">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="help-button">
+        <i data-lucide="help-circle"></i>
+        <span>Help & Support</span>
+      </button>
+      <button class="logout-button" onclick="window.location.href='/pages/signpage/signinpage.html'">
+        <i data-lucide="log-out"></i>
+        <span>Logout</span>
+      </button>
     </div>
-    <div class="items">
-      <span><svg width="30" height="20" viewBox="0 0 52 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M46.6117 38.1287L37.588 46.295C37.3283 46.53 37.0358 46.7062 36.7103 46.8237C36.3848 46.9412 36.0499 47 35.7054 47H31.161C30.4253 47 29.809 46.7752 29.3122 46.3255C28.8153 45.8759 28.566 45.3174 28.5643 44.65V40.5375C28.5643 40.2242 28.6292 39.9202 28.7591 39.6257C28.8889 39.3312 29.0836 39.0672 29.3433 38.8337L38.367 30.6675L46.6117 38.1287ZM49.3383 35.6612L41.0936 28.2L42.9763 26.4963C43.4956 26.0262 44.1015 25.7913 44.794 25.7913C45.4865 25.7913 46.0924 26.0262 46.6117 26.4963L51.221 30.6675C51.7403 31.1375 52 31.6858 52 32.3125C52 32.9392 51.7403 33.4875 51.221 33.9575L49.3383 35.6612ZM18.1773 16.45C17.4415 16.45 16.8244 16.2244 16.3258 15.7732C15.8272 15.322 15.5788 14.7643 15.5805 14.1C15.5805 13.4342 15.8298 12.8757 16.3284 12.4245C16.827 11.9733 17.4433 11.7484 18.1773 11.75H36.3546C37.0903 11.75 37.7075 11.9756 38.206 12.4268C38.7046 12.878 38.953 13.4357 38.9513 14.1C38.9513 14.7658 38.702 15.3244 38.2034 15.7756C37.7049 16.2268 37.0886 16.4516 36.3546 16.45H18.1773ZM18.1773 23.5C17.4415 23.5 16.8244 23.2744 16.3258 22.8232C15.8272 22.372 15.5788 21.8143 15.5805 21.15C15.5805 20.4842 15.8298 19.9257 16.3284 19.4745C16.827 19.0233 17.4433 18.7984 18.1773 18.8H36.3546C37.0903 18.8 37.7075 19.0256 38.206 19.4768C38.7046 19.928 38.953 20.4857 38.9513 21.15C38.9513 21.8158 38.702 22.3744 38.2034 22.8256C37.7049 23.2768 37.0886 23.5016 36.3546 23.5H18.1773ZM7.79026 47C5.6263 47 3.78693 46.3146 2.27216 44.9437C0.757387 43.5729 0 41.9083 0 39.95V37.6C0 36.3075 0.508964 35.2006 1.52689 34.2794C2.54482 33.3582 3.76702 32.8984 5.19351 32.9H7.79026V4.7C7.79026 3.4075 8.29923 2.30065 9.31715 1.37945C10.3351 0.458254 11.5573 -0.00156268 12.9838 3.98981e-06H41.5481C42.9763 3.98981e-06 44.1994 0.460604 45.2173 1.3818C46.2352 2.303 46.7433 3.40907 46.7416 4.7V16.45L41.5481 21.15V4.7H12.9838V32.9H28.5643L24.8639 36.2487C24.3878 36.6796 24.02 37.1793 23.7603 37.748C23.5006 38.3167 23.3708 38.9137 23.3708 39.5387V47H7.79026Z" fill="black"/>
-</svg></span>
-<span class="item-id">Contracts</span>
-    </div>
-    <div class="items">
-      <span><svg width="30" height="20" viewBox="0 0 53 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M38.0938 33C37.6545 33 37.2332 33.1931 36.9226 33.537C36.612 33.8808 36.4375 34.3471 36.4375 34.8333C36.4375 35.3196 36.612 35.7859 36.9226 36.1297C37.2332 36.4735 37.6545 36.6667 38.0938 36.6667H44.7188C45.158 36.6667 45.5793 36.4735 45.8899 36.1297C46.2005 35.7859 46.375 35.3196 46.375 34.8333C46.375 34.3471 46.2005 33.8808 45.8899 33.537C45.5793 33.1931 45.158 33 44.7188 33H38.0938ZM0 10.0833C0 7.40907 0.959735 4.84433 2.66807 2.95334C4.37641 1.06235 6.69342 0 9.10938 0H43.8906C46.3066 0 48.6236 1.06235 50.3319 2.95334C52.0403 4.84433 53 7.40907 53 10.0833V33.9167C53 36.5909 52.0403 39.1557 50.3319 41.0467C48.6236 42.9376 46.3066 44 43.8906 44H9.10938C6.69342 44 4.37641 42.9376 2.66807 41.0467C0.959735 39.1557 0 36.5909 0 33.9167V10.0833ZM9.10938 3.66667C7.57195 3.66667 6.09749 4.34271 5.01037 5.54606C3.92324 6.74942 3.3125 8.38153 3.3125 10.0833V14.6667H49.6875V10.0833C49.6875 8.38153 49.0768 6.74942 47.9896 5.54606C46.9025 4.34271 45.4281 3.66667 43.8906 3.66667H9.10938ZM49.6875 18.3333H3.3125V33.9167C3.3125 37.4587 5.9095 40.3333 9.10938 40.3333H43.8906C45.4281 40.3333 46.9025 39.6573 47.9896 38.4539C49.0768 37.2506 49.6875 35.6185 49.6875 33.9167V18.3333Z" fill="black"/>
-</svg>
-</span>
-<span class="item-id">Payments</span>
-    </div>
-    <div class="items">
-      <span><svg width="30" height="20" viewBox="0 0 53 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M38.0938 33C37.6545 33 37.2332 33.1931 36.9226 33.537C36.612 33.8808 36.4375 34.3471 36.4375 34.8333C36.4375 35.3196 36.612 35.7859 36.9226 36.1297C37.2332 36.4735 37.6545 36.6667 38.0938 36.6667H44.7188C45.158 36.6667 45.5793 36.4735 45.8899 36.1297C46.2005 35.7859 46.375 35.3196 46.375 34.8333C46.375 34.3471 46.2005 33.8808 45.8899 33.537C45.5793 33.1931 45.158 33 44.7188 33H38.0938ZM0 10.0833C0 7.40907 0.959735 4.84433 2.66807 2.95334C4.37641 1.06235 6.69342 0 9.10938 0H43.8906C46.3066 0 48.6236 1.06235 50.3319 2.95334C52.0403 4.84433 53 7.40907 53 10.0833V33.9167C53 36.5909 52.0403 39.1557 50.3319 41.0467C48.6236 42.9376 46.3066 44 43.8906 44H9.10938C6.69342 44 4.37641 42.9376 2.66807 41.0467C0.959735 39.1557 0 36.5909 0 33.9167V10.0833ZM9.10938 3.66667C7.57195 3.66667 6.09749 4.34271 5.01037 5.54606C3.92324 6.74942 3.3125 8.38153 3.3125 10.0833V14.6667H49.6875V10.0833C49.6875 8.38153 49.0768 6.74942 47.9896 5.54606C46.9025 4.34271 45.4281 3.66667 43.8906 3.66667H9.10938ZM49.6875 18.3333H3.3125V33.9167C3.3125 37.4587 5.9095 40.3333 9.10938 40.3333H43.8906C45.4281 40.3333 46.9025 39.6573 47.9896 38.4539C49.0768 37.2506 49.6875 35.6185 49.6875 33.9167V18.3333Z" fill="black"/>
-</svg>
-</span>
-<span class="item-id">Payments</span>
-    </div>
-    <div class="items">
-      <span><svg width="30" height="20" viewBox="0 0 53 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M38.0938 33C37.6545 33 37.2332 33.1931 36.9226 33.537C36.612 33.8808 36.4375 34.3471 36.4375 34.8333C36.4375 35.3196 36.612 35.7859 36.9226 36.1297C37.2332 36.4735 37.6545 36.6667 38.0938 36.6667H44.7188C45.158 36.6667 45.5793 36.4735 45.8899 36.1297C46.2005 35.7859 46.375 35.3196 46.375 34.8333C46.375 34.3471 46.2005 33.8808 45.8899 33.537C45.5793 33.1931 45.158 33 44.7188 33H38.0938ZM0 10.0833C0 7.40907 0.959735 4.84433 2.66807 2.95334C4.37641 1.06235 6.69342 0 9.10938 0H43.8906C46.3066 0 48.6236 1.06235 50.3319 2.95334C52.0403 4.84433 53 7.40907 53 10.0833V33.9167C53 36.5909 52.0403 39.1557 50.3319 41.0467C48.6236 42.9376 46.3066 44 43.8906 44H9.10938C6.69342 44 4.37641 42.9376 2.66807 41.0467C0.959735 39.1557 0 36.5909 0 33.9167V10.0833ZM9.10938 3.66667C7.57195 3.66667 6.09749 4.34271 5.01037 5.54606C3.92324 6.74942 3.3125 8.38153 3.3125 10.0833V14.6667H49.6875V10.0833C49.6875 8.38153 49.0768 6.74942 47.9896 5.54606C46.9025 4.34271 45.4281 3.66667 43.8906 3.66667H9.10938ZM49.6875 18.3333H3.3125V33.9167C3.3125 37.4587 5.9095 40.3333 9.10938 40.3333H43.8906C45.4281 40.3333 46.9025 39.6573 47.9896 38.4539C49.0768 37.2506 49.6875 35.6185 49.6875 33.9167V18.3333Z" fill="black"/>
-</svg>
-</span>
-<span class="item-id">Payments</span>
-    </div>
-    <div class="items">
-      <span><svg width="30" height="20" viewBox="0 0 53 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M38.0938 33C37.6545 33 37.2332 33.1931 36.9226 33.537C36.612 33.8808 36.4375 34.3471 36.4375 34.8333C36.4375 35.3196 36.612 35.7859 36.9226 36.1297C37.2332 36.4735 37.6545 36.6667 38.0938 36.6667H44.7188C45.158 36.6667 45.5793 36.4735 45.8899 36.1297C46.2005 35.7859 46.375 35.3196 46.375 34.8333C46.375 34.3471 46.2005 33.8808 45.8899 33.537C45.5793 33.1931 45.158 33 44.7188 33H38.0938ZM0 10.0833C0 7.40907 0.959735 4.84433 2.66807 2.95334C4.37641 1.06235 6.69342 0 9.10938 0H43.8906C46.3066 0 48.6236 1.06235 50.3319 2.95334C52.0403 4.84433 53 7.40907 53 10.0833V33.9167C53 36.5909 52.0403 39.1557 50.3319 41.0467C48.6236 42.9376 46.3066 44 43.8906 44H9.10938C6.69342 44 4.37641 42.9376 2.66807 41.0467C0.959735 39.1557 0 36.5909 0 33.9167V10.0833ZM9.10938 3.66667C7.57195 3.66667 6.09749 4.34271 5.01037 5.54606C3.92324 6.74942 3.3125 8.38153 3.3125 10.0833V14.6667H49.6875V10.0833C49.6875 8.38153 49.0768 6.74942 47.9896 5.54606C46.9025 4.34271 45.4281 3.66667 43.8906 3.66667H9.10938ZM49.6875 18.3333H3.3125V33.9167C3.3125 37.4587 5.9095 40.3333 9.10938 40.3333H43.8906C45.4281 40.3333 46.9025 39.6573 47.9896 38.4539C49.0768 37.2506 49.6875 35.6185 49.6875 33.9167V18.3333Z" fill="black"/>
-</svg>
-</span>
-<span class="item-id">Payments</span>
-    </div>
-
-    
-  </div>
+  </aside>
+  
   <div class="dashboard-container">
     <div class="dashboard-content">
-      <h1 class="dashboard-title">Farmer's Dashboard</h1>
-      <p>Welcome back,..................., here is your farms overview</p>
-      <div class="upload"><h4> Upload a new produce</h4></div>
+      <div class="dashboard-header">
+        <div class="welcome-section">
+          <h1 class="dashboard-title">Farmer's Dashboard</h1>
+          <p class="welcome-message">Welcome back, <span id="farmer-name">John Doe</span></p>
+          <p class="subtitle">Here is your farms overview</p>
+        </div>
+        <button class="upload-btn" >
+        <!-- onclick="window.location.href='/pages/farmer/produce.html' -->
+          <i data-lucide="upload"></i>
+          <span>Upload New Produce</span>
+        </button>
+      </div>
 
 
       <!-- Stats Grid -->
@@ -195,9 +231,245 @@
     </div>
   </div>
   </main>
+  <div class="new-uploading">
+    <div class="upload-container">
+      <button class="modal-close-btn" style="right: 0%; top:0%; position:absolute;">
+          <i class="fas fa-xmark"></i>
+      </button>
+        <form action="submit" id="upload-form">
+            <div class="upper-group">
+            <div class="left-group">
+           <label for="coffeeType">Coffee Type</label>
+        <div class="input-group">
+        <select name="coffeeTypes" id="coffeeType">
+            <option value="">Arabica</option>
+            <option value="">Robusta</option>
+            <option value="">Excelsa</option>
+            <option value="">Liberica</option>
+            <option value="">Mocha</option>
+            <option value="">Arabica B</option>
+        </select>
+      </div> 
+
+      <label for="qualityGrade">Quality Grade</label>
+        <div class="input-group">
+        <select name="qualityGrade" id="qualityGrade">
+            <option value="">AA</option>
+            <option value="">AB</option>
+            <option value="">BB</option>
+        </select>
+      </div> 
+      </div>
+      <div class="left-group">
+
+      <label for="qualityGrade">Quantity(kg)</label>
+        <div class="input-group">
+            <input type="text" placeholder="Enter quantity">
+      </div> 
+
+        <label for="harvestDate">Harvest Date</label>
+        <div class="input-group">
+            <input type="date" placeholder="mm/dd/yyyy">
+      </div>
+        </div>
+        </div>
+
+        <div class="bottom-group">
+            <label for="location">Farm Location</label>
+            <div class="input-group">
+            <input type="location" placeholder="Enter farm location">
+        </div>  
+        
+        <label for="text">Description</label>
+        <div class="input-group">
+            <input type="text" style="height: 120px; text-align:start;" placeholder="Add details about your produce">
+        </div> 
+
+        <label for="photos">Upload Photos</label>
+        <div class="upload-box" id="uploadBox">
+            <p>Drag & Drop your image here or <span id="browseBtn">browse</span></p>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <img id="previewImage" alt="Image Preview">
+        </div>
+
+        </div> 
+        <button type="submit" style="width: 100%;margin-top: 10px;font-size:medium">Submit</button>
+        </div>
+
+
+        </form>
+    </div>
 
   <script>
+    // Initialize Lucide icons
     lucide.createIcons();
+
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const closeMenu = document.getElementById('close-menu');
+      const sidebar = document.querySelector('.sidebar');
+      const mainContent = document.querySelector('.dashboard-container');
+      const overlay = document.createElement('div');
+      overlay.className = 'mobile-overlay';
+      document.body.appendChild(overlay);
+
+      function openSidebar() {
+        sidebar.classList.add('sidebar-open');
+        document.body.style.overflow = 'hidden';
+        overlay.classList.add('active');
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('sidebar-open');
+        document.body.style.overflow = '';
+        overlay.classList.remove('active');
+      }
+
+      if (menuToggle && sidebar && closeMenu) {
+        menuToggle.addEventListener('click', openSidebar);
+        closeMenu.addEventListener('click', closeSidebar);
+
+        // Close sidebar when clicking the overlay
+        overlay.addEventListener('click', closeSidebar);
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 768) {
+              closeSidebar();
+            }
+          }, 250);
+        });
+
+        // Handle swipe gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        document.addEventListener('touchend', function(e) {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+          const swipeDistance = Math.abs(touchEndX - touchStartX);
+          if (swipeDistance > 50) { // Minimum swipe distance
+            if (touchEndX < touchStartX) { // Swipe left
+              closeSidebar();
+            } else if (touchEndX > touchStartX) { // Swipe right
+              if (!sidebar.classList.contains('sidebar-open')) {
+                openSidebar();
+              }
+            }
+          }
+        }
+      }
+
+      // Initialize notifications
+      const notificationBtns = document.querySelectorAll('.notifications-btn, .messages-btn');
+      notificationBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Add notification functionality here
+          console.log('Notification clicked');
+        });
+      });
+
+      // Update farmer name in both places
+      const farmerName = 'John Doe'; // Replace with actual farmer name from backend
+      document.getElementById('farmer-name').textContent = farmerName;
+      document.getElementById('farmer-name-sidebar').textContent = farmerName;
+    });
+
+
+    
+//upload, drag and drop section
+const uploadBox = document.getElementById("uploadBox");
+const fileInput = document.getElementById("fileInput");
+const previewImage = document.getElementById("previewImage");
+const browseBtn = document.getElementById("browseBtn");
+
+browseBtn.addEventListener("click", ()=>fileInput.click());
+uploadBox.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    uploadBox.classList.add("dragover")
+})
+uploadBox.addEventListener("dragleave", () => {
+  uploadBox.classList.remove("dragover");
+});
+uploadBox.addEventListener("drop", (e)=>{
+    e.preventDefault();
+    uploadBox.classList.remove("dragover");
+    const file=e.dataTransfer.files[0];
+    handleFile(file);
+})
+fileInput.addEventListener("change",(e)=>{
+    const file=e.target.files[0];
+    handleFile(file);
+})
+function handleFile(file){
+    if (file&&file.type.startsWith("image/")){
+        const reader = new FileReader();
+        reader.onload = () => {
+            previewImage.src=reader.result;
+            previewImage.style.display="block";
+        };
+        reader.readAsDataURL(file);
+    }else{
+        alert("Please upload image file")
+    }
+}
+
+
+
+//upload new coffee
+const uploadBtn=document.querySelector(".upload-btn");
+const closeBtn=document.querySelector(".modal-close-btn");
+const uploadContainer=document.querySelector(".upload-container")
+const newUploading=document.querySelector(".new-uploading")
+
+uploadBtn.addEventListener("click", ()=>{
+  formDisplay();
+  document.body.style.overflowY="hidden";
+});
+function formDisplay(){
+  newUploading.classList.add("showForm")
+}
+//removing the box
+closeBtn.addEventListener("click", ()=>{
+  removeForm();
+});
+function removeForm(){
+  newUploading.classList.remove("showForm")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </script>
 </body>
 </html>

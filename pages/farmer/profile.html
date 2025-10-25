@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/pages/farmer/farmer.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+ <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+  
+</head>
+<body>
+ <nav class="top-nav">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+      <i data-lucide="menu"></i>
+    </button>
+    <div class="left-nav">
+        <div class="logo-container">
+            <svg class="logo-small" width="48" height="56" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347" fill="#EEAD2B"/>
+            </svg>
+        </div>
+        <div class="nav-head">
+          <h3>Mulinga connect</h3>
+          <p>Kiambu County · Farmer Dashboard</p>
+        </div>
+    </div>
+    <div class="right-nav">
+      <button class="messages-btn" aria-label="View Messages">
+        <i data-lucide="message-circle"></i>
+        <span class="badge">3</span>
+      </button>
+      <button class="notifications-btn" aria-label="View Notifications">
+        <i data-lucide="bell"></i>
+      </button>
+    </div>
+  </nav>
+  
+<main>
+   <aside class="sidebar">
+    <button class="close-menu" id="close-menu" aria-label="Close navigation menu">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="profile-section">
+      <div class="profile-image">
+        <img src="https://via.placeholder.com/50" alt="Farmer profile" class="avatar">
+      </div>
+      <div class="profile-info">
+        <h4 id="farmer-name-sidebar">John Doe</h4>
+        <p class="farmer-status">Active Farmer</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li ><a href="/pages/farmer/dashboard.html" aria-current="page">
+          <i data-lucide="home"></i>
+          <span>Dashboard</span>
+        </a></li>
+        <li class="active"><a href="/pages/farmer/profile.html">
+          <i data-lucide="user"></i>
+          <span>Profile</span>
+        </a></li>
+        <li><a href="/pages/farmer/produce.html">
+          <i data-lucide="package"></i>
+          <span>Uploads</span>
+        </a></li>
+        <li><a href="/pages/farmer/payments.html">
+          <i data-lucide="dollar-sign"></i>
+          <span>Payments</span>
+        </a></li>
+        <li><a href="/pages/farmer/shipments.html">
+          <i data-lucide="truck"></i>
+          <span>Shipments</span>
+        </a></li>
+        <li><a href="reviews.html">
+          <i data-lucide="star"></i>
+          <span>Reviews</span>
+        </a></li>
+        <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Notifications</span>
+        </a></li>
+         <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Investment</span>
+        </a></li>
+        <li><a href="analytics.html">
+          <i data-lucide="bar-chart-2"></i>
+          <span>Analytics</span>
+        </a></li>
+        <li><a href="settings.html">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="help-button">
+        <i data-lucide="help-circle"></i>
+        <span>Help & Support</span>
+      </button>
+      <button class="logout-button" onclick="window.location.href='/pages/signpage/signinpage.html'">
+        <i data-lucide="log-out"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+
+
+
+
+
+
+  <div class="dashboard-container">
+    <div class="dashboard-content">
+      <h1 class="dashboard-title">My Profile</h1>
+      
+      <!-- details Grid -->
+        <div class="profile-item">
+            <div class="my-item">
+                <div class="upper-item">
+            <div class="activity-profile">
+                <div class="potrait">
+                    <img id="profilePic" src="/images/indoor-shot-glad-young-bearded-man-mustache-wears-denim-shirt-smiles-happily.jpg" alt="">
+                </div>
+              <div class="activity-detail">
+                <table>
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td>John Doe</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email:</strong></td>
+                        <td>test@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone</strong></td>
+                        <td>0712345678</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DOB</strong></td>
+                        <td>01-01-2024</td>
+                    </tr>
+                </table>
+                
+                
+
+            </div>
+          </div>
+
+          <!-- calendargrid -->
+            <div class="activity-profile calendar">
+              <div id="calendar"></div>
+          </div>
+          </div>
+
+          <div class="my-item">
+                <div class="upper-item">
+            <div class="activity-profile">
+                <div class="potrait">
+                    <img id="profilePic" src="/images/download (1).jpeg" alt="">
+                </div>
+              <div class="activity-detail">
+                <h2>Paying account</h2>
+                <p>XXXXXXXX XXX XX098</p>
+                <p>07XX XX XX 96</p>
+            </div>
+          </div>
+
+          <!-- calendargrid -->
+            <div class="activity-profile">
+                <h2>Upcoming today</h2>
+              <div class="upcoming-today">
+                <div class="upcoming-card">
+                <span >
+                    <h5>Coffee Pickup</h5>
+                    <p>Monday 4:00-6:00</p>
+                </span>
+                    <button>Set Reminder</button>
+
+                </div>
+                <div class="upcoming-card">
+                <span>
+                    <h5>Coffee Pickup</h5>
+                    <p>Monday 4:00-6:00</p>
+                    <button>Set Reminder</button>
+                </span>
+                </div>
+                <div class="upcoming-card">
+                <span>
+                    <h5>Coffee Pickup</h5>
+                    <p>Monday 4:00-6:00</p>
+                    <button>Set Reminder</button>
+                </span>
+                </div>
+              </div>
+          </div>
+          </div>
+          </div>
+
+
+          </div>
+
+
+
+
+    
+     
+
+
+    </div>
+    
+  </div>
+
+  <div class="card mt-6">
+                <div class="flex justify-between items-center mb-6">
+                  <h2 class="text-xl font-semibold">Recent Orders</h2>
+                  <button class="text-sm text-[#4EA771] hover:underline">View All</button>
+                </div>
+                <div class="overflow-x-auto">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Buyer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-sm">
+                        <td>ORD-2025-156</td>
+                        <td>Coffee World Inc.</td>
+                        <td>$2,775.00</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Apr 15, 2025</td>
+                      </tr>
+                      <tr>
+                        <td>ORD-2025-155</td>
+                        <td>Brew Haven Ltd.</td>
+                        <td>$3,750.00</td>
+                        <td><span class="badge badge-warning">Processing</span></td>
+                        <td>Apr 10, 2025</td>
+                      </tr>
+                      <tr>
+                        <td>ORD-2025-154</td>
+                        <td>Bean Brothers Co.</td>
+                        <td>$8,000.00</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Mar 28, 2025</td>
+                      </tr>
+                      <tr>
+                        <td>ORD-2025-154</td>
+                        <td>Bean Brothers Co.</td>
+                        <td>$8,000.00</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Mar 28, 2025</td>
+                      </tr>
+                      <tr>
+                        <td>ORD-2025-154</td>
+                        <td>Bean Brothers Co.</td>
+                        <td>$8,000.00</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Mar 28, 2025</td>
+                      </tr>
+                      <tr>
+                        <td>ORD-2025-154</td>
+                        <td>Bean Brothers Co.</td>
+                        <td>$8,000.00</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Mar 28, 2025</td>
+                      </tr>
+                      <tr>
+                        <td>ORD-2025-154</td>
+                        <td>Bean Brothers Co.</td>
+                        <td>$8,000.00</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Mar 28, 2025</td>
+                      </tr>
+                      <tr>
+                        <td>ORD-2025-154</td>
+                        <td>Bean Brothers Co.</td>
+                        <td>$8,000.00</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Mar 28, 2025</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+  </div>
+   
+  </main>
+
+  <script>
+   
+    document.addEventListener('DOMContentLoaded', function () {
+
+         lucide.createIcons();
+         const calendarEl = document.getElementById("calendar");
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: "dayGridMonth",
+        height: 500,
+        headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
+  },
+  events: [
+    { title: "Pickup Scheduled", start: "2025-10-23" },
+    { title: "Payment Release", start: "2025-10-25" },
+    { title: "Shipment #1234", start: "2025-10-28" },
+  ],
+});
+  calendar.render();  
+});
+
+  </script>
+</body>
+</html>
