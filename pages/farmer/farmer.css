@@ -3,9 +3,10 @@
   --accent: #4EA771;
   --light-green: #C1E6BA;
   --background: #EAF8E7;
+  --sidebar-width: 260px;
   /* --background: white; */
   --text: #013236;
-  --font: 'Montserrat';
+  --font: 'Poppins', 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* Base Styles */
@@ -14,6 +15,9 @@ html {
   font-size: 16px;
 }
 
+/* Use a more robust box-sizing model */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: var(--font);
@@ -21,6 +25,13 @@ body {
   color: #795b5b;
   line-height: 1.6;
 }
+
+/* Helpful utilities and accessibility improvements */
+img { max-width: 100%; height: auto; display: block; }
+input, select, textarea, button { font-family: inherit; box-sizing: border-box; }
+input, select, textarea { max-width: 100%; }
+a:focus, button:focus, input:focus { outline: 3px solid rgba(78,167,113,0.25); outline-offset: 2px; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
 
 /* Hero Section Styles */
 .hero-section {
@@ -35,6 +46,51 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background:rgba(0, 0, 0, 0.597);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.logo span {
+  color: var(--accent);
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 90px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--accent);
+}
+
+.cta {
+  background: var(--accent);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  color: white !important;
 }
 
 .hero-content {
@@ -113,29 +169,26 @@ body {
 /* Mulinga Systems Section */
 .mulinga-systems {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 90%), 3fr));
+  /* gap: clamp(1rem, 3vw, 2rem); */
+  gap: 10px;
   padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);
   background-color: #fff;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: hidden; 
+  margin: 10px auto;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 80%; */
+
 }
 
 .cards {
-  background-color: var(--background);
-  padding: clamp(1rem, 3vw, 2rem);
-  border-radius: 20px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 400px;
-  margin: 0 auto;
-  width: 100%;
+  box-sizing: border-box;
 }
 
 .cards:hover {
@@ -234,6 +287,24 @@ footer {
 }
 
 @media (max-width: 480px) {
+  
+    .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    transition: max-height 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
   .hero-section {
     padding: 1rem;
   }
@@ -389,7 +460,7 @@ main{
 
 /* Sidebar Styles */
 .sidebar {
-  width: clamp(200px, 25vw, 300px);
+  width: var(--sidebar-width);
   background: var(--primary);
   color: white;
   display: flex;
@@ -636,7 +707,7 @@ main{
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   /* margin: 0 auto; */
 }
 .upper-item{
@@ -715,6 +786,7 @@ span{
   background: #00000096;
   backdrop-filter: blur(2px);
   width: 100%;
+  height: 100%;
   overflow-y: scroll;
   position: fixed;
   /* filter: blur(5px); */
@@ -748,26 +820,28 @@ span{
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 40%;
-  height: 40%;
+  width: min(720px, 90%);
+  max-width: 720px;
+  height: auto;
+  overflow-y: auto;
 
 }
 .upper-group{
   display: flex;
   justify-content: space-between;
 }
-/* .left-group{
-  /* width: 100%; */
-
-/* .input-group{ */
-  /* width: 100%; */
-
+ /* .left-group{
+  width: 100%;
+ } */
+.input-group{
+  width: 100%;
+}
 label{
   color: #000000;
 }
 select, input{
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 10px;
   border: none;
   color: black;
@@ -969,17 +1043,6 @@ select, input{
     background: transparent;
 }
 
-.mulinga-systems {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: clamp(1rem, 2vw, 2rem);
-    padding: clamp(2rem, 4vw, 4rem);
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    background-color: #fff;
-}
-
 .cards {
     background-color: var(--background);
     padding: clamp(1.5rem, 3vw, 2.5rem);
@@ -987,7 +1050,7 @@ select, input{
     border: 2px solid #795B5B;
     box-shadow: 2px 6px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1350,7 +1413,8 @@ footer p{
     top: 0;
     height: 100vh;
     overflow-y: auto;
-    width: clamp(200px, 25vw, 300px);
+    width: var(--sidebar-width);
+    flex: 0 0 var(--sidebar-width);
   }
 
   .dashboard-container {
