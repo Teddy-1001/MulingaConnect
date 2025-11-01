@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Account Settings | ProDeel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="/pages/farmer/farmer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark-mode { background-color: #0f172a; color: #f8fafc; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300">
+
+  <nav class="top-nav">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+      <i data-lucide="menu"></i>
+    </button>
+    <div class="left-nav">
+        <div class="logo-container">
+            <svg class="logo-small" width="48" height="56" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347" fill="#EEAD2B"/>
+            </svg>
+        </div>
+        <div class="nav-head">
+          <h3>Mulinga connect</h3>
+          <p>Kiambu County · Farmer Dashboard</p>
+        </div>
+    </div>
+    <div class="right-nav">
+      <button class="messages-btn" aria-label="View Messages">
+        <i data-lucide="message-circle"></i>
+        <span class="badge">3</span>
+      </button>
+      <button class="notifications-btn" aria-label="View Notifications">
+        <i data-lucide="bell"></i>
+      </button>
+    </div>
+  </nav>
+
+<main>
+  <!-- 🔹 Sidebar -->
+  <aside id="sidebar" class="sidebar overflow-y-scroll top-0 left-0 h-screen w-64 bg-white shadow-md flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+    <div>
+      <div class="flex items-center gap-2 p-5 border-b">
+        <div class="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">P</div>
+        <div>
+          <h1 class="font-semibold text-lg text-gray-800">ProDeel</h1>
+          <p class="text-xs text-gray-400">hello@fillio.com</p>
+        </div>
+      </div>
+
+      <nav class="p-4 space-y-2">
+        <a href="#" class="flex items-center gap-3 text-gray-700 hover:bg-accent p-2 rounded-md">
+          <i data-lucide="file-plus" class="w-5 h-5"></i> Create Contract
+        </a>
+        <a href="#" class="flex items-center gap-3 text-gray-700 hover:bg-blue-50 p-2 rounded-md">
+          <i data-lucide="folder" class="w-5 h-5"></i> Contracts
+        </a>
+        <a href="#" class="flex items-center gap-3 text-gray-700 hover:bg-blue-50 p-2 rounded-md">
+          <i data-lucide="credit-card" class="w-5 h-5"></i> Payment
+        </a>
+        <a href="#" class="flex items-center gap-3 text-gray-700 hover:bg-blue-50 p-2 rounded-md">
+          <i data-lucide="file-text" class="w-5 h-5"></i> Invoices
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4">
+      <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">+ Create Contract</button>
+    </div>
+  </aside>
+
+  <!-- 🔹 Main Content -->
+  <main class="md:ml-64 p-6">
+    <!-- Header -->
+    <!-- <header class="flex justify-between items-center mb-8">
+      <div class="flex items-center gap-3">
+        <button id="menu-toggle" class="md:hidden p-2 rounded-lg bg-gray-100 hover:bg-gray-200">
+          <i data-lucide="menu"></i>
+        </button>
+        <h2 class="text-2xl font-semibold">Account Settings</h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <input type="text" placeholder="Search..." class="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200" title="Toggle theme">
+          <i data-lucide="moon"></i>
+        </button>
+        <img src="https://via.placeholder.com/40" alt="profile" class="w-10 h-10 rounded-full border">
+      </div>
+    </header> -->
+
+    <!-- Profile Section -->
+    <div class="bg-white rounded-2xl shadow p-6 space-y-6">
+      <div class="flex items-center gap-4 border-b pb-4">
+        <img id="profileImage" src="https://via.placeholder.com/80" class="w-20 h-20 rounded-full" alt="">
+        <div>
+          <h3 id="profileName" class="font-semibold text-lg">Loading...</h3>
+          <p id="profileTitle" class="text-gray-500 text-sm">Fetching user...</p>
+        </div>
+      </div>
+
+      <!-- Personal Info -->
+      <div class="bg-gray-50 p-4 rounded-lg relative">
+        <h4 class="font-semibold mb-2">Personal Information</h4>
+        <div id="personalInfo" class="grid grid-cols-2 gap-2 text-sm"></div>
+        <button id="editPersonal" class="absolute top-3 right-3 text-blue-600 hover:underline text-sm flex items-center gap-1">
+          <i data-lucide="edit-2" class="w-4 h-4"></i> Edit
+        </button>
+      </div>
+
+      <!-- Address Info -->
+      <div class="bg-gray-50 p-4 rounded-lg relative">
+        <h4 class="font-semibold mb-2">Address</h4>
+        <div id="addressInfo" class="grid grid-cols-2 gap-2 text-sm"></div>
+        <button id="editAddress" class="absolute top-3 right-3 text-blue-600 hover:underline text-sm flex items-center gap-1">
+          <i data-lucide="edit-2" class="w-4 h-4"></i> Edit
+        </button>
+      </div>
+    </div>
+  </main>
+  </main>
+
+  <!-- JS Logic -->
+  <script>
+  lucide.createIcons();
+
+  // ✅ Farmer profile data (example)
+  const userData = {
+    name: "Mulinga Coffee Farm",
+    title: "Farmer · Kiambu County, Kenya",
+    profileImage: "/images/indoor-shot-glad-young-bearded-man-mustache-wears-denim-shirt-smiles-happily.jpg",
+    personal: {
+      "Farmer Name": "Ted Wiliams",
+      "Farm Name": "Mulinga Coffee Estate",
+      "Email": "ted@mulinga.co.ke",
+      "Phone": "+254 712 345 678",
+      "Gender": "Male",
+      "Role": "Coffee Producer",
+      "Years of Experience": "12 Years",
+      "Bio": "Passionate coffee grower focusing on organic, shade-grown Arabica beans. Dedicated to sustainable and transparent export practices."
+    },
+    address: {
+      "Country": "Kenya",
+      "County": "Kiambu County",
+      "Sub-county / Village": "Githunguri, Muguga",
+      "Postal Code": "00900",
+      "Farm Size": "14 Acres",
+      "Altitude": "1,750m above sea level",
+      "Coordinates": "1.1234° S, 36.7890° E"
+    },
+    // ✅ Add new sections
+    farmDetails: {
+      "Coffee Variety": "SL28, SL34, Ruiru 11",
+      "Farming Method": "Organic, Shade-Grown",
+      "Processing Type": "Washed & Sun-Dried",
+      "Average Annual Yield": "8,500 kg of green coffee",
+      "Harvest Season": "May – August",
+      "Certifications": "Fairtrade, Rainforest Alliance",
+      "Sustainability Practices": "Water recycling, composting, shade trees planted yearly"
+    },
+    exportStats: {
+      "Total Shipments": "42",
+      "Active Shipments": "3",
+      "Total Exports (kg)": "56,300",
+      "Top Buyer": "Kaffa Traders Ltd – Germany",
+      "Average Rating": "4.8 ★",
+      "Last Payment Received": "KES 320,000 on Oct 25, 2025"
+    }
+  };
+
+  // ✅ Load base info
+  window.onload = () => {
+    document.getElementById("profileName").textContent = userData.name;
+    document.getElementById("profileTitle").textContent = userData.title;
+    document.getElementById("profileImage").src = userData.profileImage;
+
+    renderData("personalInfo", userData.personal);
+    renderData("addressInfo", userData.address);
+    addExtraSections();
+  };
+
+  // ✅ Render function for sections
+  function renderData(id, data) {
+    const container = document.getElementById(id);
+    container.innerHTML = "";
+    
+
+
+
+    Object.entries(data).forEach(([key, value]) => {
+      const p = document.createElement("p");
+      p.innerHTML = `<span class="font-medium">${key}:</span> ${value}`;
+      container.appendChild(p);
+    });
+  }
+
+  // ✅ Add extra sections dynamically
+  function addExtraSections() {
+    const mainContainer = document.querySelector("main > div.bg-white");
+
+    // Farm Details
+    const farmDiv = document.createElement("div");
+    farmDiv.className = "bg-gray-50 p-4 rounded-lg relative";
+    farmDiv.innerHTML = `
+      <h4 class="font-semibold mb-2">Farm Details</h4>
+      <div id="farmDetails" class="grid grid-cols-2 gap-2 text-sm"></div>
+      <button id="editFarm" class="absolute top-3 right-3 text-blue-600 hover:underline text-sm flex items-center gap-1">
+        <i data-lucide="edit-2" class="w-4 h-4"></i> Edit
+      </button>
+    `;
+    mainContainer.appendChild(farmDiv);
+
+    // Export Stats
+    const exportDiv = document.createElement("div");
+    exportDiv.className = "bg-gray-50 p-4 rounded-lg relative";
+    exportDiv.innerHTML = `
+      <h4 class="font-semibold mb-2">Export Statistics</h4>
+      <div id="exportStats" class="grid grid-cols-2 gap-2 text-sm"></div>
+      <button id="editExport" class="absolute top-3 right-3 text-blue-600 hover:underline text-sm flex items-center gap-1">
+        <i data-lucide="edit-2" class="w-4 h-4"></i> Edit
+      </button>
+    `;
+    mainContainer.appendChild(exportDiv);
+
+    // Render the new data
+    renderData("farmDetails", userData.farmDetails);
+    renderData("exportStats", userData.exportStats);
+    lucide.createIcons();
+  }
+
+  // ✅ Reusable edit logic
+  function enableEditing(section, dataKey) {
+    const container = document.getElementById(section);
+    container.innerHTML = "";
+    const currentData=userData[dataKey]
+
+    //creating input fields
+    Object.entries(currentData).forEach(([key, value]) => {
+      const div = document.createElement("div");
+      div.className = "flex flex-col";
+      div.innerHTML = `
+        <label class="text-xs text-gray-500">${key}</label>
+        <input type="text" class="border rounded px-2 py-1 text-sm" value="${value}">
+      `;
+      container.appendChild(div);
+    });
+    //adding save btn
+    const savebtn=document.createElement("button");
+    savebtn.textContent ="💾 Save Changes";
+    savebtn.className = "mt-3 bg=blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm";
+    container.appendChild(savebtn);
+
+    //handling save clicks
+    savebtn.addEventListener("click", ()=> {
+      const inputs=container.querySelectorAll("input");
+      const updatedData = {};
+
+      //collect updates values
+      Object.keys(currentData).forEach((key, index) =>{
+        updatedData[key] = inputs[index].value;
+      });
+
+      //update global userData
+      userData[dataKey]=updatedData;
+    });
+  }
+  function saveData(section, dataKey){
+    const container=document.getElementById(section);
+    const inputs = documentd.querySelectorAll("input");
+
+    const currentData = userData[dataKey];
+    const updatedData = {};
+
+    //collect updated values
+    Object.keys(currentData).forEach((key, index) => {
+      updatedData[key]=inputs[index].value;
+    });
+    //save new data
+    userData[dataKey]=updatedData;
+
+    //re-render the updated section
+    renderData(section, updatedData);
+
+    //show a success toast
+    showToast("Saved Successfully")
+  }
+
+  function showToast(message){
+    //remove any existing toast
+    const oldToast = document.querySelector(".toast");
+    if (oldToast) oldToast.remove();
+
+    const toast=document.createElement("div");
+    toast.className="toast fixed bottom-4 right-4 bg-green-600 text-sm px-4 py-2 rounded shadow-lg transition-opacity duration-500 opacity-100";
+    toast.textContent=message;
+    document.body.appendChild(toast);
+
+    setTimeout(()=>{
+      toast.style.opacity="0";
+    }, 3000);
+
+    setInterval(()=>{
+      toast.remove();
+    }, 2500);
+  }
+
+
+
+
+  // Attach edit handlers
+  document.getElementById("editPersonal").addEventListener("click", () => {
+    enableEditing("personalInfo", "personal");
+  });
+  document.getElementById("editAddress").addEventListener("click", () => {
+    enableEditing("addressInfo", "address");
+  });
+
+  // Theme toggle (light/dark)
+  const themeBtn = document.getElementById("theme-toggle");
+  themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const icon = document.body.classList.contains("dark-mode") ? "sun" : "moon";
+    themeBtn.innerHTML = `<i data-lucide="${icon}"></i>`;
+    lucide.createIcons();
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MulingaConnect — Coffee Export Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #EAF8E7;
+      color: #013236;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== NAV LINKS ===== */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background-color: #4EA771;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link:hover {
+      color: #4EA771;
+    }
+
+    /* ===== MOBILE MENU ===== */
+    #mobile-menu {
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    .menu-open {
+      max-height: 500px;
+      opacity: 1;
+    }
+    .menu-closed {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    /* ===== COFFEE CARDS ===== */
+    .coffee-card {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .coffee-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ===== FOOTER ===== */
+    footer.footer {
+      background: #f9f9f8;
+      color: #013236;
+      padding: 4rem 1.5rem 2rem;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .footer__blocks-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer__logo {
+      filter: brightness(0) saturate(100%);
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+    .footer__logo:hover {
+      opacity: 1;
+    }
+
+    .footerIcon-text {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    .footerIcon-text svg {
+      color: #4EA771;
+      flex-shrink: 0;
+    }
+
+    .footer__blocks-wrapper a {
+      color: #013236;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.25s ease;
+    }
+    .footer__blocks-wrapper a:hover {
+      color: #4EA771;
+    }
+    .footer__blocks-wrapper a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: #4EA771;
+      transition: width 0.3s ease;
+    }
+    .footer__blocks-wrapper a:hover::after {
+      width: 100%;
+    }
+
+    .footer__list-social {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      margin-top: 1.2rem;
+    }
+    .footer__list-social .icon {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .footer__list-social a:hover .icon {
+      transform: translateY(-3px);
+      color: #4EA771;
+    }
+
+    .footer__content-middle {
+      border-top: 1px solid #e5e5e5;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* ===== CART DRAWER ===== */
+    .cart-button {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      background: #4EA771;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 1001;
+    }
+
+    .cart-button:hover {
+      background: #3c8a5c;
+      transform: scale(1.07);
+    }
+
+    .cart-drawer__overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .cart-drawer__panel {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 380px;
+      max-width: 100%;
+      height: 100%;
+      background: #fff;
+      box-shadow: -4px 0 14px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s ease;
+      z-index: 1001;
+      overflow-y: auto;
+    }
+
+    .cart-drawer__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-drawer__header h2 {
+      font-size: 1.25rem;
+      color: #013236;
+      font-weight: 600;
+    }
+
+    .cart-drawer__close {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .cart-drawer__content {
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      background: #f8f9f8;
+      border-radius: 10px;
+      padding: 0.6rem;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 0.75rem;
+    }
+
+    .cart-item__details h4 {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #013236;
+      font-weight: 500;
+    }
+
+    .cart-item__details p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .cart-item__remove {
+      margin-left: auto;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #888;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .cart-item__remove:hover {
+      color: #e44;
+    }
+
+    .cart-drawer__footer {
+      border-top: 1px solid #eee;
+      padding: 1rem;
+    }
+
+    .cart-drawer__total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #013236;
+    }
+
+    .cart-drawer__checkout {
+      background: #4EA771;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cart-drawer__checkout:hover {
+      background: #3c8a5c;
+    }
+
+    .cart-drawer.active .cart-drawer__overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer.active .cart-drawer__panel {
+      right: 0;
+    }
+    .cart-drawer__panel {
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+    
+
+    /* ===== RESPONSIVENESS ===== */
+    @media (max-width: 768px) {
+      .coffee-card img {
+        height: 220px;
+      }
+      .cart-drawer__panel {
+        width: 90%;
+      }
+      header .max-w-7xl {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2, h3 {
+        font-size: 1rem;
+      }
+      .footer__blocks-container {
+        gap: 1.8rem;
+      }
+      .cart-button {
+        width: 48px;
+        height: 48px;
+        bottom: 1.2rem;
+        right: 1.2rem;
+      }
+    }
+     
+    .alert {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  display: none;
+  z-index: 1000;
+}
+.alert.show {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+#closeAlert {
+  background: #4EA771;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+#closeAlert:hover {
+  background: #3c8a5c;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <!-- 🌿 Sticky Elegant Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/85 shadow-sm border-b border-[#C1E6BA]/40">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-2 sm:px-6">
+      <a href="#" class="flex items-center gap-2">
+        <img src="/ecommerce-images/Black_Icon-015ed0.png" alt="MulingaConnect" class="h-9 sm:h-32 rounded-lg shadow-sm hover:scale-150 transition 4s ease-in">
+        <span class="font-extrabold text-xl sm:text-2xl">MulingaConnect</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link text-[17px]">Home</a>
+        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link text-[17px]">Farmers</a>
+        <a href="#" class="nav-link text-[17px]">Buyers</a>
+        <a href="#" class="nav-link text-[17px]">Dashboard</a>
+        <a href="#" class="nav-link text-[17px]">Contact</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#" class="px-5 py-2 border border-[#013236] rounded-full hover:bg-[#013236] hover:text-white transition-all duration-300">Login</a>
+        <a href="#" class="px-5 py-2 bg-[#4EA771] text-white rounded-full shadow-md hover:bg-[#3d885b] transition-all duration-300">Register</a>
+      </div>
+
+      <button id="menu-toggle" class="md:hidden text-[#013236]" aria-label="Open Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-7 h-7" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="menu-closed bg-white/95 backdrop-blur-md border-t border-[#C1E6BA]/30">
+      <nav class="flex flex-col space-y-4 px-6 py-5 text-lg">
+        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link">Home</a>
+        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link">Farmers</a>
+        <a href="#" class="nav-link">Buyers</a>
+        <a href="#" class="nav-link">Dashboard</a>
+        <a href="#" class="nav-link">Contact</a>
+        <div class="pt-4 border-t border-[#C1E6BA]/40 flex flex-col space-y-3">
+          <a href="#" class="nav-link">Login</a>
+          <a href="#" class="text-[#4EA771] font-semibold">Register</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🪴 Filter Section -->
+  <section class="bg-[#EAF8E7] py-6 border-b border-[#C1E6BA]/50">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <h2 class="text-xl font-semibold tracking-tight text-center md:text-left">Explore Our Best Coffees</h2>
+      <div class="flex flex-wrap justify-center md:justify-end items-center gap-3">
+        <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
+          <option>All Types</option><option>Arabica</option><option>Robusta</option><option>Blend</option>
+        </select>
+        <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
+          <option>All Regions</option><option>Central Kenya</option><option>Western Kenya</option><option>Mt. Elgon</option>
+        </select>
+        <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
+          <option>Sort by Price</option><option>Low to High</option><option>High to Low</option>
+        </select>
+        <button class="px-5 py-2 bg-[#4EA771] text-white rounded-xl hover:bg-[#3c875a] transition text-sm font-medium">
+          Apply Filters
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ☕ Product Grid -->
+  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6 max-w-7xl mx-auto">
+    <!-- product card -->
+    <!-- <div class="coffee-card bg-white rounded-2xl overflow-hidden group">
+      <div class="relative">
+        <img src="/ecommerce-images/Gourmet_Beans_533x51f1.jpg" alt="Gourmet Coffee" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ">
+        <button class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 text-white font-medium backdrop-blur-sm">
+          <span class="px-4 py-2 bg-[#4EA771] rounded-full shadow-md hover:bg-[#3c875a] transition">Quick View</span>
+        </button>
+      </div>
+      <div class="p-5 space-y-2">
+        <h3 class="text-lg font-semibold flex justify-between items-center">
+          Gourmet
+          <svg class="w-4 h-4 text-[#4EA771]" fill="currentColor" viewBox="0 0 12 11">
+            <path d="M9.3 3.3L2.1 10.5 1 9.3 8.2 2.1H1.8V0.5h9.2v9.2H9.3V3.3z"/>
+          </svg>
+        </h3>
+        <p class="text-sm text-gray-500">Premium Arabica beans from smallholder farmers in Kenya.</p>
+        <div class="pt-2 flex justify-between items-center">
+          <span class="font-semibold">From KSh 1,300.00</span>
+          <a href="#" class="text-[#4EA771] text-sm font-medium hover:underline">View Details</a>
+        </div>
+        <button class="add-to-cart bg-green-700  text-white px-4 py-2 rounded-md mt-2 hover:bg-green-900 transition" data-name="Coffee" data-price="price" data-image="img">Add to Cart</button>
+      </div>
+    </div> -->
+</div>
+
+  <!-- 🌍 Elegant Footer -->
+  <footer class="footer">
+    <div class="footer__blocks-container">
+      <div>
+        <img src="logo.png" alt="MulingaConnect" class="footer__logo" width="160">
+        <p class="mt-3 text-sm leading-relaxed text-gray-600">
+          Empowering farmers across Africa to share their finest coffee with the world.
+          Transparent trade. Fair prices. Sustainable impact.
+        </p>
+        <div class="footerIcon-text mt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>info@mulingaconnect.com</span>
+        </div>
+        <div class="footerIcon-text">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M12 21s8-6.58 8-11a8 8 0 0 0-16 0c0 4.42 8 11 8 11z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>Nairobi, Kenya</span>
+        </div>
+      </div>
+
+      <div class="footer__blocks-wrapper">
+        <h3 class="font-semibold uppercase tracking-wide mb-3">Explore</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Meet the Farmers</a></li>
+          <li><a href="#">Coffee Marketplace</a></li>
+          <li><a href="#">Sustainability Impact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__blocks-wrapper">
+        <h3 class="font-semibold uppercase tracking-wide mb-3">Resources</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#">Investor Portal</a></li>
+          <li><a href="#">Supply Chain Analytics</a></li>
+          <li><a href="#">Automated Reports</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__blocks-wrapper">
+        <h3 class="font-semibold uppercase tracking-wide mb-3">Stay Connected</h3>
+        <form class="flex gap-2 mt-2">
+          <input type="email" placeholder="Enter your email" required class="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-[#4EA771]">
+          <button class="bg-[#013236] text-white px-4 py-2 rounded-md hover:bg-[#4EA771] transition">Subscribe</button>
+        </form>
+        <ul class="footer__list-social">
+          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>
+          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><rect x="2" y="2" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3"></circle></svg></a></li>
+          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 0 1 6 6v8h-4v-8a2 2 0 0 0-4 0v8h-4v-8a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="13"></rect></svg></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__content-middle">
+      <p>© <span id="year"></span> MulingaConnect. All rights reserved.</p>
+    </div>
+  </footer>
+    <!-- 🛒 Floating Cart Button -->
+<button id="openCart" class="cart-button" aria-label="Open Cart">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h12m-5 4a1 1 0 100-2 1 1 0 000 2zm-6 0a1 1 0 100-2 1 1 0 000 2z" />
+  </svg>
+</button>
+
+<!-- 🧺 Collapsible Cart Drawer -->
+<div id="cartDrawer" class="cart-drawer">
+  <div class="cart-drawer__overlay"></div>
+  <div class="cart-drawer__panel">
+    <div class="cart-drawer__header">
+      <h2>Your Cart</h2>
+      <button class="cart-drawer__close" aria-label="Close Cart">&times;</button>
+    </div>
+
+    <div class="cart-drawer__content" id="cartItems">
+      <div class="cart-item">
+        <!-- <img src="/ecommerce-images/Gourmet_Beans_533x51f1.jpg" alt="Gourmet Coffee">
+        <div class="cart-item__details">
+          <h4>Gourmet Coffee</h4>
+          <p>1 × KSh 1,300.00</p>
+        </div>
+        <button class="cart-item__remove" aria-label="Remove Item">&times;</button> -->
+      </div> 
+    </div>
+
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Total</span>
+        <span id="cartTotal">Ksh 0</span>
+      </div>
+      <button class="cart-drawer__checkout">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- alert message -->
+   <div id="customAlert" class="alert">
+  <p id="alertMessage">"Coffee added successfully"</p>
+  <button id="closeAlert">OK</button>
+</div>
+</div>
+
+      
+
+
+
+  <script>
+    ///adding products
+    const products=[
+    {
+        name: "Gourmet Coffee",
+        price: 1300,
+        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+        description: "Rich Arabica blend with smooth chocolate notes."
+    },
+    {
+        name: "Kenya AA",
+        price: 2000,
+        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+        description: "Bright, winey acidity with a full-bodied flavor."
+    },
+    {
+        name: "Espresso Roast",
+        price: 1400,
+        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+        description: "Dark roast with caramel and nutty undertones."
+    },
+    {
+        name: "House Blend",
+        price: 1200,
+        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+        description: "Balanced, medium roast with hints of fruit and cocoa."
+    },
+     {
+        name: "House Blend",
+        price: 1200,
+        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+        description: "Balanced, medium roast with hints of fruit and cocoa."
+    },
+     {
+        name: "House Blend",
+        price: 1200,
+        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+        description: "Balanced, medium roast with hints of fruit and cocoa."
+    }
+    ]
+
+    const productsGrid=document.getElementById('product-grid')
+    function loadProducts(){
+        productsGrid.innerHTML='';
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.classList.add('coffee-card');
+
+            card.innerHTML = `
+            <div class="relative">
+                <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ">
+                <button class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 text-white font-medium backdrop-blur-sm">
+                    <span class="px-4 py-2 bg-[#4EA771] rounded-full shadow-md hover:bg-[#3c875a] transition">Quick View</span>
+                </button>
+            </div>
+            <div class="p-5 space-y-2">
+                <h3 class="text-lg font-semibold flex justify-between items-center">
+                    ${product.name}
+                    <svg class="w-4 h-4 text-[#4EA771]" fill="currentColor" viewBox="0 0 12 11">
+                    <path d="M9.3 3.3L2.1 10.5 1 9.3 8.2 2.1H1.8V0.5h9.2v9.2H9.3V3.3z"/>
+                    </svg>
+                </h3>
+                <p class="text-sm text-gray-500">${product.description}</p>
+                <div class="pt-2 flex justify-between items-center">
+                    <span class="font-semibold">From KSh ${product.price}</span>
+                     <a href="#" class="text-[#4EA771] text-sm font-medium hover:underline">View Details</a>
+                </div>
+                <button class="add-to-cart bg-green-700  text-white px-4 py-2 rounded-md mt-2 hover:bg-green-900 transition" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Cart</button>
+      </div>`
+      productsGrid.appendChild(card);
+
+        })
+    }
+    loadProducts();
+
+
+
+
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('menu-open');
+      mobileMenu.classList.toggle('menu-closed');
+    });
+  </script>
+  
+  
+  
+  
+  <script>
+  const cartDrawer = document.getElementById("cartDrawer");
+  const openCartBtn = document.getElementById("openCart");
+  const closeCartBtn = document.querySelector(".cart-drawer__close");
+  const overlay = document.querySelector(".cart-drawer__overlay");
+  const cartItems = document.getElementById("cartItems")
+  const cartTotal = document.getElementById("cartTotal")
+
+  openCartBtn.addEventListener("click", () => {
+    cartDrawer.classList.add("active");
+  });
+
+  closeCartBtn.addEventListener("click", () => {
+    cartDrawer.classList.remove("active");
+  });
+
+  overlay.addEventListener("click", () => {
+    cartDrawer.classList.remove("active");
+  });
+
+let cart=[];
+ //add to cart
+const alertBox = document.getElementById('customAlert');
+const alertMsg = document.getElementById('alertMessage');
+const closeAlert = document.getElementById('closeAlert');
+
+function showAlert(mesage){
+    alertMsg.textContent=mesage;
+    alertBox.classList.add('show')
+    setTimeout(()=> alertBox.classList.remove("show"), 3000)
+}
+closeAlert.addEventListener('click', () => alertBox.classList.remove('show'));
+
+
+ document.addEventListener("click", (e)=>{
+    
+    if(e.target.classList.contains("add-to-cart")){
+        showAlert("coffee added to your cart")
+        const name=e.target.dataset.name;
+        const price = parseFloat(e.target.dataset.price);
+        const image =e.target.dataset.image;
+
+        //checking if exists
+        const existing = cart.find(item=>item.name === name);
+        if (existing) {
+            existing.quantity += 1
+        }
+        else{
+            cart.push({name, price, image, quantity: 1})
+        }
+        UpdateCartUI();
+    }
+ });
+ //update cart display
+ function UpdateCartUI(){
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        cartItems.innerHTML += `
+        <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-item__details">
+          <h4>${item.name}</h4>
+          <p>${item.quantity } X Ksh ${item.price.toLocaleString()}</p>
+        </div>
+        <button class="cart-item__remove" data-name="${item.name}">&times;</button>
+      </div>`
+    });
+    cartTotal.textContent = `Ksh ${total.toLocaleString()}`
+ }
+
+
+  // Remove item
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('cart-item__remove')) {
+      const name = e.target.dataset.name;
+      cart = cart.filter(item => item.name !== name);
+      UpdateCartUI();
+    }
+  });
+ 
+
+
+
+</script>
+
+
+
+</body>
+</html>

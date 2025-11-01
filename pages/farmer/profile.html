@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/pages/farmer/farmer.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- <script src="https://unpkg.com/lucide@latest"></script> -->
   <script src="https://cdn.tailwindcss.com"></script>
  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
   
@@ -133,19 +133,19 @@
                 <table>
                     <tr>
                         <td><strong>Name</strong></td>
-                        <td>John Doe</td>
+                        <td>--------</td>
                     </tr>
                     <tr>
                         <td><strong>Email:</strong></td>
-                        <td>test@gmail.com</td>
+                        <td>---------</td>
                     </tr>
                     <tr>
                         <td><strong>Phone</strong></td>
-                        <td>0712345678</td>
+                        <td>-----------</td>
                     </tr>
                     <tr>
                         <td><strong>DOB</strong></td>
-                        <td>01-01-2024</td>
+                        <td>----------</td>
                     </tr>
                 </table>
                 
@@ -154,15 +154,7 @@
             </div>
           </div>
 
-          <!-- calendargrid -->
-            <div class="activity-profile calendar">
-              <div id="calendar"></div>
-          </div>
-          </div>
-
-          <div class="my-item">
-                <div class="upper-item">
-            <div class="activity-profile">
+          <div class="activity-profile">
                 <div class="potrait">
                     <img id="profilePic" src="/images/download (1).jpeg" alt="">
                 </div>
@@ -174,34 +166,39 @@
           </div>
 
           <!-- calendargrid -->
-            <div class="activity-profile">
-                <h2>Upcoming today</h2>
-              <div class="upcoming-today">
-                <div class="upcoming-card">
-                <span >
-                    <h5>Coffee Pickup</h5>
-                    <p>Monday 4:00-6:00</p>
-                </span>
-                    <button>Set Reminder</button>
+            
+          </div>
 
-                </div>
-                <div class="upcoming-card">
-                <span>
-                    <h5>Coffee Pickup</h5>
-                    <p>Monday 4:00-6:00</p>
-                    <button>Set Reminder</button>
-                </span>
-                </div>
-                <div class="upcoming-card">
-                <span>
-                    <h5>Coffee Pickup</h5>
-                    <p>Monday 4:00-6:00</p>
-                    <button>Set Reminder</button>
-                </span>
-                </div>
-              </div>
+          <div class="my-item">
+                <div class="upper-item">
+            <div class="activity-profile calendar ">
+              <div id="calendar"></div>
           </div>
+
+          <!-- upcoming activities -->
+              
           </div>
+<div class="bg-var(--background) p-6 rounded-2xl shadow">
+        <h2 class="text-xl font-semibold mb-4">Upcoming Activities</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold">Coffee Pickup</h5>
+            <p class="text-sm text-gray-500">Monday 4:00–6:00</p>
+            <button class="mt-2 text-[#4EA771] text-sm underline">Set Reminder</button>
+          </div>
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold">Shipment Preparation</h5>
+            <p class="text-sm text-gray-500">Tuesday 10:00–12:00</p>
+            <button class="mt-2 text-[#4EA771] text-sm underline">Set Reminder</button>
+          </div>
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold">Payment Confirmation</h5>
+            <p class="text-sm text-gray-500">Friday 3:00–5:00</p>
+            <button class="mt-2 text-[#4EA771] text-sm underline">Set Reminder</button>
+          </div>
+        </div>
+      </div> 
+          
           </div>
 
 
@@ -235,7 +232,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="text-sm">
+                      <tr class="text-sm border-t">
                         <td>ORD-2025-156</td>
                         <td>Coffee World Inc.</td>
                         <td>$2,775.00</td>
@@ -304,7 +301,7 @@
    
     document.addEventListener('DOMContentLoaded', function () {
 
-         lucide.createIcons();
+         //lucide.createIcons();
          const calendarEl = document.getElementById("calendar");
         const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: "dayGridMonth",

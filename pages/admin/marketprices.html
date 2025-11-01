@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmer Profile | Mulinga Connect</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#013236',
+            accent: '#4EA771',
+            lightgreen: '#C1E6BA',
+            background: '#EAF8E7',
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
+
+  <!-- Top Navbar -->
+  <nav class="flex justify-between items-center bg-white dark:bg-gray-800 shadow px-4 md:px-6 py-4 sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <button id="menu-toggle" class="lg:hidden text-gray-700 dark:text-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <h3 class="font-bold text-lg text-primary dark:text-lightgreen">Mulinga Connect</h3>
+    </div>
+
+    <button id="theme-toggle" class="bg-accent hover:bg-green-600 text-white px-3 py-2 rounded-lg transition text-sm">
+      🌙 Toggle Mode
+    </button>
+  </nav>
+
+  <!-- Layout -->
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+      class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-primary text-white flex flex-col p-4 lg:h-auto h-full overflow-y-auto transition-transform duration-300 ease-in-out z-40">
+
+      <div class="flex items-center gap-3 mb-6">
+        <img src="https://i.pravatar.cc/80?img=12" class="w-12 h-12 rounded-full object-cover" alt="Farmer profile">
+        <div>
+          <h4 class="font-semibold">Ted Williams</h4>
+          <p class="text-green-300 text-sm">Active Farmer</p>
+        </div>
+      </div>
+
+      <nav class="flex-1 space-y-1">
+        <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"><span>🏠</span> Dashboard</a>
+        <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"><span>👤</span> Profile</a>
+        <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"><span>📦</span> Uploads</a>
+        <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"><span>💳</span> Payments</a>
+        <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"><span>🚚</span> Shipments</a>
+        <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"><span>📈</span> Analytics</a>
+      </nav>
+
+      <div class="mt-auto border-t border-white/10 pt-4">
+        <button class="flex items-center gap-2 text-gray-300 w-full p-2 rounded-md hover:bg-white/10">
+          ❓ Help & Support
+        </button>
+        <button class="flex items-center gap-2 text-red-400 w-full p-2 rounded-md hover:bg-white/10">
+          🚪 Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-5 md:p-10 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+
+      <!-- Profile Section -->
+      <section class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white dark:bg-gray-700 rounded-2xl shadow p-6 flex items-center gap-6 hover:shadow-lg transition">
+          <img src="https://i.pravatar.cc/100?img=4" class="w-24 h-24 rounded-full object-cover" alt="">
+          <div>
+            <h2 class="font-semibold text-xl mb-1">Ted Williams</h2>
+            <p>Email: tedwilliams@mulinga.co.ke</p>
+            <p>Phone: 0712 345 678</p>
+            <p>Region: Kiambu County</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 rounded-2xl shadow p-6 flex items-center gap-6 hover:shadow-lg transition">
+          <img src="https://i.pravatar.cc/100?img=32" class="w-24 h-24 rounded-full object-cover" alt="">
+          <div>
+            <h2 class="font-semibold text-xl mb-1">Paying Account</h2>
+            <p>Account: **** **** 8098</p>
+            <p>Mobile Money: 07XX XX XX 96</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activities -->
+      <section class="bg-white dark:bg-gray-700 rounded-2xl shadow p-6 mb-6">
+        <h2 class="text-xl font-semibold mb-4">Upcoming Activities</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold">Coffee Pickup</h5>
+            <p class="text-sm text-gray-500 dark:text-gray-300">Monday 4:00–6:00 PM</p>
+          </div>
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold">Shipment Prep</h5>
+            <p class="text-sm text-gray-500 dark:text-gray-300">Tuesday 10:00–12:00 PM</p>
+          </div>
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold">Payment Review</h5>
+            <p class="text-sm text-gray-500 dark:text-gray-300">Friday 3:00–5:00 PM</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Orders -->
+      <section class="bg-white dark:bg-gray-700 rounded-2xl shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Recent Orders</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 dark:border-gray-600">
+                <th class="p-3">Order ID</th>
+                <th class="p-3">Buyer</th>
+                <th class="p-3">Amount</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+                <td class="p-3">ORD-2025-001</td>
+                <td class="p-3">Coffee World Inc.</td>
+                <td class="p-3">$2,750.00</td>
+                <td class="p-3 text-green-500 font-semibold">Completed</td>
+                <td class="p-3">Oct 15, 2025</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+                <td class="p-3">ORD-2025-002</td>
+                <td class="p-3">Brew Haven Ltd.</td>
+                <td class="p-3">$3,150.00</td>
+                <td class="p-3 text-yellow-400 font-semibold">Processing</td>
+                <td class="p-3">Oct 28, 2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Sidebar toggle
+    const toggleBtn = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    if (localStorage.theme === 'dark') html.classList.add('dark');
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+    });
+  </script>
+</body>
+</html>

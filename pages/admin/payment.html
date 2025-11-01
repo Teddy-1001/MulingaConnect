@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmer Profile | Mulinga Connect</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FullCalendar -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary: #013236;
+      --accent: #4EA771;
+      --light-green: #C1E6BA;
+      --background: #EAF8E7;
+      --sidebar-width: 260px;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--background);
+      color: #1e293b;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: var(--primary);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh; /* full height */
+      width: var(--sidebar-width);
+      padding: 1.5rem;
+      overflow-y: scroll; /* enable scroll */
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) ;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 10px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+      background-color: var(--primary);
+    }
+
+    .sidebar nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      color: #e2e8f0;
+    }
+
+    .sidebar nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+
+    .sidebar nav ul li.active a {
+      background: var(--accent);
+      
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        z-index: 50;
+        width: 80%;
+        max-width: 320px;
+      }
+      .sidebar.open {
+        left: 0;
+      }
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Top Navbar -->
+  <nav class="flex justify-between items-center bg-white shadow-md px-6 py-4 sticky top-0 z-50 border-b border-gray-100">
+    <div class="flex items-center gap-4">
+      <button id="menu-toggle" class="lg:hidden text-gray-700">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+      <div class="flex items-center gap-2">
+        <svg class="w-8 h-10" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M88.6818 64.1742..." fill="#EEAD2B"/>
+        </svg>
+        <div>
+          <h3 class="font-semibold text-lg text-[var(--primary)]">Mulinga Connect</h3>
+          <p class="text-sm text-gray-500">Kiambu County · Farmer Dashboard</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="relative text-gray-600 hover:text-[var(--accent)] transition">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">3</span>
+      </button>
+      <button class="text-gray-600 hover:text-[var(--accent)] transition">
+        <i data-lucide="bell" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Layout -->
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar lg:flex">
+      <div class="flex items-center gap-3 mb-8 border-b border-white/20 pb-4">
+        <img src="https://via.placeholder.com/50" class="w-12 h-12 rounded-full border-2 border-[var(--accent)]" alt="Farmer profile">
+        <div>
+          <h4 class="font-semibold text-white">John Doe</h4>
+          <p class="text-sm text-[var(--light-green)]">Active Farmer</p>
+        </div>
+      </div>
+
+      <nav class="flex-1">
+        <ul class="space-y-1">
+          <li><a href="/pages/farmer/dashboard.html"><i data-lucide="home" class="w-5 h-5"></i>Dashboard</a></li>
+          <li class="active"><a href="#"><i data-lucide="user" class="w-5 h-5"></i>Profile</a></li>
+          <li><a href="#"><i data-lucide="package" class="w-5 h-5"></i>Uploads</a></li>
+          <li><a href="#"><i data-lucide="dollar-sign" class="w-5 h-5"></i>Payments</a></li>
+          <li><a href="#"><i data-lucide="truck" class="w-5 h-5"></i>Shipments</a></li>
+          <li><a href="#"><i data-lucide="bar-chart-2" class="w-5 h-5"></i>Analytics</a></li>
+          <li><a href="#"><i data-lucide="settings" class="w-5 h-5"></i>Settings</a></li>
+        </ul>
+      </nav>
+
+      <div class="mt-auto space-y-2 pt-4 border-t border-white/10">
+        <button class="flex items-center gap-2 text-gray-200 w-full text-sm p-2 rounded-md hover:bg-white/10 transition">
+          <i data-lucide="help-circle" class="w-5 h-5"></i>Help & Support
+        </button>
+        <button onclick="window.location.href='/pages/signpage/signinpage.html'" class="flex items-center gap-2 text-red-300 w-full text-sm p-2 rounded-md hover:bg-white/10 transition">
+          <i data-lucide="log-out" class="w-5 h-5"></i>Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 bg-[var(--background)] p-6 md:p-10 overflow-y-auto">
+      <h1 class="text-3xl font-bold mb-6 text-[var(--primary)]">My Profile</h1>
+
+      <!-- Profile Info -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6 flex items-center gap-6 transition flex-col md:flex-row">
+          <img src="/images/indoor-shot-glad-young-bearded-man-mustache-wears-denim-shirt-smiles-happily.jpg" class="w-24 h-24 rounded-full object-cover ring-2 ring-[var(--accent)]" alt="">
+          <table class="w-full text-gray-700 text-sm">
+            <tr><td class="font-semibold text-sm">Name</td><td class="text-2xsm">John Doe</td></tr>
+            <tr><td class="font-semibold text-sm">Email</td><td class="text-2xsm">johndoe@example.com</td></tr>
+            <tr><td class="font-semibold text-sm">Phone</td><td>07XX XXX XXX</td></tr>
+            <tr><td class="font-semibold text-sm">DOB</td><td>01 Jan 1990</td></tr>
+          </table>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6 flex items-center gap-6 transition flex-col">
+          <img src="/images/download (1).jpeg" class="w-24 h-24 rounded-full object-cover ring-2 ring-[var(--accent)]" alt="">
+          <div>
+            <h2 class="font-semibold text-lg text-[var(--primary)]">Paying Account</h2>
+            <p class="text-gray-600">XXXXXXXX XXX XX098</p>
+            <p class="text-gray-600">07XX XX XX 96</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg p-6 mb-8 transition">
+        <div id="calendar" class="w-full h-[500px]"></div>
+      </div>
+
+      <!-- Upcoming Activities -->
+      <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4 text-[var(--primary)]">Upcoming Activities</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold text-[var(--primary)]">Coffee Pickup</h5>
+            <p class="text-sm text-gray-500">Monday 4:00–6:00</p>
+            <button class="mt-2 text-[var(--accent)] text-sm underline">Set Reminder</button>
+          </div>
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold text-[var(--primary)]">Shipment Preparation</h5>
+            <p class="text-sm text-gray-500">Tuesday 10:00–12:00</p>
+            <button class="mt-2 text-[var(--accent)] text-sm underline">Set Reminder</button>
+          </div>
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold text-[var(--primary)]">Payment Confirmation</h5>
+            <p class="text-sm text-gray-500">Friday 3:00–5:00</p>
+            <button class="mt-2 text-[var(--accent)] text-sm underline">Set Reminder</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold text-[var(--primary)]">Recent Orders</h2>
+          <button class="text-[var(--accent)] hover:underline text-sm">View All</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-gray-700 text-sm">
+            <thead>
+              <tr class="border-b bg-[var(--light-green)]/30">
+                <th class="p-3 font-semibold">Order ID</th>
+                <th class="p-3 font-semibold">Buyer</th>
+                <th class="p-3 font-semibold">Amount</th>
+                <th class="p-3 font-semibold">Status</th>
+                <th class="p-3 font-semibold">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b hover:bg-gray-50">
+                <td class="p-3">ORD-2025-156</td>
+                <td class="p-3">Coffee World Inc.</td>
+                <td class="p-3">$2,775.00</td>
+                <td class="p-3"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Completed</span></td>
+                <td class="p-3">Apr 15, 2025</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-50">
+                <td class="p-3">ORD-2025-155</td>
+                <td class="p-3">Brew Haven Ltd.</td>
+                <td class="p-3">$3,750.00</td>
+                <td class="p-3"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Processing</span></td>
+                <td class="p-3">Apr 10, 2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.getElementById("sidebar").classList.toggle("open");
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+        initialView: 'dayGridMonth',
+        height: 550,
+        events: [
+          { title: 'Coffee Pickup', start: '2025-11-03' },
+          { title: 'Shipment Prep', start: '2025-11-05' },
+          { title: 'Payment Confirm', start: '2025-11-08' },
+        ],
+      });
+      calendar.render();
+    });
+  </script>
+</body>
+</html>
