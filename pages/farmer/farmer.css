@@ -458,7 +458,7 @@ main{
 
 /* Sidebar Styles */
 .sidebar {
-  width: var(--sidebar-width);
+  /* width: var(--sidebar-width); */
   background: var(--primary);
   color: white;
   display: flex;
