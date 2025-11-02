@@ -3,323 +3,284 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Profile</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/pages/farmer/farmer.css">
-  <!-- <script src="https://unpkg.com/lucide@latest"></script> -->
+  <title>Farmer Profile | Mulinga Connect</title>
+
+  <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
-  
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FullCalendar -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary: #013236;
+      --accent: #4EA771;
+      --light-green: #C1E6BA;
+      --background: #EAF8E7;
+      --sidebar-width: 260px;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--background);
+      color: #1e293b;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: var(--primary);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh; /* full height */
+      width: var(--sidebar-width);
+      padding: 1.5rem;
+      overflow-y: scroll; /* enable scroll */
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) ;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 10px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+      background-color: var(--primary);
+    }
+
+    .sidebar nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      color: #e2e8f0;
+    }
+
+    .sidebar nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+
+    .sidebar nav ul li.active a {
+      background: var(--accent);
+      
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        z-index: 50;
+        width: 80%;
+        max-width: 320px;
+      }
+      .sidebar.open {
+        left: 0;
+      }
+    }
+  </style>
 </head>
-<body>
- <nav class="top-nav">
-    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
-      <i data-lucide="menu"></i>
-    </button>
-    <div class="left-nav">
-        <div class="logo-container">
-            <svg class="logo-small" width="48" height="56" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347" fill="#EEAD2B"/>
-            </svg>
-        </div>
-        <div class="nav-head">
-          <h3>Mulinga connect</h3>
-          <p>Kiambu County · Farmer Dashboard</p>
-        </div>
-    </div>
-    <div class="right-nav">
-      <button class="messages-btn" aria-label="View Messages">
-        <i data-lucide="message-circle"></i>
-        <span class="badge">3</span>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Top Navbar -->
+  <nav class="flex justify-between items-center bg-[--primary] shadow-md px-6 py-2 sticky top-0 z-50">
+    <div class="flex items-center gap-4">
+      <button id="menu-toggle" class="lg:hidden text-gray-700">
+        <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
-      <button class="notifications-btn" aria-label="View Notifications">
-        <i data-lucide="bell"></i>
+      
+      <div class="flex items-center gap-2">
+        <svg width="88" height="102" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347C62.2104 92.3449 60.2308 92.4063 58.2423 92.5727C59.8322 92.8223 61.4177 93.164 63.0163 93.3041C66.5201 93.6151 69.9933 94.0005 73.484 94.0312C80.5924 94.0925 87.4073 92.7172 93.6704 89.1652C93.802 89.0866 93.9571 89.0571 94.1084 89.082C94.0036 89.2545 93.8896 89.4212 93.7667 89.5813C90.8453 93.03 87.0871 95.6707 82.8523 97.2503C77.9426 99.1686 72.827 99.9351 67.5888 100.058C60.9403 100.215 54.4275 99.2125 47.9761 97.754C42.405 96.4926 36.8603 95.1261 31.2848 93.8866C26.4232 92.8136 21.5223 91.942 16.5293 91.7931C10.9057 91.6223 5.48349 92.4369 0.51244 95.2969C0.388638 95.3595 0.261427 95.415 0.131401 95.4634L0 95.3013C0.652587 94.6575 1.2789 93.9874 1.96215 93.3786C5.46597 90.2777 9.62238 88.5608 14.1686 87.7068C18.5155 86.8719 22.9607 86.6727 27.3649 87.1155C31.8542 87.5535 36.3172 88.3068 40.7802 89.0032C42.8562 89.3273 44.9059 89.8485 46.9688 90.2777C47.1664 90.3039 47.3652 90.32 47.5644 90.3259C46.5439 89.5025 45.6811 88.8148 44.8271 88.136C39.8035 84.0146 35.3886 79.3458 31.9987 73.7747C28.356 67.9101 26.3143 61.1931 26.0772 54.2934C25.7969 46.3441 27.654 38.8591 31.0395 31.7463C37.2632 18.677 46.8067 8.51156 58.7767 0.535983C59.4643 0.0980049 60.1782 -0.226108 60.9665 0.198731C61.7549 0.62357 61.9345 1.3988 61.9652 2.26162C62.1526 6.68786 63.1178 11.0465 64.8164 15.1382C67.0063 20.4946 69.3714 25.7723 71.6839 31.0718C73.5365 35.3071 75.3498 39.5642 76.3484 44.0973C76.8345 46.3178 77.0666 48.5997 77.3776 50.8597C77.4186 51.1664 77.3471 51.4776 77.1761 51.7356C75.1001 54.4905 73.0022 57.2235 70.8342 59.9258C71.4842 57.5304 71.743 55.0457 71.6007 52.5678C71.4781 49.4113 70.8113 46.2998 69.6298 43.3702C67.7596 38.6795 65.688 34.0676 63.6952 29.4338C61.8338 25.1109 60.0731 20.7618 59.4468 16.0535C59.3329 15.2214 59.2628 14.3849 59.2278 13.5527C59.1971 12.8519 59.0614 12.2388 58.4044 11.8665C57.7474 11.4942 57.143 11.7263 56.5649 12.0942C52.9422 14.4416 49.5671 17.1505 46.4914 20.1793C42.0429 24.4759 38.2767 29.4266 35.3229 34.8603C32.9206 39.1776 31.2665 43.8704 30.4307 48.7399C28.7839 59.0718 31.5213 68.1905 38.1786 76.1879C40.5086 78.9954 43.2109 81.413 45.9746 83.7781C47.214 84.838 48.1644 86.2439 49.2506 87.4746C50.1266 88.4776 51.0551 89.4718 51.9924 90.4354C52.2407 90.6326 52.5317 90.769 52.8421 90.8339C56.7006 92.0734 60.257 91.2719 63.7346 89.3842C67.6764 87.2337 70.6152 84.0759 73.3263 80.6247C75.9542 77.2478 78.547 73.7966 81.4508 70.6519C83.3735 68.5627 85.8306 66.9554 88.0205 65.1334L88.857 64.4239L88.6818 64.1742Z" fill="#EEAD2B"/>
+            <path d="M51.7908 85.4731C50.0389 83.8131 49.163 81.7284 48.5191 79.5166C47.2709 75.0886 47.3278 70.5906 47.8359 66.0706C48.506 60.1098 50.1834 54.3941 52.0449 48.7179C53.3106 44.8506 54.3048 40.9132 54.5764 36.8356C54.8964 32.3864 54.1813 27.9235 52.4872 23.797C51.9135 22.3867 51.2653 21.0115 50.547 19.3822C51.4229 19.9297 52.15 20.3282 52.8113 20.8275C55.6801 23.0174 57.4189 25.9913 58.5795 29.333C59.7585 32.8292 60.3505 36.4965 60.3314 40.1861C60.3593 45.0728 59.4402 49.9185 57.6247 54.4555C55.8056 59.028 54.0815 63.6355 52.4522 68.278C51.2927 71.5948 50.7004 75.0832 50.7003 78.5968C50.6944 80.7333 51.0059 82.8588 51.6244 84.9037C51.6945 85.092 51.7427 85.2804 51.7908 85.4731Z" fill="#EEAD2B"/>
+            <path d="M92.3828 97.1671C67.3304 116.705 32.9973 117.139 9.21069 97.2941C9.40993 97.3283 9.60618 97.3781 9.7976 97.443C15.8766 100.328 22.1976 102.673 28.6876 104.451C34.7929 106.103 41.068 107.048 47.3892 107.267C55.3935 107.476 63.3875 106.559 71.1364 104.543C76.2949 103.209 81.3625 101.545 86.308 99.5628C88.1256 98.8446 89.9344 98.1088 91.7477 97.373C91.9535 97.2854 92.1857 97.2153 92.3828 97.1671Z" fill="#EEAD2B"/>
+        </svg>
+
+        <div>
+            
+          <h3 class="font-semibold text-lg text-white">Mulinga Connect</h3>
+          <p class="text-sm text-white">Kiambu County · Farmer Dashboard</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="relative text-gray-600 hover:text-[var(--accent)] transition">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">3</span>
+      </button>
+      <button class="text-gray-600 hover:text-[var(--accent)] transition">
+        <i data-lucide="bell" class="w-5 h-5"></i>
       </button>
     </div>
   </nav>
-  
-<main>
-   <aside class="sidebar">
-    <button class="close-menu" id="close-menu" aria-label="Close navigation menu">
-      <i data-lucide="x"></i>
-    </button>
-    <div class="profile-section">
-      <div class="profile-image">
-        <img src="https://via.placeholder.com/50" alt="Farmer profile" class="avatar">
-      </div>
-      <div class="profile-info">
-        <h4 id="farmer-name-sidebar">John Doe</h4>
-        <p class="farmer-status">Active Farmer</p>
-      </div>
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li ><a href="/pages/farmer/dashboard.html" aria-current="page">
-          <i data-lucide="home"></i>
-          <span>Dashboard</span>
-        </a></li>
-        <li class="active"><a href="/pages/farmer/profile.html">
-          <i data-lucide="user"></i>
-          <span>Profile</span>
-        </a></li>
-        <li><a href="/pages/farmer/produce.html">
-          <i data-lucide="package"></i>
-          <span>Uploads</span>
-        </a></li>
-        <li><a href="/pages/farmer/payments.html">
-          <i data-lucide="dollar-sign"></i>
-          <span>Payments</span>
-        </a></li>
-        <li><a href="/pages/farmer/shipments.html">
-          <i data-lucide="truck"></i>
-          <span>Shipments</span>
-        </a></li>
-        <li><a href="reviews.html">
-          <i data-lucide="star"></i>
-          <span>Reviews</span>
-        </a></li>
-        <li><a href="notifications.html">
-          <i data-lucide="bell"></i>
-          <span>Notifications</span>
-        </a></li>
-         <li><a href="notifications.html">
-          <i data-lucide="bell"></i>
-          <span>Investment</span>
-        </a></li>
-        <li><a href="analytics.html">
-          <i data-lucide="bar-chart-2"></i>
-          <span>Analytics</span>
-        </a></li>
-        <li><a href="settings.html">
-          <i data-lucide="settings"></i>
-          <span>Settings</span>
-        </a></li>
-      </ul>
-    </nav>
-    <div class="sidebar-footer">
-      <button class="help-button">
-        <i data-lucide="help-circle"></i>
-        <span>Help & Support</span>
+
+  <!-- Layout -->
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar lg:flex">
+        <button id="close-toggle" class="lg:hidden text-gray-50 right-0 absolute">
+        <i data-lucide="x" class="w-11 h-11"></i>
       </button>
-      <button class="logout-button" onclick="window.location.href='/pages/signpage/signinpage.html'">
-        <i data-lucide="log-out"></i>
-        <span>Logout</span>
-      </button>
-    </div>
-  </aside>
+      <div class="flex items-center gap-3 mb-8 border-b border-white/20 pb-4">
+        <img src="/images/indoor-shot-glad-young-bearded-man-mustache-wears-denim-shirt-smiles-happily.jpg" class="w-12 h-12 rounded-full border-2 border-[var(--accent)]" alt="Farmer profile">
+        <div>
+          <h4 class="font-semibold text-white">John Doe</h4>
+          <p class="text-sm text-[var(--light-green)]">Active Farmer</p>
+        </div>
+      </div>
 
+      <nav class="flex-1">
+        <ul class="space-y-1">
+          <li><a href="/pages/farmer/dashboard.html"><i data-lucide="home" class="w-5 h-5"></i>Dashboard</a></li>
+          <li class="active"><a href="#"><i data-lucide="user" class="w-5 h-5"></i>Profile</a></li>
+          <li><a href="#"><i data-lucide="package" class="w-5 h-5"></i>Uploads</a></li>
+          <li><a href="#"><i data-lucide="dollar-sign" class="w-5 h-5"></i>Payments</a></li>
+          <li><a href="#"><i data-lucide="truck" class="w-5 h-5"></i>Shipments</a></li>
+          <li><a href="#"><i data-lucide="bar-chart-2" class="w-5 h-5"></i>Analytics</a></li>
+          <li><a href="#"><i data-lucide="settings" class="w-5 h-5"></i>Settings</a></li>
+        </ul>
+      </nav>
 
+      <div class="mt-auto space-y-2 pt-4 border-t border-white/10">
+        <button class="flex items-center gap-2 text-gray-200 w-full text-sm p-2 rounded-md hover:bg-white/10 transition">
+          <i data-lucide="help-circle" class="w-5 h-5"></i>Help & Support
+        </button>
+        <button onclick="window.location.href='/pages/signpage/signinpage.html'" class="flex items-center gap-2 text-red-300 w-full text-sm p-2 rounded-md hover:bg-white/10 transition">
+          <i data-lucide="log-out" class="w-5 h-5"></i>Logout
+        </button>
+      </div>
+    </aside>
 
+    <!-- Main Content -->
+    <main class="flex-1 bg-[var(--background)] p-6 md:p-10 overflow-y-auto">
+      <h1 class="text-3xl font-bold mb-6 text-[var(--primary)]">My Profile</h1>
 
+      <!-- Profile Info -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6 flex items-center gap-4 transition sm:flex-col md:flex-row">
+          <img src="/images/indoor-shot-glad-young-bearded-man-mustache-wears-denim-shirt-smiles-happily.jpg" class="w-20 h-20 rounded-full object-cover ring-2 ring-[var(--accent)]" alt="">
+          <table class="w-full text-gray-700 text-sm">
+            <tr><td class="font-semibold text-sm">Name</td><td class="text-2xsm">John Doe</td></tr>
+            <tr><td class="font-semibold text-sm">Email</td><td class="text-2xsm">johndoe@example.com</td></tr>
+            <tr><td class="font-semibold text-sm">Phone</td><td>07XX XXX XXX</td></tr>
+            <tr><td class="font-semibold text-sm">DOB</td><td>01 Jan 1990</td></tr>
+          </table>
+        </div>
 
-
-
-  <div class="dashboard-container">
-    <div class="dashboard-content">
-      <h1 class="dashboard-title">My Profile</h1>
-      
-      <!-- details Grid -->
-        <div class="profile-item">
-            <div class="my-item">
-                <div class="upper-item">
-            <div class="activity-profile">
-                <div class="potrait">
-                    <img id="profilePic" src="/images/indoor-shot-glad-young-bearded-man-mustache-wears-denim-shirt-smiles-happily.jpg" alt="">
-                </div>
-              <div class="activity-detail">
-                <table>
-                    <tr>
-                        <td><strong>Name</strong></td>
-                        <td>--------</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Email:</strong></td>
-                        <td>---------</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Phone</strong></td>
-                        <td>-----------</td>
-                    </tr>
-                    <tr>
-                        <td><strong>DOB</strong></td>
-                        <td>----------</td>
-                    </tr>
-                </table>
-                
-                
-
-            </div>
-          </div>
-
-          <div class="activity-profile">
-                <div class="potrait">
-                    <img id="profilePic" src="/images/download (1).jpeg" alt="">
-                </div>
-              <div class="activity-detail">
-                <h2>Paying account</h2>
-                <p>XXXXXXXX XXX XX098</p>
-                <p>07XX XX XX 96</p>
-            </div>
-          </div>
-
-          <!-- calendargrid -->
-            
-          </div>
-
-          <div class="my-item">
-                <div class="upper-item">
-            <div class="activity-profile calendar ">
-              <div id="calendar"></div>
-          </div>
-
-          <!-- upcoming activities -->
-              
-          </div>
-<div class="bg-var(--background) p-6 rounded-2xl shadow">
-        <h2 class="text-xl font-semibold mb-4">Upcoming Activities</h2>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div class="p-4 border rounded-xl hover:shadow-md transition">
-            <h5 class="font-semibold">Coffee Pickup</h5>
-            <p class="text-sm text-gray-500">Monday 4:00–6:00</p>
-            <button class="mt-2 text-[#4EA771] text-sm underline">Set Reminder</button>
-          </div>
-          <div class="p-4 border rounded-xl hover:shadow-md transition">
-            <h5 class="font-semibold">Shipment Preparation</h5>
-            <p class="text-sm text-gray-500">Tuesday 10:00–12:00</p>
-            <button class="mt-2 text-[#4EA771] text-sm underline">Set Reminder</button>
-          </div>
-          <div class="p-4 border rounded-xl hover:shadow-md transition">
-            <h5 class="font-semibold">Payment Confirmation</h5>
-            <p class="text-sm text-gray-500">Friday 3:00–5:00</p>
-            <button class="mt-2 text-[#4EA771] text-sm underline">Set Reminder</button>
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6 flex items-center gap-4 transition flex-row">
+          <img src="/ecommerce-images/Premium Vector" class="w-20 h-20 rounded-full object-cover ring-2 ring-[var(--accent)]" alt="">
+          <div>
+            <h2 class="font-semibold text-lg text-[var(--primary)]">Paying Account</h2>
+            <p class="text-gray-600">XXXXXXXX XXX XX098</p>
+            <p class="text-gray-600">07XX XX XX 96</p>
           </div>
         </div>
-      </div> 
-          
+      </div>
+
+      <!-- Calendar -->
+      <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg p-4 mb-8 transition">
+        <div id="calendar" class="w-full h-[500px] text-sm"></div>
+      </div>
+
+      <!-- Upcoming Activities -->
+      <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4 text-[var(--primary)]">Upcoming Activities</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold text-[var(--primary)]">Coffee Pickup</h5>
+            <p class="text-sm text-gray-500">Monday 4:00–6:00</p>
+            <button class="mt-2 text-[var(--accent)] text-sm underline">Set Reminder</button>
           </div>
-
-
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold text-[var(--primary)]">Shipment Preparation</h5>
+            <p class="text-sm text-gray-500">Tuesday 10:00–12:00</p>
+            <button class="mt-2 text-[var(--accent)] text-sm underline">Set Reminder</button>
           </div>
+          <div class="p-4 border rounded-xl hover:shadow-md transition">
+            <h5 class="font-semibold text-[var(--primary)]">Payment Confirmation</h5>
+            <p class="text-sm text-gray-500">Friday 3:00–5:00</p>
+            <button class="mt-2 text-[var(--accent)] text-sm underline">Set Reminder</button>
+          </div>
+        </div>
+      </div>
 
-
-
-
-    
-     
-
-
-    </div>
-    
+      <!-- Recent Orders -->
+      <div class="bg-white rounded-2xl shadow-sm hover:shadow-md p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold text-[var(--primary)]">Recent Orders</h2>
+          <button class="text-[var(--accent)] hover:underline text-sm">View All</button>
+        </div>
+        <div class="overflow-x-hidden">
+          <table class="w-full text-left text-gray-700 text-sm">
+            <thead>
+              <tr class="border-b bg-[var(--light-green)]/30">
+                <th class="p-1 font-semibold">Order ID</th>
+                <th class="p-1 font-semibold">Buyer</th>
+                <th class="p-1 font-semibold">Amount</th>
+                <th class="p-1 font-semibold">Status</th>
+                <th class="p-1 font-semibold">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b hover:bg-gray-50 text-2xsm">
+                <td class="p-1">ORD-2025-156</td>
+                <td class="p-1">Coffee World Inc.</td>
+                <td class="p-1">$2,775.00</td>
+                <td class="p-1"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Completed</span></td>
+                <td class="p-1">Apr 15, 2025</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-50">
+                <td class="p-2">ORD-2025-155</td>
+                <td class="p-2">Brew Haven Ltd.</td>
+                <td class="p-2">$3,750.00</td>
+                <td class="p-2"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Processing</span></td>
+                <td class="p-2">Apr 10, 2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
   </div>
-
-  <div class="card mt-6">
-                <div class="flex justify-between items-center mb-6">
-                  <h2 class="text-xl font-semibold">Recent Orders</h2>
-                  <button class="text-sm text-[#4EA771] hover:underline">View All</button>
-                </div>
-                <div class="overflow-x-auto">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Order ID</th>
-                        <th>Buyer</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="text-sm border-t">
-                        <td>ORD-2025-156</td>
-                        <td>Coffee World Inc.</td>
-                        <td>$2,775.00</td>
-                        <td><span class="badge badge-success">Completed</span></td>
-                        <td>Apr 15, 2025</td>
-                      </tr>
-                      <tr>
-                        <td>ORD-2025-155</td>
-                        <td>Brew Haven Ltd.</td>
-                        <td>$3,750.00</td>
-                        <td><span class="badge badge-warning">Processing</span></td>
-                        <td>Apr 10, 2025</td>
-                      </tr>
-                      <tr>
-                        <td>ORD-2025-154</td>
-                        <td>Bean Brothers Co.</td>
-                        <td>$8,000.00</td>
-                        <td><span class="badge badge-success">Completed</span></td>
-                        <td>Mar 28, 2025</td>
-                      </tr>
-                      <tr>
-                        <td>ORD-2025-154</td>
-                        <td>Bean Brothers Co.</td>
-                        <td>$8,000.00</td>
-                        <td><span class="badge badge-success">Completed</span></td>
-                        <td>Mar 28, 2025</td>
-                      </tr>
-                      <tr>
-                        <td>ORD-2025-154</td>
-                        <td>Bean Brothers Co.</td>
-                        <td>$8,000.00</td>
-                        <td><span class="badge badge-success">Completed</span></td>
-                        <td>Mar 28, 2025</td>
-                      </tr>
-                      <tr>
-                        <td>ORD-2025-154</td>
-                        <td>Bean Brothers Co.</td>
-                        <td>$8,000.00</td>
-                        <td><span class="badge badge-success">Completed</span></td>
-                        <td>Mar 28, 2025</td>
-                      </tr>
-                      <tr>
-                        <td>ORD-2025-154</td>
-                        <td>Bean Brothers Co.</td>
-                        <td>$8,000.00</td>
-                        <td><span class="badge badge-success">Completed</span></td>
-                        <td>Mar 28, 2025</td>
-                      </tr>
-                      <tr>
-                        <td>ORD-2025-154</td>
-                        <td>Bean Brothers Co.</td>
-                        <td>$8,000.00</td>
-                        <td><span class="badge badge-success">Completed</span></td>
-                        <td>Mar 28, 2025</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-  </div>
-   
-  </main>
 
   <script>
-   
-    document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
 
-         //lucide.createIcons();
-         const calendarEl = document.getElementById("calendar");
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: "dayGridMonth",
-        height: 500,
-        headerToolbar: {
-            left: "prev,next today",
-            center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay",
-  },
-  events: [
-    { title: "Pickup Scheduled", start: "2025-10-23" },
-    { title: "Payment Release", start: "2025-10-25" },
-    { title: "Shipment #1234", start: "2025-10-28" },
-  ],
-});
-  calendar.render();  
-});
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.getElementById("sidebar").classList.toggle("open");
+    });
+    document.getElementById("close-toggle").addEventListener("click", ()=>{
+        document.getElementById("sidebar").classList.remove("open");
+    })
 
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+        initialView: 'dayGridMonth',
+        height: 400,
+        events: [
+          { title: 'Coffee Pickup', start: '2025-11-03' },
+          { title: 'Shipment Prep', start: '2025-11-05' },
+          { title: 'Payment Confirm', start: '2025-11-08' },
+        ],
+      });
+      calendar.render();
+    });
   </script>
 </body>
 </html>
