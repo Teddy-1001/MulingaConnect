@@ -1478,11 +1478,7 @@ footer p{
       background-color: #FFCDC7;
       color: #8B0000;
     }
-  .profile-main{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
+ 
 
   /* //shipment */
   .progress {
