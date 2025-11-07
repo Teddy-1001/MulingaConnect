@@ -420,10 +420,16 @@
       <h2 class="text-xl font-semibold tracking-tight text-center md:text-left">Explore Our Best Coffees</h2>
       <div class="flex flex-wrap justify-center md:justify-end items-center gap-3">
         <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
-          <option>All Types</option><option>Arabica</option><option>Robusta</option><option>Blend</option>
+          <option>All Types</option>
+          <option>Arabica</option>
+          <option>Robusta</option>
+          <option>Blend</option>
         </select>
         <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
-          <option>All Regions</option><option>Central Kenya</option><option>Western Kenya</option><option>Mt. Elgon</option>
+          <option>All Regions</option>
+          <option>Central Kenya</option>
+          <option>Western Kenya</option>
+          <option>Mt. Elgon</option>
         </select>
         <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
           <option>Sort by Price</option><option>Low to High</option><option>High to Low</option>
@@ -435,31 +441,10 @@
     </div>
   </section>
 
-  <!-- ☕ Product Grid -->
+  <!-- Products Grid -->
   <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6 max-w-7xl mx-auto">
-    <!-- product card -->
-    <!-- <div class="coffee-card bg-white rounded-2xl overflow-hidden group">
-      <div class="relative">
-        <img src="/ecommerce-images/Gourmet_Beans_533x51f1.jpg" alt="Gourmet Coffee" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ">
-        <button class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 text-white font-medium backdrop-blur-sm">
-          <span class="px-4 py-2 bg-[#4EA771] rounded-full shadow-md hover:bg-[#3c875a] transition">Quick View</span>
-        </button>
-      </div>
-      <div class="p-5 space-y-2">
-        <h3 class="text-lg font-semibold flex justify-between items-center">
-          Gourmet
-          <svg class="w-4 h-4 text-[#4EA771]" fill="currentColor" viewBox="0 0 12 11">
-            <path d="M9.3 3.3L2.1 10.5 1 9.3 8.2 2.1H1.8V0.5h9.2v9.2H9.3V3.3z"/>
-          </svg>
-        </h3>
-        <p class="text-sm text-gray-500">Premium Arabica beans from smallholder farmers in Kenya.</p>
-        <div class="pt-2 flex justify-between items-center">
-          <span class="font-semibold">From KSh 1,300.00</span>
-          <a href="#" class="text-[#4EA771] text-sm font-medium hover:underline">View Details</a>
-        </div>
-        <button class="add-to-cart bg-green-700  text-white px-4 py-2 rounded-md mt-2 hover:bg-green-900 transition" data-name="Coffee" data-price="price" data-image="img">Add to Cart</button>
-      </div>
-    </div> -->
+    <!-- product cards -->
+    
 </div>
 
   
@@ -529,6 +514,8 @@
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h12m-5 4a1 1 0 100-2 1 1 0 000 2zm-6 0a1 1 0 100-2 1 1 0 000 2z" />
   </svg>
+ <span id="click-count" class="ml-1 text-sm font-semibold">0</span>
+
 </button>
 
 <!-- 🧺 Collapsible Cart Drawer -->
@@ -562,7 +549,7 @@
 
   <!-- alert message -->
    <div id="customAlert" class="alert">
-  <p id="alertMessage">"Coffee added successfully"</p>
+  <p id="alertMessage"></p>
   <button id="closeAlert">OK</button>
 </div>
 </div>
@@ -699,7 +686,7 @@ closeAlert.addEventListener('click', () => alertBox.classList.remove('show'));
  document.addEventListener("click", (e)=>{
     
     if(e.target.classList.contains("add-to-cart")){
-        showAlert("coffee added to your cart")
+        showAlert("Coffee added to your cart")
         const name=e.target.dataset.name;
         const price = parseFloat(e.target.dataset.price);
         const image =e.target.dataset.image;
@@ -744,6 +731,21 @@ closeAlert.addEventListener('click', () => alertBox.classList.remove('show'));
       UpdateCartUI();
     }
   });
+
+
+
+
+  // Cart count
+    const addToCartBtn = document.classList('add-to-cart');
+    const cartCount = document.getElementById('click-count');
+    let count = 0;
+
+    addToCartBtn.addEventListener('click', () => {
+      count++;
+      cartCount.textContent = count;
+      addToCartBtn.textContent = 'Added ✓';
+      setTimeout(() => addToCartBtn.textContent = 'Add to Cart', 1000);
+    });
  
 
 
