@@ -29,3 +29,20 @@
     display: none;
   }
 }
+
+/* Explicit named helpers to ensure theme color utilities are present */
+@layer utilities {
+  .bg-primary { background-color: #013236; }
+  .text-primary { color: #013236; }
+  .border-primary { border-color: #013236; }
+
+  .bg-accent { background-color: #4EA771; }
+  .text-accent { color: #4EA771; }
+
+  .bg-light-green { background-color: #C1E6BA; }
+  .bg-background { background-color: #EAF8E7; }
+  .bg-coffee-light { background-color: #f8f3ee; }
+  .text-coffee-brown { color: #795b5b; }
+  .bg-gold { background-color: #EEAD2B; }
+  .bg-cream { background-color: #F9F6F1; }
+}
