@@ -1,612 +1,784 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MulingaConnect — Coffee Export Platform</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MulingaConnect — Coffee Export Platform</title>
+    <link rel="stylesheet" href="../../css/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #EAF8E7;
-      color: #013236;
-      scroll-behavior: smooth;
-    }
-
-    /* ===== NAV LINKS ===== */
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0;
-      height: 2px;
-      background-color: #4EA771;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    .nav-link:hover {
-      color: #4EA771;
-    }
-
-    /* ===== MOBILE MENU ===== */
-    #mobile-menu {
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-    }
-    .menu-open {
-      max-height: 500px;
-      opacity: 1;
-    }
-    .menu-closed {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-    }
-
-    /* ===== COFFEE CARDS ===== */
-    .coffee-card {
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-    .coffee-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-    }
-
-    /* ===== FOOTER ===== */
-    footer.footer {
-      background: #f9f9f8;
-      color: #013236;
-      padding: 4rem 1.5rem 2rem;
-      border-top: 1px solid #e0e0e0;
-    }
-
-    .footer__blocks-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer__logo {
-      filter: brightness(0) saturate(100%);
-      opacity: 0.9;
-      transition: opacity 0.3s ease;
-    }
-    .footer__logo:hover {
-      opacity: 1;
-    }
-
-    .footerIcon-text {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-    .footerIcon-text svg {
-      color: #4EA771;
-      flex-shrink: 0;
-    }
-
-    .footer__blocks-wrapper a {
-      color: #013236;
-      text-decoration: none;
-      position: relative;
-      transition: color 0.25s ease;
-    }
-    .footer__blocks-wrapper a:hover {
-      color: #4EA771;
-    }
-    .footer__blocks-wrapper a::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0%;
-      height: 1px;
-      background-color: #4EA771;
-      transition: width 0.3s ease;
-    }
-    .footer__blocks-wrapper a:hover::after {
-      width: 100%;
-    }
-
-    .footer__list-social {
-      display: flex;
-      gap: 1rem;
-      justify-content: flex-start;
-      margin-top: 1.2rem;
-    }
-    .footer__list-social .icon {
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-    .footer__list-social a:hover .icon {
-      transform: translateY(-3px);
-      color: #4EA771;
-    }
-
-    .footer__content-middle {
-      border-top: 1px solid #e5e5e5;
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    /* ===== CART DRAWER ===== */
-    .cart-button {
-      position: fixed;
-      bottom: 1.8rem;
-      right: 1.8rem;
-      background: #4EA771;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, background 0.3s ease;
-      z-index: 1001;
-    }
-
-    .cart-button:hover {
-      background: #3c8a5c;
-      transform: scale(1.07);
-    }
-
-    .cart-drawer__overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-
-    .cart-drawer__panel {
-      position: fixed;
-      top: 0;
-      right: -420px;
-      width: 380px;
-      max-width: 100%;
-      height: 100%;
-      background: #fff;
-      box-shadow: -4px 0 14px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
-      transition: right 0.4s ease;
-      z-index: 1001;
-      overflow-y: auto;
-    }
-
-    .cart-drawer__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .cart-drawer__header h2 {
-      font-size: 1.25rem;
-      color: #013236;
-      font-weight: 600;
-    }
-
-    .cart-drawer__close {
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      color: #666;
-      cursor: pointer;
-    }
-
-    .cart-drawer__content {
-      flex: 1;
-      padding: 1rem;
-    }
-
-    .cart-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      background: #f8f9f8;
-      border-radius: 10px;
-      padding: 0.6rem;
-    }
-
-    .cart-item img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-right: 0.75rem;
-    }
-
-    .cart-item__details h4 {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #013236;
-      font-weight: 500;
-    }
-
-    .cart-item__details p {
-      font-size: 0.85rem;
-      color: #666;
-    }
-
-    .cart-item__remove {
-      margin-left: auto;
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      color: #888;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    .cart-item__remove:hover {
-      color: #e44;
-    }
-
-    .cart-drawer__footer {
-      border-top: 1px solid #eee;
-      padding: 1rem;
-    }
-
-    .cart-drawer__total {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      color: #013236;
-    }
-
-    .cart-drawer__checkout {
-      background: #4EA771;
-      color: #fff;
-      border: none;
-      width: 100%;
-      padding: 0.9rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .cart-drawer__checkout:hover {
-      background: #3c8a5c;
-    }
-
-    .cart-drawer.active .cart-drawer__overlay {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cart-drawer.active .cart-drawer__panel {
-      right: 0;
-    }
-    .cart-drawer__panel {
-  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-    
-
-    /* ===== RESPONSIVENESS ===== */
-    @media (max-width: 768px) {
-      .coffee-card img {
-        height: 220px;
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #eaf8e7;
+        color: #013236;
+        scroll-behavior: smooth;
       }
+
+      /* ===== NAV LINKS ===== */
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background-color: #4ea771;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link:hover {
+        color: #4ea771;
+      }
+
+      /* ===== MOBILE MENU ===== */
+      #mobile-menu {
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+      }
+      .menu-open {
+        max-height: 500px;
+        opacity: 1;
+      }
+      .menu-closed {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+
+      /* ===== COFFEE CARDS ===== */
+      .coffee-card {
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .coffee-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ===== FOOTER ===== */
+      footer.footer {
+        background: #f9f9f8;
+        color: #013236;
+        padding: 4rem 1.5rem 2rem;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .footer__blocks-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer__logo {
+        filter: brightness(0) saturate(100%);
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+      }
+      .footer__logo:hover {
+        opacity: 1;
+      }
+
+      .footerIcon-text {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 1rem;
+        font-size: 0.95rem;
+      }
+      .footerIcon-text svg {
+        color: #4ea771;
+        flex-shrink: 0;
+      }
+
+      .footer__blocks-wrapper a {
+        color: #013236;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.25s ease;
+      }
+      .footer__blocks-wrapper a:hover {
+        color: #4ea771;
+      }
+      .footer__blocks-wrapper a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0%;
+        height: 1px;
+        background-color: #4ea771;
+        transition: width 0.3s ease;
+      }
+      .footer__blocks-wrapper a:hover::after {
+        width: 100%;
+      }
+
+      .footer__list-social {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+        margin-top: 1.2rem;
+      }
+      .footer__list-social .icon {
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .footer__list-social a:hover .icon {
+        transform: translateY(-3px);
+        color: #4ea771;
+      }
+
+      .footer__content-middle {
+        border-top: 1px solid #e5e5e5;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #555;
+      }
+
+      /* ===== CART DRAWER ===== */
+      .cart-button {
+        position: fixed;
+        bottom: 1.8rem;
+        right: 1.8rem;
+        background: #4ea771;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background 0.3s ease;
+        z-index: 1001;
+      }
+
+      .cart-button:hover {
+        background: #3c8a5c;
+        transform: scale(1.07);
+      }
+
+      .cart-drawer__overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
       .cart-drawer__panel {
-        width: 90%;
+        position: fixed;
+        top: 0;
+        right: -420px;
+        width: 380px;
+        max-width: 100%;
+        height: 100%;
+        background: #fff;
+        box-shadow: -4px 0 14px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        transition: right 0.4s ease;
+        z-index: 1001;
+        overflow-y: auto;
       }
-      header .max-w-7xl {
+
+      .cart-drawer__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cart-drawer__header h2 {
+        font-size: 1.25rem;
+        color: #013236;
+        font-weight: 600;
+      }
+
+      .cart-drawer__close {
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: #666;
+        cursor: pointer;
+      }
+
+      .cart-drawer__content {
+        flex: 1;
         padding: 1rem;
       }
-    }
 
-    @media (max-width: 480px) {
-      h2, h3 {
+      .cart-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        background: #f8f9f8;
+        border-radius: 10px;
+        padding: 0.6rem;
+      }
+
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 0.75rem;
+      }
+
+      .cart-item__details h4 {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #013236;
+        font-weight: 500;
+      }
+
+      .cart-item__details p {
+        font-size: 0.85rem;
+        color: #666;
+      }
+
+      .cart-item__remove {
+        margin-left: auto;
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        color: #888;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+      .cart-item__remove:hover {
+        color: #e44;
+      }
+
+      .cart-drawer__footer {
+        border-top: 1px solid #eee;
+        padding: 1rem;
+      }
+
+      .cart-drawer__total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        color: #013236;
+      }
+
+      .cart-drawer__checkout {
+        background: #4ea771;
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 0.9rem;
+        border-radius: 8px;
         font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
       }
-      .footer__blocks-container {
-        gap: 1.8rem;
+
+      .cart-drawer__checkout:hover {
+        background: #3c8a5c;
       }
-      .cart-button {
-        width: 48px;
-        height: 48px;
-        bottom: 1.2rem;
-        right: 1.2rem;
+
+      .cart-drawer.active .cart-drawer__overlay {
+        opacity: 1;
+        visibility: visible;
       }
-    }
-     
-    .alert {
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  display: none;
-  z-index: 1000;
-}
-.alert.show {
-  display: block;
-  animation: fadeIn 0.4s ease;
-}
-#closeAlert {
-  background: #4EA771;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s ease;
-}
-#closeAlert:hover {
-  background: #3c8a5c;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -60%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
-}
-  </style>
-</head>
 
-<body class="overflow-x-hidden">
+      .cart-drawer.active .cart-drawer__panel {
+        right: 0;
+      }
+      .cart-drawer__panel {
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-  <!-- 🌿 Sticky Elegant Header -->
-  <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/85 shadow-sm border-b border-[#C1E6BA]/40">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-2 sm:px-6">
-      <a href="#" class="flex items-center gap-2">
-        <img src="/ecommerce-images/Black_Icon-015ed0.png" alt="MulingaConnect" class="h-9 sm:h-32 rounded-lg shadow-sm hover:scale-150 transition 4s ease-in">
-        <span class="font-extrabold text-xl sm:text-2xl">MulingaConnect</span>
-      </a>
+      /* ===== RESPONSIVENESS ===== */
+      @media (max-width: 768px) {
+        .coffee-card img {
+          height: 220px;
+        }
+        .cart-drawer__panel {
+          width: 90%;
+        }
+        header .max-w-7xl {
+          padding: 1rem;
+        }
+      }
 
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link text-[17px]">Home</a>
-        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link text-[17px]">Farmers</a>
-        <a href="#" class="nav-link text-[17px]">Buyers</a>
-        <a href="#" class="nav-link text-[17px]">Dashboard</a>
-        <a href="/pages/ecommerce/communicate.html" class="nav-link text-[17px]">Contact</a>
-      </nav>
+      @media (max-width: 480px) {
+        h2,
+        h3 {
+          font-size: 1rem;
+        }
+        .footer__blocks-container {
+          gap: 1.8rem;
+        }
+        .cart-button {
+          width: 48px;
+          height: 48px;
+          bottom: 1.2rem;
+          right: 1.2rem;
+        }
+      }
 
-      <div class="hidden md:flex items-center gap-3">
-        <a href="#" class="px-5 py-2 border border-[#013236] rounded-full hover:bg-[#013236] hover:text-white transition-all duration-300">Login</a>
-        <a href="#" class="px-5 py-2 bg-[#4EA771] text-white rounded-full shadow-md hover:bg-[#3d885b] transition-all duration-300">Register</a>
-      </div>
+      .alert {
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        display: none;
+        z-index: 1000;
+      }
+      .alert.show {
+        display: block;
+        animation: fadeIn 0.4s ease;
+      }
+      #closeAlert {
+        background: #4ea771;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.3s ease;
+      }
+      #closeAlert:hover {
+        background: #3c8a5c;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -60%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+    </style>
+  </head>
 
-      <button id="menu-toggle" class="md:hidden text-[#013236]" aria-label="Open Menu">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-7 h-7" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
-        </svg>
-      </button>
-    </div>
+  <body class="overflow-x-hidden">
+    <!-- 🌿 Sticky Elegant Header -->
+    <header
+      class="sticky top-0 z-50 backdrop-blur-lg bg-white/85 shadow-sm border-b border-[#C1E6BA]/40"
+    >
+      <div
+        class="max-w-7xl mx-auto flex justify-between items-center px-4 py-2 sm:px-6"
+      >
+        <a href="#" class="flex items-center gap-2">
+          <img
+            src="/ecommerce-images/Black_Icon-015ed0.png"
+            alt="MulingaConnect"
+            class="h-9 sm:h-32 rounded-lg shadow-sm hover:scale-150 transition 4s ease-in"
+          />
+          <span class="font-extrabold text-xl sm:text-2xl">MulingaConnect</span>
+        </a>
 
-    <div id="mobile-menu" class="menu-closed bg-white/95 backdrop-blur-md border-t border-[#C1E6BA]/30">
-      <nav class="flex flex-col space-y-4 px-6 py-5 text-lg">
-        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link">Home</a>
-        <a href="/pages/ecommerce/welcometobuy.html" class="nav-link">Farmers</a>
-        <a href="#" class="nav-link">Buyers</a>
-        <a href="#" class="nav-link">Dashboard</a>
-        <a href="#" class="nav-link">Contact</a>
-        <div class="pt-4 border-t border-[#C1E6BA]/40 flex flex-col space-y-3">
-          <a href="#" class="nav-link">Login</a>
-          <a href="#" class="text-[#4EA771] font-semibold">Register</a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            href="./welcometobuy.html"
+            class="nav-link text-[17px]"
+            >Home</a
+          >
+          <a
+            href="./welcometobuy.html"
+            class="nav-link text-[17px]"
+            >Farmers</a
+          >
+          <a href="#" class="nav-link text-[17px]">Buyers</a>
+          <a href="#" class="nav-link text-[17px]">Dashboard</a>
+          <a
+            href="./communicate.html"
+            class="nav-link text-[17px]"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="#"
+            class="px-5 py-2 border border-[#013236] rounded-full hover:bg-[#013236] hover:text-white transition-all duration-300"
+            >Login</a
+          >
+          <a
+            href="#"
+            class="px-5 py-2 bg-[#4EA771] text-white rounded-full shadow-md hover:bg-[#3d885b] transition-all duration-300"
+            >Register</a
+          >
         </div>
-      </nav>
-    </div>
-  </header>
 
-  <!-- 🪴 Filter Section -->
-  <section class="bg-[#EAF8E7] py-6 border-b border-[#C1E6BA]/50">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <h2 class="text-xl font-semibold tracking-tight text-center md:text-left">Explore Our Best Coffees</h2>
-      <div class="flex flex-wrap justify-center md:justify-end items-center gap-3">
-        <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
-          <option>All Types</option>
-          <option>Arabica</option>
-          <option>Robusta</option>
-          <option>Blend</option>
-        </select>
-        <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
-          <option>All Regions</option>
-          <option>Central Kenya</option>
-          <option>Western Kenya</option>
-          <option>Mt. Elgon</option>
-        </select>
-        <select class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]">
-          <option>Sort by Price</option><option>Low to High</option><option>High to Low</option>
-        </select>
-        <button class="px-5 py-2 bg-[#4EA771] text-white rounded-xl hover:bg-[#3c875a] transition text-sm font-medium">
-          Apply Filters
+        <button
+          id="menu-toggle"
+          class="md:hidden text-[#013236]"
+          aria-label="Open Menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            class="w-7 h-7"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 8h16M4 16h16"
+            />
+          </svg>
         </button>
       </div>
-    </div>
-  </section>
 
-  <!-- Products Grid -->
-  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6 max-w-7xl mx-auto">
-    <!-- product cards -->
-    
-</div>
+      <div
+        id="mobile-menu"
+        class="menu-closed bg-white/95 backdrop-blur-md border-t border-[#C1E6BA]/30"
+      >
+        <nav class="flex flex-col space-y-4 px-6 py-5 text-lg">
+          <a href="./welcometobuy.html" class="nav-link">Home</a>
+          <a href="./welcometobuy.html" class="nav-link"
+            >Farmers</a
+          >
+          <a href="#" class="nav-link">Buyers</a>
+          <a href="#" class="nav-link">Dashboard</a>
+          <a href="#" class="nav-link">Contact</a>
+          <div
+            class="pt-4 border-t border-[#C1E6BA]/40 flex flex-col space-y-3"
+          >
+            <a href="#" class="nav-link">Login</a>
+            <a href="#" class="text-[#4EA771] font-semibold">Register</a>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-  
-  <footer class="footer">
-    <div class="footer__blocks-container">
-      <div>
-        <svg width="74" height="85" viewBox="0 0 74 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M67.0014 48.4852C66.3892 48.8889 65.7704 49.286 65.1582 49.6964C61.9187 51.8538 59.4038 54.7426 56.9882 57.7373C55.4694 59.6168 53.9572 61.5063 52.3324 63.2932C50.7158 65.0108 48.7519 66.3645 46.5714 67.264C46.7302 66.8703 46.8626 66.6022 46.9552 66.2978C47.617 64.2363 48.2358 62.1615 48.9009 60.1033C50.2709 55.8578 52.5409 52.2476 56.3198 49.7294C58.3317 48.4058 60.5785 47.6117 62.8916 47.0392C66.0749 46.2483 69.2747 45.5336 72.4878 44.7924C72.7648 44.7145 73.0505 44.6723 73.3382 44.6666C73.5669 44.7035 73.7896 44.7714 74 44.8685C73.9272 45.0705 73.8222 45.2593 73.689 45.4277C73.2753 45.7983 72.812 46.116 72.3918 46.4767C70.6843 47.9558 69.6155 49.8949 68.6493 51.8803C67.4713 54.2926 66.366 56.738 65.2774 59.1933C63.877 62.3805 61.4539 65.0098 58.3913 66.6651C55.294 68.4023 51.9585 69.2329 48.484 69.6101C47.0016 69.769 45.5059 69.8153 44.0036 69.941C45.2048 70.1297 46.4026 70.3878 47.6104 70.4937C50.2577 70.7286 52.8817 71.0198 55.519 71.043C60.8896 71.0893 66.0385 70.0502 70.7704 67.3666C70.8698 67.3072 70.987 67.2849 71.1013 67.3037C71.0221 67.4341 70.936 67.56 70.8432 67.681C68.6359 70.2866 65.7965 72.2817 62.5971 73.4751C58.8876 74.9244 55.0227 75.5035 51.0651 75.5962C46.042 75.7153 41.1214 74.9575 36.2472 73.8556C32.0381 72.9026 27.8489 71.8702 23.6365 70.9337C19.9634 70.123 16.2606 69.4645 12.4883 69.352C8.23951 69.223 4.14292 69.8385 0.387162 71.9993C0.293626 72.0465 0.197515 72.0885 0.0992772 72.125L0 72.0026C0.493046 71.5161 0.966242 71.0099 1.48245 70.5499C4.12968 68.2071 7.26996 66.91 10.7047 66.2647C13.989 65.6339 17.3474 65.4834 20.6749 65.818C24.0666 66.1489 27.4385 66.718 30.8104 67.2442C32.3789 67.489 33.9276 67.8828 35.4861 68.2071C35.6354 68.2269 35.7856 68.2391 35.9361 68.2435C35.1651 67.6214 34.5133 67.1019 33.868 66.589C30.0725 63.4752 26.737 59.9478 24.1758 55.7387C21.4237 51.3078 19.8811 46.233 19.702 41.0201C19.4902 35.0142 20.8933 29.359 23.4512 23.9851C28.1533 14.111 35.3637 6.4307 44.4073 0.404949C44.9268 0.0740452 45.4662 -0.17083 46.0618 0.150147C46.6574 0.471123 46.7931 1.05683 46.8163 1.70871C46.9579 5.05285 47.6871 8.34595 48.9704 11.4373C50.625 15.4842 52.4118 19.4716 54.159 23.4756C55.5587 26.6754 56.9287 29.8918 57.6831 33.3166C58.0504 34.9943 58.2258 36.7183 58.4608 38.4258C58.4918 38.6575 58.4377 38.8927 58.3085 39.0876C56.7401 41.169 55.155 43.2338 53.5171 45.2755C54.0081 43.4657 54.2037 41.5885 54.0961 39.7163C54.0035 37.3315 53.4998 34.9807 52.6071 32.7673C51.1941 29.2233 49.6289 25.7389 48.1233 22.238C46.717 18.9719 45.3868 15.6861 44.9136 12.1289C44.8275 11.5001 44.7746 10.8681 44.7481 10.2394C44.7249 9.70996 44.6224 9.24669 44.126 8.96542C43.6297 8.68416 43.173 8.85953 42.7362 9.13749C39.9992 10.911 37.4492 12.9576 35.1254 15.246C31.7645 18.4921 28.919 22.2326 26.6874 26.3379C24.8723 29.5997 23.6226 33.1452 22.9912 36.8242C21.747 44.6302 23.8151 51.5196 28.8449 57.5619C30.6053 59.683 32.647 61.5096 34.735 63.2965C35.6714 64.0973 36.3895 65.1595 37.2101 66.0893C37.8719 66.8471 38.5734 67.5982 39.2816 68.3262C39.4692 68.4752 39.689 68.5783 39.9235 68.6273C42.8388 69.5638 45.5257 68.9583 48.1531 67.5321C51.1312 65.9073 53.3516 63.5215 55.3999 60.914C57.3853 58.3627 59.3443 55.7552 61.5382 53.3793C62.9908 51.8009 64.8472 50.5865 66.5017 49.2099L67.1338 48.6739L67.0014 48.4852Z" fill="#EEAD2B"/>
-          <path d="M39.1294 64.5771C37.8058 63.323 37.1439 61.7479 36.6575 60.0768C35.7144 56.7314 35.7575 53.333 36.1413 49.9181C36.6476 45.4145 37.9149 41.0962 39.3213 36.8076C40.2776 33.8858 41.0288 30.9109 41.2339 27.8302C41.4757 24.4687 40.9355 21.0969 39.6555 17.9792C39.222 16.9137 38.7323 15.8747 38.1896 14.6437C38.8514 15.0574 39.4007 15.3585 39.9004 15.7357C42.0678 17.3902 43.3815 19.6371 44.2584 22.1619C45.1492 24.8033 45.5964 27.5741 45.582 30.3616C45.6031 34.0536 44.9086 37.7147 43.537 41.1425C42.1627 44.5971 40.86 48.0782 39.629 51.5858C38.753 54.0917 38.3055 56.7273 38.3054 59.3819C38.301 60.996 38.5363 62.6019 39.0036 64.1469C39.0566 64.2892 39.093 64.4315 39.1294 64.5771Z" fill="#EEAD2B"/>
-          <path d="M69.7976 73.4123C50.8699 88.1739 24.9304 88.5015 6.95898 73.5082C7.10951 73.534 7.25778 73.5717 7.4024 73.6207C11.9953 75.8006 16.7709 77.5723 21.6743 78.9152C26.287 80.1638 31.028 80.8777 35.8038 81.0429C41.8513 81.2013 47.891 80.5084 53.7455 78.9847C57.6428 77.9769 61.4715 76.7202 65.208 75.2223C66.5812 74.6796 67.9478 74.1237 69.3178 73.5678C69.4733 73.5016 69.6487 73.4487 69.7976 73.4123Z" fill="#EEAD2B"/>
-        </svg>
-        <p class="mt-3 text-sm leading-relaxed text-gray-600">
-          Empowering farmers across Africa to share their finest coffee with the world.
-          Transparent trade. Fair prices. Sustainable impact.
-        </p>
-        <div class="footerIcon-text mt-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span>info@mulingaconnect.com</span>
+    <!-- 🪴 Filter Section -->
+    <section class="bg-[#EAF8E7] py-6 border-b border-[#C1E6BA]/50">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+      >
+        <h2
+          class="text-xl font-semibold tracking-tight text-center md:text-left"
+        >
+          Explore Our Best Coffees
+        </h2>
+        <div
+          class="flex flex-wrap justify-center md:justify-end items-center gap-3"
+        >
+          <select
+            class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]"
+          >
+            <option>All Types</option>
+            <option>Arabica</option>
+            <option>Robusta</option>
+            <option>Blend</option>
+          </select>
+          <select
+            class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]"
+          >
+            <option>All Regions</option>
+            <option>Central Kenya</option>
+            <option>Western Kenya</option>
+            <option>Mt. Elgon</option>
+          </select>
+          <select
+            class="px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-[#4EA771]"
+          >
+            <option>Sort by Price</option>
+            <option>Low to High</option>
+            <option>High to Low</option>
+          </select>
+          <button
+            class="px-5 py-2 bg-[#4EA771] text-white rounded-xl hover:bg-[#3c875a] transition text-sm font-medium"
+          >
+            Apply Filters
+          </button>
         </div>
-        <div class="footerIcon-text">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M12 21s8-6.58 8-11a8 8 0 0 0-16 0c0 4.42 8 11 8 11z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <span>Nairobi, Kenya</span>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <div
+      id="product-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6 max-w-7xl mx-auto"
+    >
+      <!-- product cards -->
+    </div>
+
+    <footer class="footer">
+      <div class="footer__blocks-container">
+        <div>
+          <svg
+            width="74"
+            height="85"
+            viewBox="0 0 74 85"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M67.0014 48.4852C66.3892 48.8889 65.7704 49.286 65.1582 49.6964C61.9187 51.8538 59.4038 54.7426 56.9882 57.7373C55.4694 59.6168 53.9572 61.5063 52.3324 63.2932C50.7158 65.0108 48.7519 66.3645 46.5714 67.264C46.7302 66.8703 46.8626 66.6022 46.9552 66.2978C47.617 64.2363 48.2358 62.1615 48.9009 60.1033C50.2709 55.8578 52.5409 52.2476 56.3198 49.7294C58.3317 48.4058 60.5785 47.6117 62.8916 47.0392C66.0749 46.2483 69.2747 45.5336 72.4878 44.7924C72.7648 44.7145 73.0505 44.6723 73.3382 44.6666C73.5669 44.7035 73.7896 44.7714 74 44.8685C73.9272 45.0705 73.8222 45.2593 73.689 45.4277C73.2753 45.7983 72.812 46.116 72.3918 46.4767C70.6843 47.9558 69.6155 49.8949 68.6493 51.8803C67.4713 54.2926 66.366 56.738 65.2774 59.1933C63.877 62.3805 61.4539 65.0098 58.3913 66.6651C55.294 68.4023 51.9585 69.2329 48.484 69.6101C47.0016 69.769 45.5059 69.8153 44.0036 69.941C45.2048 70.1297 46.4026 70.3878 47.6104 70.4937C50.2577 70.7286 52.8817 71.0198 55.519 71.043C60.8896 71.0893 66.0385 70.0502 70.7704 67.3666C70.8698 67.3072 70.987 67.2849 71.1013 67.3037C71.0221 67.4341 70.936 67.56 70.8432 67.681C68.6359 70.2866 65.7965 72.2817 62.5971 73.4751C58.8876 74.9244 55.0227 75.5035 51.0651 75.5962C46.042 75.7153 41.1214 74.9575 36.2472 73.8556C32.0381 72.9026 27.8489 71.8702 23.6365 70.9337C19.9634 70.123 16.2606 69.4645 12.4883 69.352C8.23951 69.223 4.14292 69.8385 0.387162 71.9993C0.293626 72.0465 0.197515 72.0885 0.0992772 72.125L0 72.0026C0.493046 71.5161 0.966242 71.0099 1.48245 70.5499C4.12968 68.2071 7.26996 66.91 10.7047 66.2647C13.989 65.6339 17.3474 65.4834 20.6749 65.818C24.0666 66.1489 27.4385 66.718 30.8104 67.2442C32.3789 67.489 33.9276 67.8828 35.4861 68.2071C35.6354 68.2269 35.7856 68.2391 35.9361 68.2435C35.1651 67.6214 34.5133 67.1019 33.868 66.589C30.0725 63.4752 26.737 59.9478 24.1758 55.7387C21.4237 51.3078 19.8811 46.233 19.702 41.0201C19.4902 35.0142 20.8933 29.359 23.4512 23.9851C28.1533 14.111 35.3637 6.4307 44.4073 0.404949C44.9268 0.0740452 45.4662 -0.17083 46.0618 0.150147C46.6574 0.471123 46.7931 1.05683 46.8163 1.70871C46.9579 5.05285 47.6871 8.34595 48.9704 11.4373C50.625 15.4842 52.4118 19.4716 54.159 23.4756C55.5587 26.6754 56.9287 29.8918 57.6831 33.3166C58.0504 34.9943 58.2258 36.7183 58.4608 38.4258C58.4918 38.6575 58.4377 38.8927 58.3085 39.0876C56.7401 41.169 55.155 43.2338 53.5171 45.2755C54.0081 43.4657 54.2037 41.5885 54.0961 39.7163C54.0035 37.3315 53.4998 34.9807 52.6071 32.7673C51.1941 29.2233 49.6289 25.7389 48.1233 22.238C46.717 18.9719 45.3868 15.6861 44.9136 12.1289C44.8275 11.5001 44.7746 10.8681 44.7481 10.2394C44.7249 9.70996 44.6224 9.24669 44.126 8.96542C43.6297 8.68416 43.173 8.85953 42.7362 9.13749C39.9992 10.911 37.4492 12.9576 35.1254 15.246C31.7645 18.4921 28.919 22.2326 26.6874 26.3379C24.8723 29.5997 23.6226 33.1452 22.9912 36.8242C21.747 44.6302 23.8151 51.5196 28.8449 57.5619C30.6053 59.683 32.647 61.5096 34.735 63.2965C35.6714 64.0973 36.3895 65.1595 37.2101 66.0893C37.8719 66.8471 38.5734 67.5982 39.2816 68.3262C39.4692 68.4752 39.689 68.5783 39.9235 68.6273C42.8388 69.5638 45.5257 68.9583 48.1531 67.5321C51.1312 65.9073 53.3516 63.5215 55.3999 60.914C57.3853 58.3627 59.3443 55.7552 61.5382 53.3793C62.9908 51.8009 64.8472 50.5865 66.5017 49.2099L67.1338 48.6739L67.0014 48.4852Z"
+              fill="#EEAD2B"
+            />
+            <path
+              d="M39.1294 64.5771C37.8058 63.323 37.1439 61.7479 36.6575 60.0768C35.7144 56.7314 35.7575 53.333 36.1413 49.9181C36.6476 45.4145 37.9149 41.0962 39.3213 36.8076C40.2776 33.8858 41.0288 30.9109 41.2339 27.8302C41.4757 24.4687 40.9355 21.0969 39.6555 17.9792C39.222 16.9137 38.7323 15.8747 38.1896 14.6437C38.8514 15.0574 39.4007 15.3585 39.9004 15.7357C42.0678 17.3902 43.3815 19.6371 44.2584 22.1619C45.1492 24.8033 45.5964 27.5741 45.582 30.3616C45.6031 34.0536 44.9086 37.7147 43.537 41.1425C42.1627 44.5971 40.86 48.0782 39.629 51.5858C38.753 54.0917 38.3055 56.7273 38.3054 59.3819C38.301 60.996 38.5363 62.6019 39.0036 64.1469C39.0566 64.2892 39.093 64.4315 39.1294 64.5771Z"
+              fill="#EEAD2B"
+            />
+            <path
+              d="M69.7976 73.4123C50.8699 88.1739 24.9304 88.5015 6.95898 73.5082C7.10951 73.534 7.25778 73.5717 7.4024 73.6207C11.9953 75.8006 16.7709 77.5723 21.6743 78.9152C26.287 80.1638 31.028 80.8777 35.8038 81.0429C41.8513 81.2013 47.891 80.5084 53.7455 78.9847C57.6428 77.9769 61.4715 76.7202 65.208 75.2223C66.5812 74.6796 67.9478 74.1237 69.3178 73.5678C69.4733 73.5016 69.6487 73.4487 69.7976 73.4123Z"
+              fill="#EEAD2B"
+            />
+          </svg>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">
+            Empowering farmers across Africa to share their finest coffee with
+            the world. Transparent trade. Fair prices. Sustainable impact.
+          </p>
+          <div class="footerIcon-text mt-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@mulingaconnect.com</span>
+          </div>
+          <div class="footerIcon-text">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M12 21s8-6.58 8-11a8 8 0 0 0-16 0c0 4.42 8 11 8 11z"
+              ></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Nairobi, Kenya</span>
+          </div>
+        </div>
+
+        <div class="footer__blocks-wrapper">
+          <h3 class="font-semibold uppercase tracking-wide mb-3">Explore</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Meet the Farmers</a></li>
+            <li><a href="#">Coffee Marketplace</a></li>
+            <li><a href="#">Sustainability Impact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__blocks-wrapper">
+          <h3 class="font-semibold uppercase tracking-wide mb-3">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#">Investor Portal</a></li>
+            <li><a href="#">Supply Chain Analytics</a></li>
+            <li><a href="#">Automated Reports</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__blocks-wrapper">
+          <h3 class="font-semibold uppercase tracking-wide mb-3">
+            Stay Connected
+          </h3>
+          <form class="flex gap-2 mt-2">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              class="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-[#4EA771]"
+            />
+            <button
+              class="bg-[#013236] text-white px-4 py-2 rounded-md hover:bg-[#4EA771] transition"
+            >
+              Subscribe
+            </button>
+          </form>
+          <ul class="footer__list-social">
+            <li>
+              <a href="#"
+                ><svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path></svg
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <rect x="2" y="2" width="16" height="16" rx="4"></rect>
+                  <circle cx="12" cy="12" r="3"></circle></svg
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v8h-4v-8a2 2 0 0 0-4 0v8h-4v-8a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="13"></rect></svg
+              ></a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="footer__blocks-wrapper">
-        <h3 class="font-semibold uppercase tracking-wide mb-3">Explore</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Meet the Farmers</a></li>
-          <li><a href="#">Coffee Marketplace</a></li>
-          <li><a href="#">Sustainability Impact</a></li>
-        </ul>
+      <div class="footer__content-middle">
+        <p>© <span id="year"></span> MulingaConnect. All rights reserved.</p>
       </div>
-
-      <div class="footer__blocks-wrapper">
-        <h3 class="font-semibold uppercase tracking-wide mb-3">Resources</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#">Investor Portal</a></li>
-          <li><a href="#">Supply Chain Analytics</a></li>
-          <li><a href="#">Automated Reports</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__blocks-wrapper">
-        <h3 class="font-semibold uppercase tracking-wide mb-3">Stay Connected</h3>
-        <form class="flex gap-2 mt-2">
-          <input type="email" placeholder="Enter your email" required class="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-[#4EA771]">
-          <button class="bg-[#013236] text-white px-4 py-2 rounded-md hover:bg-[#4EA771] transition">Subscribe</button>
-        </form>
-        <ul class="footer__list-social">
-          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>
-          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><rect x="2" y="2" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3"></circle></svg></a></li>
-          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 0 1 6 6v8h-4v-8a2 2 0 0 0-4 0v8h-4v-8a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="13"></rect></svg></a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer__content-middle">
-      <p>© <span id="year"></span> MulingaConnect. All rights reserved.</p>
-    </div>
-  </footer>
+    </footer>
     <!-- 🛒 Floating Cart Button -->
-<button id="openCart" class="cart-button" aria-label="Open Cart">
-  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h12m-5 4a1 1 0 100-2 1 1 0 000 2zm-6 0a1 1 0 100-2 1 1 0 000 2z" />
-  </svg>
- <span id="click-count" class="ml-1 text-sm font-semibold">0</span>
+    <button id="openCart" class="cart-button" aria-label="Open Cart">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h12m-5 4a1 1 0 100-2 1 1 0 000 2zm-6 0a1 1 0 100-2 1 1 0 000 2z"
+        />
+      </svg>
+      <span id="click-count" class="ml-1 text-sm font-semibold">0</span>
+    </button>
 
-</button>
+    <!-- 🧺 Collapsible Cart Drawer -->
+    <div id="cartDrawer" class="cart-drawer">
+      <div class="cart-drawer__overlay"></div>
+      <div class="cart-drawer__panel">
+        <div class="cart-drawer__header">
+          <h2>Your Cart</h2>
+          <button class="cart-drawer__close" aria-label="Close Cart">
+            &times;
+          </button>
+        </div>
 
-<!-- 🧺 Collapsible Cart Drawer -->
-<div id="cartDrawer" class="cart-drawer">
-  <div class="cart-drawer__overlay"></div>
-  <div class="cart-drawer__panel">
-    <div class="cart-drawer__header">
-      <h2>Your Cart</h2>
-      <button class="cart-drawer__close" aria-label="Close Cart">&times;</button>
-    </div>
-
-    <div class="cart-drawer__content" id="cartItems">
-      <div class="cart-item">
-        <!-- <img src="/ecommerce-images/Gourmet_Beans_533x51f1.jpg" alt="Gourmet Coffee">
+        <div class="cart-drawer__content" id="cartItems">
+          <div class="cart-item">
+            <!-- <img src="/ecommerce-images/Gourmet_Beans_533x51f1.jpg" alt="Gourmet Coffee">
         <div class="cart-item__details">
           <h4>Gourmet Coffee</h4>
           <p>1 × KSh 1,300.00</p>
         </div>
         <button class="cart-item__remove" aria-label="Remove Item">&times;</button> -->
-      </div> 
-    </div>
+          </div>
+        </div>
 
-    <div class="cart-drawer__footer">
-      <div class="cart-drawer__total">
-        <span>Total</span>
-        <span id="cartTotal">Ksh 0</span>
+        <div class="cart-drawer__footer">
+          <div class="cart-drawer__total">
+            <span>Total</span>
+            <span id="cartTotal">Ksh 0</span>
+          </div>
+          <button class="cart-drawer__checkout">Proceed to Checkout</button>
+        </div>
       </div>
-      <button class="cart-drawer__checkout">Proceed to Checkout</button>
+
+      <!-- alert message -->
+      <div id="customAlert" class="alert">
+        <p id="alertMessage"></p>
+        <button id="closeAlert">OK</button>
+      </div>
     </div>
-  </div>
 
-  <!-- alert message -->
-   <div id="customAlert" class="alert">
-  <p id="alertMessage"></p>
-  <button id="closeAlert">OK</button>
-</div>
-</div>
+    <script>
+      ///adding products
+      const products = [
+        {
+          name: "Gourmet Coffee",
+          price: 1300,
+          image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+          description: "Rich Arabica blend with smooth chocolate notes.",
+        },
+        {
+          name: "Kenya AA",
+          price: 2000,
+          image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+          description: "Bright, winey acidity with a full-bodied flavor.",
+        },
+        {
+          name: "Espresso Roast",
+          price: 1400,
+          image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+          description: "Dark roast with caramel and nutty undertones.",
+        },
+        {
+          name: "House Blend",
+          price: 1200,
+          image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+          description: "Balanced, medium roast with hints of fruit and cocoa.",
+        },
+        {
+          name: "House Blend",
+          price: 1200,
+          image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+          description: "Balanced, medium roast with hints of fruit and cocoa.",
+        },
+        {
+          name: "House Blend",
+          price: 1200,
+          image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
+          description: "Balanced, medium roast with hints of fruit and cocoa.",
+        },
+      ];
 
-      
+      const productsGrid = document.getElementById("product-grid");
+      function loadProducts() {
+        productsGrid.innerHTML = "";
+        products.forEach((product) => {
+          const card = document.createElement("div");
+          card.classList.add("coffee-card");
 
-
-
-  <script>
-    ///adding products
-    const products=[
-    {
-        name: "Gourmet Coffee",
-        price: 1300,
-        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
-        description: "Rich Arabica blend with smooth chocolate notes."
-    },
-    {
-        name: "Kenya AA",
-        price: 2000,
-        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
-        description: "Bright, winey acidity with a full-bodied flavor."
-    },
-    {
-        name: "Espresso Roast",
-        price: 1400,
-        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
-        description: "Dark roast with caramel and nutty undertones."
-    },
-    {
-        name: "House Blend",
-        price: 1200,
-        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
-        description: "Balanced, medium roast with hints of fruit and cocoa."
-    },
-     {
-        name: "House Blend",
-        price: 1200,
-        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
-        description: "Balanced, medium roast with hints of fruit and cocoa."
-    },
-     {
-        name: "House Blend",
-        price: 1200,
-        image: "/ecommerce-images/Gourmet_Beans_533x51f1.jpg",
-        description: "Balanced, medium roast with hints of fruit and cocoa."
-    }
-    ]
-
-    const productsGrid=document.getElementById('product-grid')
-    function loadProducts(){
-        productsGrid.innerHTML='';
-        products.forEach(product => {
-            const card = document.createElement('div');
-            card.classList.add('coffee-card');
-
-            card.innerHTML = `
+          card.innerHTML = `
             <div class="relative">
                 <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ">
                 <button class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 text-white font-medium backdrop-blur-sm">
@@ -626,133 +798,115 @@
                      <a href="#" class="text-[#4EA771] text-sm font-medium hover:underline">View Details</a>
                 </div>
                 <button class="add-to-cart bg-green-700  text-white px-4 py-2 rounded-md mt-2 hover:bg-green-900 transition" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Cart</button>
-      </div>`
-      productsGrid.appendChild(card);
+      </div>`;
+          productsGrid.appendChild(card);
+        });
+      }
+      loadProducts();
 
-        })
-    }
-    loadProducts();
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("menu-open");
+        mobileMenu.classList.toggle("menu-closed");
+      });
+    </script>
 
+    <script>
+      const cartDrawer = document.getElementById("cartDrawer");
+      const openCartBtn = document.getElementById("openCart");
+      const closeCartBtn = document.querySelector(".cart-drawer__close");
+      const overlay = document.querySelector(".cart-drawer__overlay");
+      const cartItems = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
 
+      openCartBtn.addEventListener("click", () => {
+        cartDrawer.classList.add("active");
+      });
 
+      closeCartBtn.addEventListener("click", () => {
+        cartDrawer.classList.remove("active");
+      });
 
+      overlay.addEventListener("click", () => {
+        cartDrawer.classList.remove("active");
+      });
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('menu-open');
-      mobileMenu.classList.toggle('menu-closed');
-    });
-  </script>
-  
-  
-  
-  
-  <script>
-  const cartDrawer = document.getElementById("cartDrawer");
-  const openCartBtn = document.getElementById("openCart");
-  const closeCartBtn = document.querySelector(".cart-drawer__close");
-  const overlay = document.querySelector(".cart-drawer__overlay");
-  const cartItems = document.getElementById("cartItems")
-  const cartTotal = document.getElementById("cartTotal")
+      let cart = [];
+      //add to cart
+      const alertBox = document.getElementById("customAlert");
+      const alertMsg = document.getElementById("alertMessage");
+      const closeAlert = document.getElementById("closeAlert");
 
-  openCartBtn.addEventListener("click", () => {
-    cartDrawer.classList.add("active");
-  });
+      function showAlert(mesage) {
+        alertMsg.textContent = mesage;
+        alertBox.classList.add("show");
+        setTimeout(() => alertBox.classList.remove("show"), 3000);
+      }
+      closeAlert.addEventListener("click", () =>
+        alertBox.classList.remove("show")
+      );
 
-  closeCartBtn.addEventListener("click", () => {
-    cartDrawer.classList.remove("active");
-  });
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("add-to-cart")) {
+          showAlert("Coffee added to your cart");
+          const name = e.target.dataset.name;
+          const price = parseFloat(e.target.dataset.price);
+          const image = e.target.dataset.image;
 
-  overlay.addEventListener("click", () => {
-    cartDrawer.classList.remove("active");
-  });
-
-let cart=[];
- //add to cart
-const alertBox = document.getElementById('customAlert');
-const alertMsg = document.getElementById('alertMessage');
-const closeAlert = document.getElementById('closeAlert');
-
-function showAlert(mesage){
-    alertMsg.textContent=mesage;
-    alertBox.classList.add('show')
-    setTimeout(()=> alertBox.classList.remove("show"), 3000)
-}
-closeAlert.addEventListener('click', () => alertBox.classList.remove('show'));
-
-
- document.addEventListener("click", (e)=>{
-    
-    if(e.target.classList.contains("add-to-cart")){
-        showAlert("Coffee added to your cart")
-        const name=e.target.dataset.name;
-        const price = parseFloat(e.target.dataset.price);
-        const image =e.target.dataset.image;
-
-        //checking if exists
-        const existing = cart.find(item=>item.name === name);
-        if (existing) {
-            existing.quantity += 1
+          //checking if exists
+          const existing = cart.find((item) => item.name === name);
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.push({ name, price, image, quantity: 1 });
+          }
+          UpdateCartUI();
         }
-        else{
-            cart.push({name, price, image, quantity: 1})
-        }
-        UpdateCartUI();
-    }
- });
- //update cart display
- function UpdateCartUI(){
-    cartItems.innerHTML = '';
-    let total = 0;
+      });
+      //update cart display
+      function UpdateCartUI() {
+        cartItems.innerHTML = "";
+        let total = 0;
 
-    cart.forEach(item => {
-        total += item.price * item.quantity;
-        cartItems.innerHTML += `
+        cart.forEach((item) => {
+          total += item.price * item.quantity;
+          cartItems.innerHTML += `
         <div class="cart-item">
         <img src="${item.image}" alt="${item.name}">
         <div class="cart-item__details">
           <h4>${item.name}</h4>
-          <p>${item.quantity } X Ksh ${item.price.toLocaleString()}</p>
+          <p>${item.quantity} X Ksh ${item.price.toLocaleString()}</p>
         </div>
-        <button class="cart-item__remove" data-name="${item.name}">&times;</button>
-      </div>`
-    });
-    cartTotal.textContent = `Ksh ${total.toLocaleString()}`
- }
+        <button class="cart-item__remove" data-name="${
+          item.name
+        }">&times;</button>
+      </div>`;
+        });
+        cartTotal.textContent = `Ksh ${total.toLocaleString()}`;
+      }
 
+      // Remove item
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("cart-item__remove")) {
+          const name = e.target.dataset.name;
+          cart = cart.filter((item) => item.name !== name);
+          UpdateCartUI();
+        }
+      });
 
-  // Remove item
-  document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('cart-item__remove')) {
-      const name = e.target.dataset.name;
-      cart = cart.filter(item => item.name !== name);
-      UpdateCartUI();
-    }
-  });
+      // Cart count
+      const addToCartBtn = document.classList("add-to-cart");
+      const cartCount = document.getElementById("click-count");
+      let count = 0;
 
-
-
-
-  // Cart count
-    const addToCartBtn = document.classList('add-to-cart');
-    const cartCount = document.getElementById('click-count');
-    let count = 0;
-
-    addToCartBtn.addEventListener('click', () => {
-      count++;
-      cartCount.textContent = count;
-      addToCartBtn.textContent = 'Added ✓';
-      setTimeout(() => addToCartBtn.textContent = 'Add to Cart', 1000);
-    });
- 
-
-
-
-</script>
-
-
-
-</body>
+      addToCartBtn.addEventListener("click", () => {
+        count++;
+        cartCount.textContent = count;
+        addToCartBtn.textContent = "Added ✓";
+        setTimeout(() => (addToCartBtn.textContent = "Add to Cart"), 1000);
+      });
+    </script>
+  </body>
 </html>

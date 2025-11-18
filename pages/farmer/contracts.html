@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Dashboard | MulingaConnect</title>
+  
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=League+Spartan:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/output.css">
+  <link rel="stylesheet" href="./farmer.css">
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- App Scripts -->
+  <script src="/javascript/main.js" defer></script>
+</head>
+<body>
+    <div class="bg-red">
+        jjjj
+    </div>
+  <nav class="top-nav">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+      <i data-lucide="menu"></i>
+    </button>
+    <div class="left-nav">
+        <div class="logo-container">
+            <svg class="logo-small" width="48" height="56" viewBox="0 0 98 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M88.6818 64.1742C87.8716 64.7085 87.0525 65.2341 86.2423 65.7772C81.9545 68.6328 78.6258 72.4564 75.4286 76.4201C73.4183 78.9078 71.4167 81.4086 69.2662 83.7737C67.1265 86.0471 64.5271 87.8388 61.6411 89.0295C61.8513 88.5083 62.0265 88.1535 62.1491 87.7506C63.0251 85.022 63.8441 82.2758 64.7244 79.5516C66.5376 73.9324 69.5422 69.154 74.5439 65.821C77.2068 64.0691 80.1807 63.0179 83.2421 62.2602C87.4555 61.2135 91.6907 60.2674 95.9435 59.2864C96.3101 59.1833 96.6884 59.1274 97.0691 59.1199C97.3719 59.1687 97.6666 59.2586 97.9451 59.3871C97.8488 59.6545 97.7097 59.9044 97.5334 60.1273C96.9859 60.6178 96.3727 61.0383 95.8165 61.5157C93.5565 63.4734 92.1418 66.04 90.8629 68.6679C89.3037 71.8607 87.8409 75.0974 86.3999 78.3472C84.5465 82.5658 81.3392 86.0458 77.2856 88.2367C73.1861 90.5361 68.7713 91.6354 64.1726 92.1347" fill="#EEAD2B"/>
+            </svg>
+        </div>
+        <div class="nav-head">
+          <h3>Mulinga connect</h3>
+          <p>Kiambu County · Farmer Dashboard</p>
+        </div>
+    </div>
+    <div class="right-nav">
+      <button class="messages-btn" aria-label="View Messages">
+        <i data-lucide="message-circle"></i>
+        <span class="badge">3</span>
+      </button>
+      <button class="notifications-btn" aria-label="View Notifications">
+        <i data-lucide="bell"></i>
+      </button>
+    </div>
+  </nav>
+  
+<main>
+  <aside class="sidebar">
+    <button class="close-menu" id="close-menu" aria-label="Close navigation menu">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="profile-section">
+      <div class="profile-image">
+        <img src="https://via.placeholder.com/50" alt="Farmer profile" class="avatar">
+      </div>
+      <div class="profile-info">
+        <h4 id="farmer-name-sidebar">John Doe</h4>
+        <p class="farmer-status">Active Farmer</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="active"><a href="./dashboard.html" aria-current="page">
+          <i data-lucide="home"></i>
+          <span>Dashboard</span>
+        </a></li>
+        <li><a href="./profile.html">
+          <i data-lucide="user"></i>
+          <span>Profile</span>
+        </a></li>
+        <li><a href="./produce.html">
+          <i data-lucide="package"></i>
+          <span>Uploads</span>
+        </a></li>
+        <li><a href="./payments.html">
+          <i data-lucide="dollar-sign"></i>
+          <span>Payments</span>
+        </a></li>
+        <li><a href="./investment.html">
+          <i data-lucide="dollar-sign"></i>
+          <span>Investments</span>
+        </a></li>
+        <li><a href="./shipments.html">
+          <i data-lucide="truck"></i>
+          <span>Shipments</span>
+        </a></li>
+        <li><a href="reviews.html">
+          <i data-lucide="star"></i>
+          <span>Reviews</span>
+        </a></li>
+        <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Notifications</span>
+        </a></li>
+         <li><a href="notifications.html">
+          <i data-lucide="bell"></i>
+          <span>Investment</span>
+        </a></li>
+        <li><a href="analytics.html">
+          <i data-lucide="bar-chart-2"></i>
+          <span>Analytics</span>
+        </a></li>
+        <li><a href="settings.html">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="help-button">
+        <i data-lucide="help-circle"></i>
+        <span>Help & Support</span>
+      </button>
+      <button class="logout-button" onclick="window.location.href='../signpage/signinpage.html'">
+        <i data-lucide="log-out"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+  
+  <div class="dashboard-container">
+    <div class="dashboard-content">
+      <div class="dashboard-header">
+        <div class="welcome-section">
+          <h1 class="dashboard-title">Farmer's Dashboard</h1>
+          <p class="welcome-message">Welcome back, <span id="farmer-name">John Doe</span></p>
+          <p class="subtitle">Here is your farms overview</p>
+        </div>
+        <button class="upload-btn" >
+        <!-- onclick="window.location.href='/pages/farmer/produce.html' -->
+          <i data-lucide="upload"></i>
+          <span>Upload New Produce</span>
+        </button>
+      </div>
+
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i data-lucide="package" class="stat-icon" style="color:#eead2b;"></i>
+          <p class="stat-value">1,234 kg</p>
+          <p class="stat-label">Total Produce</p>
+        </div>
+
+        <div class="stat-card">
+          <i data-lucide="trending-up" class="stat-icon" style="color:#795b5b;"></i>
+          <p class="stat-value">8</p>
+          <p class="stat-label">Active Shipments</p>
+        </div>
+
+        <div class="stat-card">
+          <i data-lucide="dollar-sign" class="stat-icon" style="color:#eead2b;"></i>
+          <p class="stat-value">$12,450</p>
+          <p class="stat-label">Total Earnings</p>
+        </div>
+
+        <div class="stat-card">
+          <i data-lucide="clock" class="stat-icon" style="color:#795b5b;"></i>
+          <p class="stat-value">3</p>
+          <p class="stat-label">Pending Payments</p>
+        </div>
+      </div>
+      <div class="bottom-section">
+      <!-- Recent Activity -->
+      <div class="recent-activity">
+        <h2 class="activity-title">Recent Activity</h2>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">Shipment #1234 delivered</p>
+              <p class="activity-date">2 hours ago</p>
+            </div>
+            <span class="activity-status yellow">Delivered</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">Payment received for Batch #5678</p>
+              <p class="activity-date">5 hours ago</p>
+            </div>
+            <span class="activity-status green">Paid</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">New produce uploaded - 50kg Arabica AA</p>
+              <p class="activity-date">1 day ago</p>
+            </div>
+            <span class="activity-status purple">Uploaded</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">Pickup scheduled for tomorrow</p>
+              <p class="activity-date">2 days ago</p>
+            </div>
+            <span class="activity-status red">Picked_up</span>
+          </div>
+        </div>
+      </div>
+<!-- /////curent market prices -->
+     <div class="recent-activity">
+        <h2 class="activity-title">Current Market Price</h2>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">Dormans Premium</p>
+              <p class="activity-date">May, 13th 2025</p>
+            </div>
+            <span class="activity-status green">Increase</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">Arabica Coffee</p>
+              <p class="activity-date">5 hours ago</p>
+            </div>
+            <span class="activity-status red">Drop</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">Robusta Premium</p>
+              <p class="activity-date">May, 19th 2025</p>
+            </div>
+            <span class="activity-status red">Volatile</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-info">
+              <p class="activity-action">Excelsa Coffee</p>
+              <p class="activity-date">2 days ago</p>
+            </div>
+            <span class="activity-status beige">Dormant</span>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+    </div>
+  </div>
+  </main>
+  <div class="new-uploading">
+    <div class="upload-container">
+      <button class="modal-close-btn" style="right: 0%; top:0%; position:absolute;">
+          <i class="fas fa-xmark"></i>
+      </button>
+        <form action="submit" id="upload-form">
+            <div class="upper-group ">
+            <div class="left-group">
+           <label for="coffeeType">Coffee Type</label>
+        <div class="input-group">
+        <select name="coffeeTypes" id="coffeeType">
+            <option value="">Arabica</option>
+            <option value="">Robusta</option>
+            <option value="">Excelsa</option>
+            <option value="">Liberica</option>
+            <option value="">Mocha</option>
+            <option value="">Arabica B</option>
+        </select>
+      </div> 
+
+      <label for="qualityGrade">Quality Grade</label>
+        <div class="input-group">
+        <select name="qualityGrade" id="qualityGrade">
+            <option value="">AA</option>
+            <option value="">AB</option>
+            <option value="">BB</option>
+        </select>
+      </div> 
+      </div>
+      <div class="left-group">
+
+      <label for="qualityGrade">Quantity(kg)</label>
+        <div class="input-group w-4">
+            <input type="text" placeholder="Enter quantity">
+      </div> 
+
+        <label for="harvestDate">Harvest Date</label>
+        <div class="input-group">
+            <input type="date" placeholder="mm/dd/yyyy">
+      </div>
+        </div>
+        </div>
+
+        <div class="bottom-group">
+            <label for="location">Farm Location</label>
+            <div class="input-group">
+            <input type="text" placeholder="Enter farm location">
+        </div>  
+        
+        <label for="text">Description</label>
+        <div class="input-group">
+            <input type="text" style="height: 120px; text-align:start;" placeholder="Add details about your produce">
+        </div> 
+
+        <label for="photos">Upload Photos</label>
+        <div class="upload-box" id="uploadBox">
+            <p>Drag & Drop your image here or <span id="browseBtn">browse</span></p>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <img id="previewImage" alt="Image Preview">
+        </div>
+
+        </div> 
+        <button type="submit" style="width: 100%;margin-top: 10px;font-size:medium">Submit</button>
+        </div>
+
+
+        </form>
+    </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const closeMenu = document.getElementById('close-menu');
+      const sidebar = document.querySelector('.sidebar');
+      const mainContent = document.querySelector('.dashboard-container');
+      const overlay = document.createElement('div');
+      overlay.className = 'mobile-overlay';
+      document.body.appendChild(overlay);
+
+      function openSidebar() {
+        sidebar.classList.add('sidebar-open');
+        document.body.style.overflow = 'hidden';
+        overlay.classList.add('active');
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('sidebar-open');
+        document.body.style.overflow = '';
+        overlay.classList.remove('active');
+      }
+
+      if (menuToggle && sidebar && closeMenu) {
+        menuToggle.addEventListener('click', openSidebar);
+        closeMenu.addEventListener('click', closeSidebar);
+
+        // Close sidebar when clicking the overlay
+        overlay.addEventListener('click', closeSidebar);
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 768) {
+              closeSidebar();
+            }
+          }, 250);
+        });
+
+        // Handle swipe gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        document.addEventListener('touchend', function(e) {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+          const swipeDistance = Math.abs(touchEndX - touchStartX);
+          if (swipeDistance > 50) { // Minimum swipe distance
+            if (touchEndX < touchStartX) { // Swipe left
+              closeSidebar();
+            } else if (touchEndX > touchStartX) { // Swipe right
+              if (!sidebar.classList.contains('sidebar-open')) {
+                openSidebar();
+              }
+            }
+          }
+        }
+      }
+
+      // Initialize notifications
+      const notificationBtns = document.querySelectorAll('.notifications-btn, .messages-btn');
+      notificationBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Add notification functionality here
+          console.log('Notification clicked');
+        });
+      });
+
+      // Update farmer name in both places
+      const farmerName = 'John Doe'; // Replace with actual farmer name from backend
+      document.getElementById('farmer-name').textContent = farmerName;
+      document.getElementById('farmer-name-sidebar').textContent = farmerName;
+    });
+
+
+    
+//upload, drag and drop section
+const uploadBox = document.getElementById("uploadBox");
+const fileInput = document.getElementById("fileInput");
+const previewImage = document.getElementById("previewImage");
+const browseBtn = document.getElementById("browseBtn");
+
+browseBtn.addEventListener("click", ()=>fileInput.click());
+uploadBox.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    uploadBox.classList.add("dragover")
+})
+uploadBox.addEventListener("dragleave", () => {
+  uploadBox.classList.remove("dragover");
+});
+uploadBox.addEventListener("drop", (e)=>{
+    e.preventDefault();
+    uploadBox.classList.remove("dragover");
+    const file=e.dataTransfer.files[0];
+    handleFile(file);
+})
+fileInput.addEventListener("change",(e)=>{
+    const file=e.target.files[0];
+    handleFile(file);
+})
+function handleFile(file){
+    if (file&&file.type.startsWith("image/")){
+        const reader = new FileReader();
+        reader.onload = () => {
+            previewImage.src=reader.result;
+            previewImage.style.display="block";
+        };
+        reader.readAsDataURL(file);
+    }else{
+        alert("Please upload image file")
+    }
+}
+
+
+
+//upload new coffee
+const uploadBtn=document.querySelector(".upload-btn");
+const closeBtn=document.querySelector(".modal-close-btn");
+const uploadContainer=document.querySelector(".upload-container")
+const newUploading=document.querySelector(".new-uploading")
+
+uploadBtn.addEventListener("click", ()=>{
+  formDisplay();
+  document.body.style.overflowY="hidden";
+});
+function formDisplay(){
+  newUploading.classList.add("showForm")
+}
+//removing the box
+closeBtn.addEventListener("click", ()=>{
+  removeForm();
+});
+function removeForm(){
+  newUploading.classList.remove("showForm")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,28 +1,34 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class', // Enables manual dark mode toggling
   content: [
     "./pages/**/*.{html,js}",
-    "./javascript/**/*.js",
+    "./javascript/**/*.js"
+  ],
+  safelist: [
+    // Force generate all custom color classes
+    { pattern: /^(bg|text|border|placeholder|caret|ring)-(primary|accent|light-green|background|coffee-brown|coffee-light|gold|cream)$/ },
   ],
   theme: {
     extend: {
       colors: {
-        green: "#4EA771",
-        coffee: "#2B1B0E",
-        cream: "#F9F6F1",
-        gold: "#D4AF37",
-        darkbrown: "#1A120B",
-        primary: "#013236",
-        accent: "#4EA771",
-        "light-green": "#C1E6BA",
-        background: "#EAF8E7",
-        text: "#013236",
+        primary: '#013236',
+        accent: '#4EA771',
+        'light-green': '#C1E6BA',
+        background: '#EAF8E7',
+        'coffee-brown': '#795b5b',
+        'coffee-light': '#f8f3ee',
+        gold: '#EEAD2B',
+        cream: '#F9F6F1'
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        spartan: ['League Spartan', 'sans-serif']
       },
-    },
+      spacing: {
+        'sidebar': '260px'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

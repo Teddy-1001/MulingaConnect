@@ -1,463 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>MulingaConnect | Product</title>
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #EAF8E7;
-      color: #013236;
-      scroll-behavior: smooth;
-    }
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0;
-      height: 2px;
-      background-color: #4EA771;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    .nav-link:hover {
-      color: #4EA771;
-    }
-    #mobile-menu {
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-    }
-    .menu-open {
-      max-height: 500px;
-      opacity: 1;
-    }
-    .menu-closed {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-    }
-     /* ===== FOOTER ===== */
-    footer.footer {
-      background: #f9f9f8;
-      padding: 4rem 1.5rem 2rem;
-      border-top: 1px solid #e0e0e0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/output.css" />
+    <title>MulingaConnect | Product</title>
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #eaf8e7;
+        color: #013236;
+        scroll-behavior: smooth;
+      }
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background-color: #4ea771;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link:hover {
+        color: #4ea771;
+      }
+      #mobile-menu {
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+      }
+      .menu-open {
+        max-height: 500px;
+        opacity: 1;
+      }
+      .menu-closed {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      /* ===== FOOTER ===== */
+      footer.footer {
+        background: #f9f9f8;
+        padding: 4rem 1.5rem 2rem;
+        border-top: 1px solid #e0e0e0;
+      }
 
-    .footer__blocks-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+      .footer__blocks-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-    .footer__logo {
-      filter: brightness(0) saturate(100%);
-      opacity: 0.9;
-      transition: opacity 0.3s ease;
-    }
-    .footer__logo:hover {
-      opacity: 1;
-    }
+      .footer__logo {
+        filter: brightness(0) saturate(100%);
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+      }
+      .footer__logo:hover {
+        opacity: 1;
+      }
 
-    .footerIcon-text {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-    .footerIcon-text svg {
-      color: #4EA771;
-      flex-shrink: 0;
-    }
+      .footerIcon-text {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 1rem;
+        font-size: 0.95rem;
+      }
+      .footerIcon-text svg {
+        color: #4ea771;
+        flex-shrink: 0;
+      }
 
-    .footer__blocks-wrapper a {
-      color: #013236;
-      text-decoration: none;
-      position: relative;
-      transition: color 0.25s ease;
-    }
-    .footer__blocks-wrapper a:hover {
-      color: #4EA771;
-    }
-    .footer__blocks-wrapper a::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0%;
-      height: 1px;
-      background-color: #4EA771;
-      transition: width 0.3s ease;
-    }
-    .footer__blocks-wrapper a:hover::after {
-      width: 100%;
-    }
+      .footer__blocks-wrapper a {
+        color: #013236;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.25s ease;
+      }
+      .footer__blocks-wrapper a:hover {
+        color: #4ea771;
+      }
+      .footer__blocks-wrapper a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0%;
+        height: 1px;
+        background-color: #4ea771;
+        transition: width 0.3s ease;
+      }
+      .footer__blocks-wrapper a:hover::after {
+        width: 100%;
+      }
 
-    .footer__list-social {
-      display: flex;
-      gap: 1rem;
-      justify-content: flex-start;
-      margin-top: 1.2rem;
-    }
-    .footer__list-social .icon {
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-    .footer__list-social a:hover .icon {
-      transform: translateY(-3px);
-      color: #4EA771;
-    }
+      .footer__list-social {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+        margin-top: 1.2rem;
+      }
+      .footer__list-social .icon {
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .footer__list-social a:hover .icon {
+        transform: translateY(-3px);
+        color: #4ea771;
+      }
 
-    .footer__content-middle {
-      border-top: 1px solid #e5e5e5;
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #555;
-    }
-  </style>
-</head>
-<body>
+      .footer__content-middle {
+        border-top: 1px solid #e5e5e5;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header
+      class="top-0 z-50 backdrop-blur-lg bg-white/85 shadow-sm border-b border-[#C1E6BA]/40"
+    >
+      <div
+        class="max-w-7xl mx-auto flex justify-between items-center px-4 py-2 sm:px-6"
+      >
+        <a href="#" class="flex items-center gap-2">
+          <img
+            src="/ecommerce-images/Black_Icon-015ed0.png"
+            alt="MulingaConnect"
+            class="h-9 sm:h-24 rounded-lg shadow-sm hover:scale-110 transition duration-300 ease-in"
+          />
+          <span class="font-extrabold text-xl sm:text-2xl">MulingaConnect</span>
+        </a>
 
-  <!-- HEADER -->
-  <header class=" top-0 z-50 backdrop-blur-lg bg-white/85 shadow-sm border-b border-[#C1E6BA]/40">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-2 sm:px-6">
-      <a href="#" class="flex items-center gap-2">
-        <img src="/ecommerce-images/Black_Icon-015ed0.png" alt="MulingaConnect" class="h-9 sm:h-24 rounded-lg shadow-sm hover:scale-110 transition duration-300 ease-in">
-        <span class="font-extrabold text-xl sm:text-2xl">MulingaConnect</span>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#" class="nav-link text-[17px]">Home</a>
-        <a href="#" class="nav-link text-[17px]">Farmers</a>
-        <a href="#" class="nav-link text-[17px]">Buyers</a>
-        <a href="#" class="nav-link text-[17px]">Dashboard</a>
-        <a href="#" class="nav-link text-[17px]">Contact</a>
-      </nav>
-
-      <!-- CART + AUTH -->
-      <div class="hidden md:flex items-center gap-5">
-        <!-- Cart button -->
-        <button id="cart-btn" class="relative flex items-center gap-1 text-[#013236] hover:text-[#4EA771] transition">
-          🛒
-          <span id="cart-count" class="absolute -top-2 -right-3 bg-[#4EA771] text-white text-xs font-bold rounded-full px-2 py-[1px]">0</span>
-        </button>
-
-        <a href="#" class="px-5 py-2 border border-[#013236] rounded-full hover:bg-[#013236] hover:text-white transition-all duration-300">Login</a>
-        <a href="#" class="px-5 py-2 bg-[#4EA771] text-white rounded-full shadow-md hover:bg-[#3d885b] transition-all duration-300">Register</a>
-      </div>
-
-      <!-- Mobile menu toggle -->
-      <button id="menu-toggle" class="md:hidden text-[#013236]" aria-label="Open Menu">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-7 h-7" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="menu-closed bg-white/95 backdrop-blur-md border-t border-[#C1E6BA]/30">
-      <nav class="flex flex-col space-y-4 px-6 py-5 text-lg">
-        <a href="#" class="nav-link">Home</a>
-        <a href="#" class="nav-link">Farmers</a>
-        <a href="#" class="nav-link">Buyers</a>
-        <a href="#" class="nav-link">Dashboard</a>
-        <a href="#" class="nav-link">Contact</a>
-        <div class="pt-4 border-t border-[#C1E6BA]/40 flex flex-col space-y-3">
-          <a href="#" class="nav-link">Login</a>
-          <a href="#" class="text-[#4EA771] font-semibold">Register</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- PRODUCT SECTION -->
-  <section id="product-details" class="relative bg-[#FAF8F5] py-16">
-    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-
-      <!-- Image -->
-      <div class="relative">
-        <img 
-          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
-          alt="Premium Coffee Beans"
-          class="rounded-2xl shadow-lg transform hover:scale-105 transition duration-500 ease-in-out"
-        />
-        <div class="absolute bottom-4 left-4 bg-white/80 px-4 py-2 rounded-xl text-sm text-gray-700 backdrop-blur-md shadow-md">
-          Freshly Harvested • Organic
-        </div>
-      </div>
-
-      <!-- Info -->
-      <div class="space-y-6">
-        <nav class="w-full py-4" aria-label="Breadcrumb">
-          <div class="flex items-center space-x-2 text-sm text-gray-600">
-            <a href="/" class="text-[#4EA771] hover:underline">Home</a>
-            <span class="text-gray-400">›</span>
-            <a href="/collections/accessories-equipment" class="text-[#4EA771] hover:underline">Accessories & Equipment</a>
-            <span class="text-gray-400">›</span>
-            <span class="text-gray-800 font-medium">Chemex Filter Papers</span>
-          </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#" class="nav-link text-[17px]">Home</a>
+          <a href="#" class="nav-link text-[17px]">Farmers</a>
+          <a href="#" class="nav-link text-[17px]">Buyers</a>
+          <a href="#" class="nav-link text-[17px]">Dashboard</a>
+          <a href="#" class="nav-link text-[17px]">Contact</a>
         </nav>
 
-        <h2 class="text-3xl font-semibold text-[#2C1810]">Premium Arabica Coffee</h2>
-
-        <p class="text-gray-700 leading-relaxed">
-          Handpicked from the highlands of Kenya, our Arabica beans deliver a balanced flavor with notes of chocolate and citrus.
-          Perfect for export or local roasting partners looking for the finest quality.
-        </p>
-
-        <div class="mt-6">
-          <label for="variant-select" class="block text-gray-700 font-medium mb-2">
-            Choose Option
-          </label>
-          <div class="relative">
-            <select
-              id="variant-select"
-              class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-[#4EA771] focus:border-[#4EA771] appearance-none"
+        <!-- CART + AUTH -->
+        <div class="hidden md:flex items-center gap-5">
+          <!-- Cart button -->
+          <button
+            id="cart-btn"
+            class="relative flex items-center gap-1 text-[#013236] hover:text-[#4EA771] transition"
+          >
+            🛒
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-3 bg-[#4EA771] text-white text-xs font-bold rounded-full px-2 py-[1px]"
+              >0</span
             >
-              <option selected>1 box of 100 filters</option>
-              <option>2 boxes of 100 filters</option>
-              <option>Wholesale Pack (1000 filters)</option>
-            </select>
-            <svg xmlns="http://www.w3.org/2000/svg"
-              class="absolute right-3 top-3 w-4 h-4 text-gray-400 pointer-events-none"
-              fill="none" viewBox="0 0 12 11">
-              <path
-                d="M9.33716 3.345L2.16466 10.5175L0.986328 9.33917L8.15799 2.16667H1.83716V0.5H11.0038V9.66667H9.33716V3.345Z"
-                fill="currentColor" />
-            </svg>
+          </button>
+
+          <a
+            href="#"
+            class="px-5 py-2 border border-[#013236] rounded-full hover:bg-[#013236] hover:text-white transition-all duration-300"
+            >Login</a
+          >
+          <a
+            href="#"
+            class="px-5 py-2 bg-[#4EA771] text-white rounded-full shadow-md hover:bg-[#3d885b] transition-all duration-300"
+            >Register</a
+          >
+        </div>
+
+        <!-- Mobile menu toggle -->
+        <button
+          id="menu-toggle"
+          class="md:hidden text-[#013236]"
+          aria-label="Open Menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            class="w-7 h-7"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 8h16M4 16h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobile-menu"
+        class="menu-closed bg-white/95 backdrop-blur-md border-t border-[#C1E6BA]/30"
+      >
+        <nav class="flex flex-col space-y-4 px-6 py-5 text-lg">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Farmers</a>
+          <a href="#" class="nav-link">Buyers</a>
+          <a href="#" class="nav-link">Dashboard</a>
+          <a href="#" class="nav-link">Contact</a>
+          <div
+            class="pt-4 border-t border-[#C1E6BA]/40 flex flex-col space-y-3"
+          >
+            <a href="#" class="nav-link">Login</a>
+            <a href="#" class="text-[#4EA771] font-semibold">Register</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- PRODUCT SECTION -->
+    <section id="product-details" class="relative bg-[#FAF8F5] py-16">
+      <div
+        class="container mx-auto px-6 grid md:grid-cols-2 gap-10 items-center"
+      >
+        <!-- Image -->
+        <div class="relative">
+          <img
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
+            alt="Premium Coffee Beans"
+            class="rounded-2xl shadow-lg transform hover:scale-105 transition duration-500 ease-in-out"
+          />
+          <div
+            class="absolute bottom-4 left-4 bg-white/80 px-4 py-2 rounded-xl text-sm text-gray-700 backdrop-blur-md shadow-md"
+          >
+            Freshly Harvested • Organic
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center gap-6">
-  <span class="text-2xl font-bold text-[#4EA771]">KSh 1,200 / kg</span>
+        <!-- Info -->
+        <div class="space-y-6">
+          <nav class="w-full py-4" aria-label="Breadcrumb">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+              <a href="/" class="text-[#4EA771] hover:underline">Home</a>
+              <span class="text-gray-400">›</span>
+              <a
+                href="/collections/accessories-equipment"
+                class="text-[#4EA771] hover:underline"
+                >Accessories & Equipment</a
+              >
+              <span class="text-gray-400">›</span>
+              <span class="text-gray-800 font-medium"
+                >Chemex Filter Papers</span
+              >
+            </div>
+          </nav>
 
-  <!-- Quantity selector -->
-  <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden w-max">
-    <button id="decrease" class="px-3 py-2 text-gray-600 hover:bg-gray-100 transition">−</button>
-    <input
-      id="quantity"
-      type="number"
-      value="1"
-      min="1"
-      class="w-12 text-center border-x border-gray-200 focus:outline-none"
-    />
-    <button id="increase" class="px-3 py-2 text-gray-600 hover:bg-gray-100 transition">+</button>
-  </div>
+          <h2 class="text-3xl font-semibold text-[#2C1810]">
+            Premium Arabica Coffee
+          </h2>
 
-  <!-- Add to Cart button -->
-  <button
-    id="add-to-cart"
-    class="bg-[#4EA771] text-white px-6 py-2 rounded-lg shadow hover:bg-[#3c8a5c] transition-all duration-300"
-  >
-    Add to Cart
-  </button>
-</div>
-
-        <div class="pt-4 border-t border-gray-200">
-          <h4 class="text-lg font-medium text-[#2C1810] mb-2">Origin</h4>
-          <p class="text-gray-600">Nyeri, Central Kenya</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- bottom -->
-<!-- Mission Section -->
-<section class="bg-white py-16" id="mission">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2
-      class="text-3xl md:text-4xl font-semibold text-gray-900 mb-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
-    >
-      Our mission is to catalyse change, one coffee at a time.
-    </h2>
-
-    <div class="space-y-12">
-      <!-- Step 1 -->
-      <div
-        class="grid md:grid-cols-2 items-center gap-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
-      >
-        <div class="text-left">
-          <p class="text-gray-600 text-lg leading-relaxed">
-            Established in 2009 in a Nairobi neighborhood historically renowned
-            for its coffee estates, Spring Valley Coffee is Kenya's original
-            specialty coffee roaster.
+          <p class="text-gray-700 leading-relaxed">
+            Handpicked from the highlands of Kenya, our Arabica beans deliver a
+            balanced flavor with notes of chocolate and citrus. Perfect for
+            export or local roasting partners looking for the finest quality.
           </p>
-        </div>
-        <div class="overflow-hidden rounded-2xl shadow-md">
-          <img
-            src="//ke.springvalleycoffee.com/cdn/shop/files/Untitled_1000_x_1000_mm_800_x_1000_mm_967x.jpg?v=1751343590"
-            alt="Spring Valley Coffee Origins"
-            class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
-          />
+
+          <div class="mt-6">
+            <label
+              for="variant-select"
+              class="block text-gray-700 font-medium mb-2"
+            >
+              Choose Option
+            </label>
+            <div class="relative">
+              <select
+                id="variant-select"
+                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-[#4EA771] focus:border-[#4EA771] appearance-none"
+              >
+                <option selected>1 box of 100 filters</option>
+                <option>2 boxes of 100 filters</option>
+                <option>Wholesale Pack (1000 filters)</option>
+              </select>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="absolute right-3 top-3 w-4 h-4 text-gray-400 pointer-events-none"
+                fill="none"
+                viewBox="0 0 12 11"
+              >
+                <path
+                  d="M9.33716 3.345L2.16466 10.5175L0.986328 9.33917L8.15799 2.16667H1.83716V0.5H11.0038V9.66667H9.33716V3.345Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+            <span class="text-2xl font-bold text-[#4EA771]"
+              >KSh 1,200 / kg</span
+            >
+
+            <!-- Quantity selector -->
+            <div
+              class="flex items-center border border-gray-300 rounded-lg overflow-hidden w-max"
+            >
+              <button
+                id="decrease"
+                class="px-3 py-2 text-gray-600 hover:bg-gray-100 transition"
+              >
+                −
+              </button>
+              <input
+                id="quantity"
+                type="number"
+                value="1"
+                min="1"
+                class="w-12 text-center border-x border-gray-200 focus:outline-none"
+              />
+              <button
+                id="increase"
+                class="px-3 py-2 text-gray-600 hover:bg-gray-100 transition"
+              >
+                +
+              </button>
+            </div>
+
+            <!-- Add to Cart button -->
+            <button
+              id="add-to-cart"
+              class="bg-[#4EA771] text-white px-6 py-2 rounded-lg shadow hover:bg-[#3c8a5c] transition-all duration-300"
+            >
+              Add to Cart
+            </button>
+          </div>
+
+          <div class="pt-4 border-t border-gray-200">
+            <h4 class="text-lg font-medium text-[#2C1810] mb-2">Origin</h4>
+            <p class="text-gray-600">Nyeri, Central Kenya</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Step 2 -->
-      <div
-        class="grid md:grid-cols-2 items-center gap-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
-      >
-        <div class="text-left md:order-2">
-          <p class="text-gray-600 text-lg leading-relaxed">
-            We are passionate about sourcing our coffee and fanatical about
-            roasting in small batches.
+    <!-- bottom -->
+    <!-- Mission Section -->
+    <section class="bg-white py-16" id="mission">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2
+          class="text-3xl md:text-4xl font-semibold text-gray-900 mb-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
+        >
+          Our mission is to catalyse change, one coffee at a time.
+        </h2>
+
+        <div class="space-y-12">
+          <!-- Step 1 -->
+          <div
+            class="grid md:grid-cols-2 items-center gap-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
+          >
+            <div class="text-left">
+              <p class="text-gray-600 text-lg leading-relaxed">
+                Established in 2009 in a Nairobi neighborhood historically
+                renowned for its coffee estates, Spring Valley Coffee is Kenya's
+                original specialty coffee roaster.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-2xl shadow-md">
+              <img
+                src="//ke.springvalleycoffee.com/cdn/shop/files/Untitled_1000_x_1000_mm_800_x_1000_mm_967x.jpg?v=1751343590"
+                alt="Spring Valley Coffee Origins"
+                class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
+              />
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            class="grid md:grid-cols-2 items-center gap-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
+          >
+            <div class="text-left md:order-2">
+              <p class="text-gray-600 text-lg leading-relaxed">
+                We are passionate about sourcing our coffee and fanatical about
+                roasting in small batches.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-2xl shadow-md md:order-1">
+              <img
+                src="//ke.springvalleycoffee.com/cdn/shop/files/Untitled_1000_x_1000_mm_800_x_1000_mm_1_967x.jpg?v=1751343590"
+                alt="Coffee Roasting"
+                class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
+              />
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            class="grid md:grid-cols-2 items-center gap-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
+          >
+            <div class="text-left">
+              <p class="text-gray-600 text-lg leading-relaxed">
+                From the farmers we work with to the sustainable packaging we
+                use, our commitment to sustainability is reflected in our focus
+                on people and the planet.
+              </p>
+            </div>
+            <div class="overflow-hidden rounded-2xl shadow-md">
+              <img
+                src="//ke.springvalleycoffee.com/cdn/shop/files/Untitled_1000_x_1000_mm_800_x_1000_mm_2_967x.jpg?v=1751343590"
+                alt="Sustainability"
+                class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <!-- 🌍 Elegant Footer -->
+    <footer class="footer">
+      <div class="footer__blocks-container">
+        <div>
+          <svg
+            width="74"
+            height="85"
+            viewBox="0 0 74 85"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M67.0014 48.4852C66.3892 48.8889 65.7704 49.286 65.1582 49.6964C61.9187 51.8538 59.4038 54.7426 56.9882 57.7373C55.4694 59.6168 53.9572 61.5063 52.3324 63.2932C50.7158 65.0108 48.7519 66.3645 46.5714 67.264C46.7302 66.8703 46.8626 66.6022 46.9552 66.2978C47.617 64.2363 48.2358 62.1615 48.9009 60.1033C50.2709 55.8578 52.5409 52.2476 56.3198 49.7294C58.3317 48.4058 60.5785 47.6117 62.8916 47.0392C66.0749 46.2483 69.2747 45.5336 72.4878 44.7924C72.7648 44.7145 73.0505 44.6723 73.3382 44.6666C73.5669 44.7035 73.7896 44.7714 74 44.8685C73.9272 45.0705 73.8222 45.2593 73.689 45.4277C73.2753 45.7983 72.812 46.116 72.3918 46.4767C70.6843 47.9558 69.6155 49.8949 68.6493 51.8803C67.4713 54.2926 66.366 56.738 65.2774 59.1933C63.877 62.3805 61.4539 65.0098 58.3913 66.6651C55.294 68.4023 51.9585 69.2329 48.484 69.6101C47.0016 69.769 45.5059 69.8153 44.0036 69.941C45.2048 70.1297 46.4026 70.3878 47.6104 70.4937C50.2577 70.7286 52.8817 71.0198 55.519 71.043C60.8896 71.0893 66.0385 70.0502 70.7704 67.3666C70.8698 67.3072 70.987 67.2849 71.1013 67.3037C71.0221 67.4341 70.936 67.56 70.8432 67.681C68.6359 70.2866 65.7965 72.2817 62.5971 73.4751C58.8876 74.9244 55.0227 75.5035 51.0651 75.5962C46.042 75.7153 41.1214 74.9575 36.2472 73.8556C32.0381 72.9026 27.8489 71.8702 23.6365 70.9337C19.9634 70.123 16.2606 69.4645 12.4883 69.352C8.23951 69.223 4.14292 69.8385 0.387162 71.9993C0.293626 72.0465 0.197515 72.0885 0.0992772 72.125L0 72.0026C0.493046 71.5161 0.966242 71.0099 1.48245 70.5499C4.12968 68.2071 7.26996 66.91 10.7047 66.2647C13.989 65.6339 17.3474 65.4834 20.6749 65.818C24.0666 66.1489 27.4385 66.718 30.8104 67.2442C32.3789 67.489 33.9276 67.8828 35.4861 68.2071C35.6354 68.2269 35.7856 68.2391 35.9361 68.2435C35.1651 67.6214 34.5133 67.1019 33.868 66.589C30.0725 63.4752 26.737 59.9478 24.1758 55.7387C21.4237 51.3078 19.8811 46.233 19.702 41.0201C19.4902 35.0142 20.8933 29.359 23.4512 23.9851C28.1533 14.111 35.3637 6.4307 44.4073 0.404949C44.9268 0.0740452 45.4662 -0.17083 46.0618 0.150147C46.6574 0.471123 46.7931 1.05683 46.8163 1.70871C46.9579 5.05285 47.6871 8.34595 48.9704 11.4373C50.625 15.4842 52.4118 19.4716 54.159 23.4756C55.5587 26.6754 56.9287 29.8918 57.6831 33.3166C58.0504 34.9943 58.2258 36.7183 58.4608 38.4258C58.4918 38.6575 58.4377 38.8927 58.3085 39.0876C56.7401 41.169 55.155 43.2338 53.5171 45.2755C54.0081 43.4657 54.2037 41.5885 54.0961 39.7163C54.0035 37.3315 53.4998 34.9807 52.6071 32.7673C51.1941 29.2233 49.6289 25.7389 48.1233 22.238C46.717 18.9719 45.3868 15.6861 44.9136 12.1289C44.8275 11.5001 44.7746 10.8681 44.7481 10.2394C44.7249 9.70996 44.6224 9.24669 44.126 8.96542C43.6297 8.68416 43.173 8.85953 42.7362 9.13749C39.9992 10.911 37.4492 12.9576 35.1254 15.246C31.7645 18.4921 28.919 22.2326 26.6874 26.3379C24.8723 29.5997 23.6226 33.1452 22.9912 36.8242C21.747 44.6302 23.8151 51.5196 28.8449 57.5619C30.6053 59.683 32.647 61.5096 34.735 63.2965C35.6714 64.0973 36.3895 65.1595 37.2101 66.0893C37.8719 66.8471 38.5734 67.5982 39.2816 68.3262C39.4692 68.4752 39.689 68.5783 39.9235 68.6273C42.8388 69.5638 45.5257 68.9583 48.1531 67.5321C51.1312 65.9073 53.3516 63.5215 55.3999 60.914C57.3853 58.3627 59.3443 55.7552 61.5382 53.3793C62.9908 51.8009 64.8472 50.5865 66.5017 49.2099L67.1338 48.6739L67.0014 48.4852Z"
+              fill="#EEAD2B"
+            />
+            <path
+              d="M39.1294 64.5771C37.8058 63.323 37.1439 61.7479 36.6575 60.0768C35.7144 56.7314 35.7575 53.333 36.1413 49.9181C36.6476 45.4145 37.9149 41.0962 39.3213 36.8076C40.2776 33.8858 41.0288 30.9109 41.2339 27.8302C41.4757 24.4687 40.9355 21.0969 39.6555 17.9792C39.222 16.9137 38.7323 15.8747 38.1896 14.6437C38.8514 15.0574 39.4007 15.3585 39.9004 15.7357C42.0678 17.3902 43.3815 19.6371 44.2584 22.1619C45.1492 24.8033 45.5964 27.5741 45.582 30.3616C45.6031 34.0536 44.9086 37.7147 43.537 41.1425C42.1627 44.5971 40.86 48.0782 39.629 51.5858C38.753 54.0917 38.3055 56.7273 38.3054 59.3819C38.301 60.996 38.5363 62.6019 39.0036 64.1469C39.0566 64.2892 39.093 64.4315 39.1294 64.5771Z"
+              fill="#EEAD2B"
+            />
+            <path
+              d="M69.7976 73.4123C50.8699 88.1739 24.9304 88.5015 6.95898 73.5082C7.10951 73.534 7.25778 73.5717 7.4024 73.6207C11.9953 75.8006 16.7709 77.5723 21.6743 78.9152C26.287 80.1638 31.028 80.8777 35.8038 81.0429C41.8513 81.2013 47.891 80.5084 53.7455 78.9847C57.6428 77.9769 61.4715 76.7202 65.208 75.2223C66.5812 74.6796 67.9478 74.1237 69.3178 73.5678C69.4733 73.5016 69.6487 73.4487 69.7976 73.4123Z"
+              fill="#EEAD2B"
+            />
+          </svg>
+
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">
+            Empowering farmers across Africa to share their finest coffee with
+            the world. Transparent trade. Fair prices. Sustainable impact.
           </p>
+          <div class="footerIcon-text mt-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@mulingaconnect.com</span>
+          </div>
+          <div class="footerIcon-text">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M12 21s8-6.58 8-11a8 8 0 0 0-16 0c0 4.42 8 11 8 11z"
+              ></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Nairobi, Kenya</span>
+          </div>
         </div>
-        <div class="overflow-hidden rounded-2xl shadow-md md:order-1">
-          <img
-            src="//ke.springvalleycoffee.com/cdn/shop/files/Untitled_1000_x_1000_mm_800_x_1000_mm_1_967x.jpg?v=1751343590"
-            alt="Coffee Roasting"
-            class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
-          />
+
+        <div class="footer__blocks-wrapper">
+          <h3 class="font-semibold uppercase tracking-wide mb-3">Explore</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Meet the Farmers</a></li>
+            <li><a href="#">Coffee Marketplace</a></li>
+            <li><a href="#">Sustainability Impact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__blocks-wrapper">
+          <h3 class="font-semibold uppercase tracking-wide mb-3">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#">Investor Portal</a></li>
+            <li><a href="#">Supply Chain Analytics</a></li>
+            <li><a href="#">Automated Reports</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__blocks-wrapper">
+          <h3 class="font-semibold uppercase tracking-wide mb-3">
+            Stay Connected
+          </h3>
+          <form class="flex gap-2 mt-2">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              class="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-[#4EA771]"
+            />
+            <button
+              class="bg-[#013236] text-white px-4 py-2 rounded-md hover:bg-[#4EA771] transition"
+            >
+              Subscribe
+            </button>
+          </form>
+          <ul class="footer__list-social">
+            <li>
+              <a href="#"
+                ><svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path></svg
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <rect x="2" y="2" width="16" height="16" rx="4"></rect>
+                  <circle cx="12" cy="12" r="3"></circle></svg
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v8h-4v-8a2 2 0 0 0-4 0v8h-4v-8a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="13"></rect></svg
+              ></a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <!-- Step 3 -->
-      <div
-        class="grid md:grid-cols-2 items-center gap-10 opacity-0 translate-y-6 transition-all duration-700 scroll-animate"
-      >
-        <div class="text-left">
-          <p class="text-gray-600 text-lg leading-relaxed">
-            From the farmers we work with to the sustainable packaging we use,
-            our commitment to sustainability is reflected in our focus on people
-            and the planet.
-          </p>
-        </div>
-        <div class="overflow-hidden rounded-2xl shadow-md">
-          <img
-            src="//ke.springvalleycoffee.com/cdn/shop/files/Untitled_1000_x_1000_mm_800_x_1000_mm_2_967x.jpg?v=1751343590"
-            alt="Sustainability"
-            class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
-          />
-        </div>
+      <div class="footer__content-middle">
+        <p>© <span id="year"></span> MulingaConnect. All rights reserved.</p>
       </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- Instagram Section -->
-<!-- 🌍 Elegant Footer -->
-  <footer class="footer">
-    <div class="footer__blocks-container">
-      <div>
-        <svg width="74" height="85" viewBox="0 0 74 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M67.0014 48.4852C66.3892 48.8889 65.7704 49.286 65.1582 49.6964C61.9187 51.8538 59.4038 54.7426 56.9882 57.7373C55.4694 59.6168 53.9572 61.5063 52.3324 63.2932C50.7158 65.0108 48.7519 66.3645 46.5714 67.264C46.7302 66.8703 46.8626 66.6022 46.9552 66.2978C47.617 64.2363 48.2358 62.1615 48.9009 60.1033C50.2709 55.8578 52.5409 52.2476 56.3198 49.7294C58.3317 48.4058 60.5785 47.6117 62.8916 47.0392C66.0749 46.2483 69.2747 45.5336 72.4878 44.7924C72.7648 44.7145 73.0505 44.6723 73.3382 44.6666C73.5669 44.7035 73.7896 44.7714 74 44.8685C73.9272 45.0705 73.8222 45.2593 73.689 45.4277C73.2753 45.7983 72.812 46.116 72.3918 46.4767C70.6843 47.9558 69.6155 49.8949 68.6493 51.8803C67.4713 54.2926 66.366 56.738 65.2774 59.1933C63.877 62.3805 61.4539 65.0098 58.3913 66.6651C55.294 68.4023 51.9585 69.2329 48.484 69.6101C47.0016 69.769 45.5059 69.8153 44.0036 69.941C45.2048 70.1297 46.4026 70.3878 47.6104 70.4937C50.2577 70.7286 52.8817 71.0198 55.519 71.043C60.8896 71.0893 66.0385 70.0502 70.7704 67.3666C70.8698 67.3072 70.987 67.2849 71.1013 67.3037C71.0221 67.4341 70.936 67.56 70.8432 67.681C68.6359 70.2866 65.7965 72.2817 62.5971 73.4751C58.8876 74.9244 55.0227 75.5035 51.0651 75.5962C46.042 75.7153 41.1214 74.9575 36.2472 73.8556C32.0381 72.9026 27.8489 71.8702 23.6365 70.9337C19.9634 70.123 16.2606 69.4645 12.4883 69.352C8.23951 69.223 4.14292 69.8385 0.387162 71.9993C0.293626 72.0465 0.197515 72.0885 0.0992772 72.125L0 72.0026C0.493046 71.5161 0.966242 71.0099 1.48245 70.5499C4.12968 68.2071 7.26996 66.91 10.7047 66.2647C13.989 65.6339 17.3474 65.4834 20.6749 65.818C24.0666 66.1489 27.4385 66.718 30.8104 67.2442C32.3789 67.489 33.9276 67.8828 35.4861 68.2071C35.6354 68.2269 35.7856 68.2391 35.9361 68.2435C35.1651 67.6214 34.5133 67.1019 33.868 66.589C30.0725 63.4752 26.737 59.9478 24.1758 55.7387C21.4237 51.3078 19.8811 46.233 19.702 41.0201C19.4902 35.0142 20.8933 29.359 23.4512 23.9851C28.1533 14.111 35.3637 6.4307 44.4073 0.404949C44.9268 0.0740452 45.4662 -0.17083 46.0618 0.150147C46.6574 0.471123 46.7931 1.05683 46.8163 1.70871C46.9579 5.05285 47.6871 8.34595 48.9704 11.4373C50.625 15.4842 52.4118 19.4716 54.159 23.4756C55.5587 26.6754 56.9287 29.8918 57.6831 33.3166C58.0504 34.9943 58.2258 36.7183 58.4608 38.4258C58.4918 38.6575 58.4377 38.8927 58.3085 39.0876C56.7401 41.169 55.155 43.2338 53.5171 45.2755C54.0081 43.4657 54.2037 41.5885 54.0961 39.7163C54.0035 37.3315 53.4998 34.9807 52.6071 32.7673C51.1941 29.2233 49.6289 25.7389 48.1233 22.238C46.717 18.9719 45.3868 15.6861 44.9136 12.1289C44.8275 11.5001 44.7746 10.8681 44.7481 10.2394C44.7249 9.70996 44.6224 9.24669 44.126 8.96542C43.6297 8.68416 43.173 8.85953 42.7362 9.13749C39.9992 10.911 37.4492 12.9576 35.1254 15.246C31.7645 18.4921 28.919 22.2326 26.6874 26.3379C24.8723 29.5997 23.6226 33.1452 22.9912 36.8242C21.747 44.6302 23.8151 51.5196 28.8449 57.5619C30.6053 59.683 32.647 61.5096 34.735 63.2965C35.6714 64.0973 36.3895 65.1595 37.2101 66.0893C37.8719 66.8471 38.5734 67.5982 39.2816 68.3262C39.4692 68.4752 39.689 68.5783 39.9235 68.6273C42.8388 69.5638 45.5257 68.9583 48.1531 67.5321C51.1312 65.9073 53.3516 63.5215 55.3999 60.914C57.3853 58.3627 59.3443 55.7552 61.5382 53.3793C62.9908 51.8009 64.8472 50.5865 66.5017 49.2099L67.1338 48.6739L67.0014 48.4852Z" fill="#EEAD2B"/>
-<path d="M39.1294 64.5771C37.8058 63.323 37.1439 61.7479 36.6575 60.0768C35.7144 56.7314 35.7575 53.333 36.1413 49.9181C36.6476 45.4145 37.9149 41.0962 39.3213 36.8076C40.2776 33.8858 41.0288 30.9109 41.2339 27.8302C41.4757 24.4687 40.9355 21.0969 39.6555 17.9792C39.222 16.9137 38.7323 15.8747 38.1896 14.6437C38.8514 15.0574 39.4007 15.3585 39.9004 15.7357C42.0678 17.3902 43.3815 19.6371 44.2584 22.1619C45.1492 24.8033 45.5964 27.5741 45.582 30.3616C45.6031 34.0536 44.9086 37.7147 43.537 41.1425C42.1627 44.5971 40.86 48.0782 39.629 51.5858C38.753 54.0917 38.3055 56.7273 38.3054 59.3819C38.301 60.996 38.5363 62.6019 39.0036 64.1469C39.0566 64.2892 39.093 64.4315 39.1294 64.5771Z" fill="#EEAD2B"/>
-<path d="M69.7976 73.4123C50.8699 88.1739 24.9304 88.5015 6.95898 73.5082C7.10951 73.534 7.25778 73.5717 7.4024 73.6207C11.9953 75.8006 16.7709 77.5723 21.6743 78.9152C26.287 80.1638 31.028 80.8777 35.8038 81.0429C41.8513 81.2013 47.891 80.5084 53.7455 78.9847C57.6428 77.9769 61.4715 76.7202 65.208 75.2223C66.5812 74.6796 67.9478 74.1237 69.3178 73.5678C69.4733 73.5016 69.6487 73.4487 69.7976 73.4123Z" fill="#EEAD2B"/>
-</svg>
+    <!-- Scroll Animation Script -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove("opacity-0", "translate-y-6");
+              entry.target.classList.add("opacity-100", "translate-y-0");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
 
+      document
+        .querySelectorAll(".scroll-animate")
+        .forEach((el) => observer.observe(el));
+    </script>
 
-        <p class="mt-3 text-sm leading-relaxed text-gray-600">
-          Empowering farmers across Africa to share their finest coffee with the world.
-          Transparent trade. Fair prices. Sustainable impact.
-        </p>
-        <div class="footerIcon-text mt-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span>info@mulingaconnect.com</span>
-        </div>
-        <div class="footerIcon-text">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M12 21s8-6.58 8-11a8 8 0 0 0-16 0c0 4.42 8 11 8 11z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <span>Nairobi, Kenya</span>
-        </div>
-      </div>
-
-      <div class="footer__blocks-wrapper">
-        <h3 class="font-semibold uppercase tracking-wide mb-3">Explore</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Meet the Farmers</a></li>
-          <li><a href="#">Coffee Marketplace</a></li>
-          <li><a href="#">Sustainability Impact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__blocks-wrapper">
-        <h3 class="font-semibold uppercase tracking-wide mb-3">Resources</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#">Investor Portal</a></li>
-          <li><a href="#">Supply Chain Analytics</a></li>
-          <li><a href="#">Automated Reports</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__blocks-wrapper">
-        <h3 class="font-semibold uppercase tracking-wide mb-3">Stay Connected</h3>
-        <form class="flex gap-2 mt-2">
-          <input type="email" placeholder="Enter your email" required class="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-[#4EA771]">
-          <button class="bg-[#013236] text-white px-4 py-2 rounded-md hover:bg-[#4EA771] transition">Subscribe</button>
-        </form>
-        <ul class="footer__list-social">
-          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>
-          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><rect x="2" y="2" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3"></circle></svg></a></li>
-          <li><a href="#"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 0 1 6 6v8h-4v-8a2 2 0 0 0-4 0v8h-4v-8a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="13"></rect></svg></a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer__content-middle">
-      <p>© <span id="year"></span> MulingaConnect. All rights reserved.</p>
-    </div>
-  </footer>
-
-<!-- Scroll Animation Script -->
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("opacity-0", "translate-y-6");
-          entry.target.classList.add("opacity-100", "translate-y-0");
-        }
+    <script>
+      // Toggle mobile menu
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("menu-open");
+        mobileMenu.classList.toggle("menu-closed");
       });
-    },
-    { threshold: 0.2 }
-  );
 
-  document.querySelectorAll(".scroll-animate").forEach((el) => observer.observe(el));
-</script>
+      // Cart count
+      const addToCartBtn = document.getElementById("add-to-cart");
+      const cartCount = document.getElementById("cart-count");
+      let count = 0;
 
-  
-
-  <script>
-    // Toggle mobile menu
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('menu-open');
-      mobileMenu.classList.toggle('menu-closed');
-    });
-
-    // Cart count
-    const addToCartBtn = document.getElementById('add-to-cart');
-    const cartCount = document.getElementById('cart-count');
-    let count = 0;
-
-    addToCartBtn.addEventListener('click', () => {
-      count++;
-      cartCount.textContent = count;
-      addToCartBtn.textContent = 'Added ✓';
-      setTimeout(() => addToCartBtn.textContent = 'Add to Cart', 1000);
-    });
-  </script>
-
-</body>
+      addToCartBtn.addEventListener("click", () => {
+        count++;
+        cartCount.textContent = count;
+        addToCartBtn.textContent = "Added ✓";
+        setTimeout(() => (addToCartBtn.textContent = "Add to Cart"), 1000);
+      });
+    </script>
+  </body>
 </html>
-
-
-
-
-
-
-
-

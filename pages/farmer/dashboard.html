@@ -9,13 +9,14 @@
 
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/pages/farmer/farmer.css">
+  <link rel="stylesheet" href="./farmer.css">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../../css/output.css">
 </head>
 <body>
   <nav class="top-nav">
     <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
-      <i data-lucide="menu"></i>
+      <i data-lucide="book"></i>
     </button>
     <div class="left-nav">
         <div class="logo-container">
@@ -55,27 +56,28 @@
     </div>
     <nav class="sidebar-nav">
       <ul>
-        <li class="active"><a href="/pages/farmer/dashboard.html" aria-current="page">
-          <i data-lucide="home"></i>
+        <li class="active"><a href="./dashboard.html" class="flex flex-row" aria-current="page">
+          <span><i data-lucide="home"></i></span>
           <span>Dashboard</span>
-        </a></li>
-        <li><a href="/pages/farmer/profile.html">
+          </a>
+          </li>
+        <li><a href="./profile.html">
           <i data-lucide="user"></i>
           <span>Profile</span>
         </a></li>
-        <li><a href="/pages/farmer/produce.html">
+        <li><a href="./produce.html">
           <i data-lucide="package"></i>
           <span>Uploads</span>
         </a></li>
-        <li><a href="/pages/farmer/payments.html">
+        <li><a href="./payments.html">
           <i data-lucide="dollar-sign"></i>
           <span>Payments</span>
         </a></li>
-        <li><a href="/pages/farmer/investment.html">
+        <li><a href="./investment.html">
           <i data-lucide="dollar-sign"></i>
           <span>Investments</span>
         </a></li>
-        <li><a href="/pages/farmer/shipments.html">
+        <li><a href="./shipments.html">
           <i data-lucide="truck"></i>
           <span>Shipments</span>
         </a></li>
@@ -83,13 +85,9 @@
           <i data-lucide="star"></i>
           <span>Reviews</span>
         </a></li>
-        <li><a href="notifications.html">
+        <li><a href="./notifications.html">
           <i data-lucide="bell"></i>
           <span>Notifications</span>
-        </a></li>
-         <li><a href="notifications.html">
-          <i data-lucide="bell"></i>
-          <span>Investment</span>
         </a></li>
         <li><a href="analytics.html">
           <i data-lucide="bar-chart-2"></i>
@@ -106,7 +104,7 @@
         <i data-lucide="help-circle"></i>
         <span>Help & Support</span>
       </button>
-      <button class="logout-button" onclick="window.location.href='/pages/signpage/signinpage.html'">
+      <button class="logout-button" onclick="window.location.href='../signpage/signinpage.html'">
         <i data-lucide="log-out"></i>
         <span>Logout</span>
       </button>
@@ -122,7 +120,6 @@
           <p class="subtitle">Here is your farms overview</p>
         </div>
         <button class="upload-btn" >
-        <!-- onclick="window.location.href='/pages/farmer/produce.html' -->
           <i data-lucide="upload"></i>
           <span>Upload New Produce</span>
         </button>
@@ -155,9 +152,9 @@
           <p class="stat-label">Pending Payments</p>
         </div>
       </div>
-      <div class="bottom-section">
+      <div class="sm:flex flex-col sm:flex-nowrap sm:flex-row gap-8 bottom-section">
       <!-- Recent Activity -->
-      <div class="recent-activity">
+      <div class="recent-activity mb-4">
         <h2 class="activity-title">Recent Activity</h2>
         <div class="activity-list">
           <div class="activity-item">
@@ -189,7 +186,7 @@
               <p class="activity-action">Pickup scheduled for tomorrow</p>
               <p class="activity-date">2 days ago</p>
             </div>
-            <span class="activity-status red">Picked_up</span>
+            <span class="activity-status red ">Picked_up</span>
           </div>
         </div>
       </div>
@@ -282,7 +279,7 @@
         <div class="bottom-group">
             <label for="location">Farm Location</label>
             <div class="input-group">
-            <input type="location" placeholder="Enter farm location">
+            <input type="text" placeholder="Enter farm location">
         </div>  
         
         <label for="text">Description</label>
@@ -314,7 +311,6 @@
       const menuToggle = document.getElementById('menu-toggle');
       const closeMenu = document.getElementById('close-menu');
       const sidebar = document.querySelector('.sidebar');
-      const mainContent = document.querySelector('.dashboard-container');
       const overlay = document.createElement('div');
       overlay.className = 'mobile-overlay';
       document.body.appendChild(overlay);
