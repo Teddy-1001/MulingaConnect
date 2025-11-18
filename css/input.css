@@ -14,7 +14,8 @@
 /* Your custom components */
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90;
+    @apply text-white px-4 py-2 rounded-lg hover:opacity-90;
+    background-color: #013236;
   }
 }
 

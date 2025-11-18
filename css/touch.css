@@ -1,0 +1,57 @@
+/* Touch Optimization Styles */
+
+/* Improve touch targets */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+.clickable {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px;
+  touch-action: manipulation;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth scrolling for touch devices */
+@media (pointer: coarse) {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  /* Optimize touch scrolling */
+  .scroll-container {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+  }
+
+  /* Prevent double-tap zoom on elements */
+  nav,
+  button,
+  .no-zoom {
+    touch-action: manipulation;
+  }
+
+  /* Better touch feedback */
+  button:active,
+  a:active,
+  .touch-feedback:active {
+    opacity: 0.7;
+    transition: opacity 0.1s ease;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
