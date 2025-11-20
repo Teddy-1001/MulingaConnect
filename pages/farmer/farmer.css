@@ -168,51 +168,17 @@ a:focus, button:focus, input:focus { outline: 3px solid rgba(78,167,113,0.25); o
   width: 100%;
 }
 
-.farmer-portal,
-.admin-portal {
-  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2rem);
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  flex: 1;
-  min-width: min(200px, 100%);
-  max-width: 300px;
-  width: 100%;
-}
-
-.farmer-portal a {
-  background-color: var(--accent);
-  color: white;
-  text-decoration: none;
-}
-
-.admin-portal {
-  background-color: #EEAD2B;
-  color: var(--primary);
-}
 
 /* Mulinga Systems Section */
 .mulinga-systems {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(380px, 90%), 3fr));
-  /* gap: clamp(1rem, 3vw, 2rem); */
   gap: 10px;
   padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);
   background-color: #fff;
-  width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
-  overflow: hidden; 
   margin: 10px auto;
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 80%; */
-
 }
-
 .cards {
   box-sizing: border-box;
 }
@@ -302,10 +268,10 @@ footer {
     gap: 1rem;
   }
 
-  .mulinga-systems {
+  /* .mulinga-systems {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 2rem 1rem;
-  }
+  } */
 
   .cards {
     padding: 1.5rem;
@@ -345,9 +311,9 @@ footer {
     text-align: center;
   }
 
-  .mulinga-systems {
+  /* .mulinga-systems {
     grid-template-columns: 1fr;
-  }
+  } */
 
   .advert {
     padding: 2rem 1rem;
@@ -998,9 +964,10 @@ select, input{
 }
 
 .farmer-portal {
-    background-color: #2A3627;
+    background: transparent;
     padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2rem);
     border-radius: 15px;
+    border: 2px solid #FFFFFF;
     font-size: clamp(1rem, 1.5vw, 20px);
     transition: all 0.3s ease;
     flex: 1;
@@ -1039,10 +1006,9 @@ select, input{
     background-color: var(--background);
     padding: clamp(1.5rem, 3vw, 2.5rem);
     border-radius: 15px;
-    border: 2px solid #795B5B;
-    box-shadow: 2px 6px 4px rgba(0, 0, 0, 0.1);
+    border: 0.1px solid #795B5B;
+    box-shadow: 2px 6px 4px #795B5B33;
     transition: all 0.3s ease;
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1050,7 +1016,7 @@ select, input{
 
 .cards:hover {
     box-shadow: 0 10px 20px rgba(86, 49, 49, 0.15);
-    transform: translateY(-5px);
+    transform: translateY(-1px);
 }
 
 .cards h3 {

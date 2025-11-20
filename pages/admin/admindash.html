@@ -659,77 +659,88 @@
   </body>
   <script>
     lucide.createIcons();
-    // Initialize charts when admin dashboard is shown
-    const salesCtx = document.getElementById("salesChart");
-    if (salesCtx) {
-      new Chart(salesCtx, {
-        type: "line",
-        data: {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          datasets: [
-            {
-              label: "Sales ($)",
-              data: [
-                15000, 18000, 22000, 25000, 24000, 28000, 32000, 35000, 40000,
-                42000, 45000, 48000,
-              ],
-              borderColor: "#013236",
-              backgroundColor: "rgba(1,50,54,0.1)",
-              tension: 0.4,
-              fill: false,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: {
-                callback: function (v) {
-                  return "$" + v.toLocaleString();
+
+    // Initialize charts when Chart.js is ready
+    function initCharts() {
+      if (typeof Chart === "undefined") {
+        // Chart.js not ready yet, retry after a short delay
+        setTimeout(initCharts, 100);
+        return;
+      }
+
+      const salesCtx = document.getElementById("salesChart");
+      if (salesCtx) {
+        new Chart(salesCtx, {
+          type: "line",
+          data: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                label: "Sales ($)",
+                data: [
+                  15000, 18000, 22000, 25000, 24000, 28000, 32000, 35000, 40000,
+                  42000, 45000, 48000,
+                ],
+                borderColor: "#013236",
+                backgroundColor: "rgba(1,50,54,0.1)",
+                tension: 0.4,
+                fill: false,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  callback: function (v) {
+                    return "$" + v.toLocaleString();
+                  },
                 },
               },
             },
           },
-        },
-      });
+        });
+      }
+
+      const coffeeCtx = document.getElementById("coffeeDistributionChart");
+      if (coffeeCtx) {
+        new Chart(coffeeCtx, {
+          type: "doughnut",
+          data: {
+            labels: ["Arabica", "Robusta", "Mocha", "Others"],
+            datasets: [
+              {
+                data: [58, 25, 12, 5],
+                backgroundColor: ["#013236", "#4EA771", "#C1E6BA", "#EAF8E7"],
+                borderWidth: 0,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            cutout: "50%",
+          },
+        });
+      }
     }
 
-    const coffeeCtx = document.getElementById("coffeeDistributionChart");
-    if (coffeeCtx) {
-      new Chart(coffeeCtx, {
-        type: "doughnut",
-        data: {
-          labels: ["Arabica", "Robusta", "Mocha", "Others"],
-          datasets: [
-            {
-              data: [58, 25, 12, 5],
-              backgroundColor: ["#013236", "#4EA771", "#C1E6BA", "#EAF8E7"],
-              borderWidth: 0,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          cutout: "50%",
-        },
-      });
-    }
+    initCharts();
   </script>
 </html>

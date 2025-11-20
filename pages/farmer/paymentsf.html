@@ -2651,6 +2651,12 @@
 
       // Initialize charts when admin dashboard is shown
       function initAdminCharts() {
+        if (typeof Chart === "undefined") {
+          // Chart.js not ready yet, retry after a short delay
+          setTimeout(initAdminCharts, 100);
+          return;
+        }
+
         // Sales Chart
         const salesCtx = document.getElementById("salesChart");
         if (salesCtx) {
@@ -2736,6 +2742,12 @@
 
       // Sustainability Chart for Buyer Dashboard
       function initBuyerCharts() {
+        if (typeof Chart === "undefined") {
+          // Chart.js not ready yet, retry after a short delay
+          setTimeout(initBuyerCharts, 100);
+          return;
+        }
+
         const sustainabilityCtx = document.getElementById(
           "sustainabilityChart"
         );
@@ -2775,7 +2787,7 @@
         }
       }
 
-      // Initialize charts when page loads
+      // Initialize charts when page loads and Chart.js is ready
       document.addEventListener("DOMContentLoaded", function () {
         // Delay chart initialization to ensure elements are ready
         setTimeout(function () {

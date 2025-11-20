@@ -2,7 +2,8 @@
 module.exports = {
   content: [
     "./pages/**/*.{html,js}",
-    "./javascript/**/*.js"
+    "./javascript/**/*.js",
+    
   ],
   safelist: [
     // Force generate all custom color classes
@@ -18,7 +19,10 @@ module.exports = {
         'coffee-brown': '#795b5b',
         'coffee-light': '#f8f3ee',
         gold: '#EEAD2B',
-        cream: '#F9F6F1'
+        cream: '#F9F6F1',
+      },
+      backgroundImage: {
+        'coffeebg': "url('/images/delicious-organic-coffee-still-life.jpg')",
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
